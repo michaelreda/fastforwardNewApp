@@ -1,0 +1,47 @@
+<ion-header >
+
+	<ion-navbar  align-title="center" color="ffPrimary">
+		<ion-title>Add Simulation</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<form>
+	<ion-list>
+
+		<ion-item>
+			<ion-label fixed>Title</ion-label>
+			<ion-input type="text" value="" [(ngModel)]="title" name="title" placeholder="Title"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label fixed>Type</ion-label>
+			<ion-input type="text" value="" [(ngModel)]="type" name="type" placeholder="type"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label fixed>Price</ion-label>
+			<ion-input type="number" value="0" [(ngModel)]="price" name="price" placeholder="Price in Egyptian Pounds"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label fixed>Description</ion-label>
+			<ion-textarea style="height: 100%;" [(ngModel)]="description" name="description" placeholder="Description"></ion-textarea >
+			</ion-item>
+
+			<ion-item>
+				<ion-label fixed>Date</ion-label>
+				<ion-input type="date" [(ngModel)]="date" name="date"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label fixed>Add photos</ion-label>
+				<ion-input type="file" accept="image/*" [(ngModel)]="images" name="images" multiple> </ion-input>
+			</ion-item>
+
+		</ion-list>
+</form>
+<button ion-button round style="margin-left:auto;margin-right:auto;display:block;" color="ffPrimary" (click)="add_sim(title,type,price,description,date,images)">Add +</button>
+	</ion-content>

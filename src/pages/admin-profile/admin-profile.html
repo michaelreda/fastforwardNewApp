@@ -1,0 +1,44 @@
+
+<ion-header >
+
+	<ion-navbar  align-title="center" color="ffPrimary">
+		<ion-title>Edit Admin Profile</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<form>
+		<ion-list>
+
+			<ion-item>
+				<ion-label fixed>Name</ion-label>
+				<ion-input type="text" [(ngModel)]="name" name="name" placeholder="Name"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label fixed>Location</ion-label>
+				<ion-input type="text" [(ngModel)]="location" name="location" placeholder="Location"></ion-input>
+			</ion-item>
+
+
+			<ion-item>
+				<ion-label fixed>Description</ion-label>
+				<ion-textarea  rows="4" [(ngModel)]="description" name="description" placeholder="Description" ></ion-textarea >
+				</ion-item>
+
+				<ion-item>
+					<ion-label fixed>Profile Picture</ion-label>
+					<ion-input type="file" accept="image/*" [(ngModel)]="profile_pic" name="profile_pic" multiple> </ion-input>
+				</ion-item>
+
+				<ion-item>
+					<ion-label fixed>cover Picture</ion-label>
+					<ion-input type="file" accept="image/*" [(ngModel)]="cover_pic" name="cover_pic" multiple> </ion-input>
+				</ion-item>
+
+			</ion-list>
+		</form>
+		<button ion-button round style="margin-left:auto;margin-right:auto;display:block;" color="ffPrimary" (click)="edit_profile()">Edit</button>
+	</ion-content>
