@@ -18,7 +18,7 @@ export class UserProfilePage {
 	user_simulations:any={};
 
 	constructor(public navCtrl: NavController, public navParams: NavParams,http: Http) {
-		http.get("https://walidpc.eu-gb.mybluemix.net/user_info?id=1").subscribe(data => {
+		http.get("https://walidpc.eu-gb.mybluemix.net/user_info?id=8").subscribe(data => {
 			var res = JSON.parse(data['_body']);
 			this.user_info=res;
 			console.log(this.user_info);
