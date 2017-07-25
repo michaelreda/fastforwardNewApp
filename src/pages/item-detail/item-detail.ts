@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
+import { ActionSheetController } from 'ionic-angular'
 
 import { Items } from '../../providers/providers';
 import {Http} from '@angular/http';
@@ -20,7 +21,7 @@ export class ItemDetailPage {
 	refresher:any;
 	loader:any={};
 
-	constructor(public navCtrl: NavController, navParams: NavParams, items: Items, http: Http, public alertCtrl:AlertController,public loadingCtrl: LoadingController) {
+	constructor(public navCtrl: NavController, navParams: NavParams, items: Items, http: Http, public alertCtrl:AlertController,public loadingCtrl: LoadingController,public actionSheetCtrl: ActionSheetController) {
 		this.item = navParams.get('item') || items.defaultItem;
 		this.loading=true;
 
@@ -87,5 +88,28 @@ export class ItemDetailPage {
 				content: "Please wait..."
 			});
 			this.loader.present();
+		}
+
+		presentActionSheet() {
+			let actionSheet = this.actionSheetCtrl.create({
+				title: 'Check Available Dates',
+				buttons: [
+					{
+						text: '17 Jan, 11:00 AM',
+						handler: () => {
+							console.log('hello');
+						}
+					},
+					{
+						text: 'Cancel',
+						role: 'cancel',
+						handler: () => {
+							console.log('Cancel clicked');
+						}
+					}
+				]
+			});
+
+			actionSheet.present();
 		}
 }
