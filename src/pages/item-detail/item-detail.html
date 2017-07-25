@@ -50,17 +50,19 @@
 		<div  >
 			<p text-center class="description">{{company_details.description}}</p>
 			<h3 text-center ion-text color="ffPrimary" >{{company_details.followers}} <i class="fa fa-user" aria-hidden="true"></i></h3>
-			<button ion-button round style="margin-left:auto;margin-right:auto;display:block;" color="ffPrimary">Follow</button>
+			<div style="text-align: center;">
+				<button ion-button round style="display: inline-block;" color="ffPrimary">Follow</button>
+				<button ion-button round style="margin-left: 5px;display: inline-block;" color="ffPrimary" (click)="open_email_content_popup()">Message</button>
+			</div>
 		</div>
 
 		<ion-card *ngFor="let simulation of company_simulations">
 
 			<ion-item>
-				<ion-avatar item-left>
-					<img src="{{company_details.profile_pic_link}}" />
-				</ion-avatar>
+				<ion-avatar item-left [style.background-image]="'url('+company_details.profile_pic_link+')'" style="background-repeat: no-repeat;background-position: 50%;background-size: contain;border-radius: 50%;"></ion-avatar>
 				<h2><strong>{{company_details.company_name}}</strong></h2>
 				<p>{{simulation.date | date: "dd/MM/yyyy HH:mm a"}}</p>
+				<h2 style="color:#24b950" item-end><strong>{{simulation.price}}</strong> EGP </h2>
 			</ion-item>
 
 			<img src="http://www.research.ibm.com/software/IBMResearch/image/Lab_Page_pic_619x273.jpg" />
@@ -83,7 +85,7 @@
 					</button>
 				</ion-col>
 				<ion-col center text-center>
-					<button ion-button round style="margin-left:auto;margin-right:auto;display:block;" color="ffPrimary">Apply for {{simulation.price}} EGP</button>
+					<button ion-button round outline small style="margin-left:auto;margin-right:auto;display:block;" color="ffPrimary">Apply</button>
 				</ion-col>
 			</ion-row>
 
