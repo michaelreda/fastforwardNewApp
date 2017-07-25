@@ -56,7 +56,7 @@
 			</div>
 		</div>
 
-		<ion-card *ngFor="let simulation of company_simulations">
+		<ion-card *ngFor="let simulation of company_simulations; let i = index">
 
 			<ion-item>
 				<ion-avatar item-left [style.background-image]="'url('+company_details.profile_pic_link+')'" style="background-repeat: no-repeat;background-position: 50%;background-size: contain;border-radius: 50%;"></ion-avatar>
@@ -64,8 +64,8 @@
 				<!-- <p>{{simulation.date | date: "dd/MM/yyyy HH:mm a"}}</p> -->
 				<h2 style="color:#24b950" item-end><strong>{{simulation.price}}</strong> EGP </h2>
 			</ion-item>
-<!--
-			<img src="http://www.research.ibm.com/software/IBMResearch/image/Lab_Page_pic_619x273.jpg" /> -->
+
+			<img src="http://www.research.ibm.com/software/IBMResearch/image/Lab_Page_pic_619x273.jpg" />
 
 			<ion-card-content>
 				<!-- {{simulation.simulation_name}} -->
@@ -76,17 +76,26 @@
 			</div> -->
 				<br>
 				Introduction: <br>Students will try out the mobile application development simulation in our work place.
+				<a style="color:#f85a51" href="#" *ngIf="!read_more[i]"(click)="read_more[i]=true"> <strong>read more..</strong></a>
 				<br>
 				<br>
-				Requirements:<br>
-				- GPA > 2.0 <br>
-				- University Student <br>
-				- Loving Nature
-				<br>
-				<br>
-				Tools: Mobile First which is a very important thing in life and stuff about it.
+				<span *ngIf="read_more[i]" >
+					Requirements:<br>
+					- GPA > 2.0 <br>
+					- University Student <br>
+					- Loving Nature
+					<br>
+					<br>
+					Tools: Mobile First which is a very important thing in life and stuff about it.
+				</span>
 			</ion-card-content>
 
+			<ion-row>
+				<div  style="color:#24b950; text-align:center;padding-right: 20px;margin-left: auto;font-size: 17px;">
+					<i class="fa fa-users" aria-hidden="true"></i>
+					<strong> 152</strong>
+				</div>
+			</ion-row>
 			<ion-row>
 				<!-- <ion-col>
 					<button ion-button icon-left clear small>
@@ -95,7 +104,7 @@
 					</button>
 				</ion-col> -->
 				<ion-col>
-					<button ion-button block  style="height: 50px;" color="ffPrimary" (click)="presentActionSheet()"><strong>APPLY</strong></button>
+					<button ion-button block  style="height: 50px;font-size: 17px;" color="ffPrimary" (click)="presentActionSheet()"><strong>APPLY</strong></button>
 				</ion-col>
 				<!-- <ion-col col-2>
 					<button ion-button outline style="padding-left:10px;padding-right:10px;height: 50px;" color="ffPrimary"><i style="font-size: 28px;" class="fa fa-calendar-plus-o"></i></button>

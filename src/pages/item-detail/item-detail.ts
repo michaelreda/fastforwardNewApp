@@ -20,6 +20,7 @@ export class ItemDetailPage {
 	company_simulations: any =[];
 	refresher:any;
 	loader:any={};
+	read_more=[];
 
 	constructor(public navCtrl: NavController, navParams: NavParams, items: Items, http: Http, public alertCtrl:AlertController,public loadingCtrl: LoadingController,public actionSheetCtrl: ActionSheetController) {
 		this.item = navParams.get('item') || items.defaultItem;
@@ -36,6 +37,9 @@ export class ItemDetailPage {
 		http.get("https://walidpc.eu-gb.mybluemix.net/get_company_simulations?company_id=1").subscribe(data => {
 			var res = JSON.parse(data['_body']);
 			this.company_simulations =res;
+			for (let entry of this.read_more) {
+				entry=false;
+			}
 			console.log(this.company_simulations);
 			// this.loading=false;
 		});
@@ -92,12 +96,25 @@ export class ItemDetailPage {
 
 		presentActionSheet() {
 			let actionSheet = this.actionSheetCtrl.create({
-				title: 'Check Available Dates',
+				// title: '',
 				buttons: [
 					{
 						text: '17 Jan, 11:00 AM',
 						handler: () => {
-							console.log('hello');
+							console.log('17 Jan, 11:00 AM');
+						}
+					},
+					{
+						text: '20 Feb, 7:300 AM',
+						handler: () => {
+							console.log('20 Feb, 7:300 AM');
+						}
+					},
+					{
+						text: 'Request new Time',
+						role: 'destructive',
+						handler: () => {
+							console.log('Request new Time');
 						}
 					},
 					{
@@ -112,4 +129,12 @@ export class ItemDetailPage {
 
 			actionSheet.present();
 		}
+
+
+		// read_more(i){
+		// 	// console.log(i);
+		// 	// document.getElementsById("more_text_"+i).style.display = 'block';
+		// 	// document.getElementsById("read_more_"+i).style.display = 'none';
+		// }
+
 }
