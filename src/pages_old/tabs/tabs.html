@@ -1,0 +1,19 @@
+  <ion-header>
+    <ion-navbar></ion-navbar>
+<ion-tabs >
+    <ion-tab [root]="tab2Root"  tabIcon="contacts" (ionSelect)="switch2()"></ion-tab>
+  <ion-tab [root]="tab1Root"  tabIcon="videocam" (ionSelect)="switch1()"></ion-tab>
+
+  <ion-tab [root]="tab3Root"  tabIcon="person" (ionSelect)="switch3()"></ion-tab>
+ </ion-tabs>
+    
+  </ion-header>
+
+  <ion-content>
+    <ion-nav [root]="root"></ion-nav>
+
+
+
+
+
+  </ion-content>

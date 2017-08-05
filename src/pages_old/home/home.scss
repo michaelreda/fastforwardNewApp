@@ -1,0 +1,32 @@
+page-home {
+.OR {
+    overflow: hidden;
+    text-align: center;
+    color: #999999;
+    font-weight:bold;
+}
+.OR:before,
+.OR:after {
+    background-color: #E5E5E5;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+}
+.OR:before {
+    right: 0.5rem;
+    margin-left: -50%;
+}
+.OR:after {
+    left: 0.5rem;
+    margin-right: -50%;
+}
+#text{
+visibility: hidden;
+
+
+}
+ 
+}

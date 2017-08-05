@@ -1,0 +1,24 @@
+<ion-header>
+ <ion-toolbar>
+<ion-title style=" width:100%;display:inline-block;">
+ <h3 style="color:#F84838;display:inline-block;font-weight:bold;">FAST</h3>
+ <h3 style="color:black;display:inline-block;font-weight:bold;"> FORWARD</h3>
+
+</ion-title>
+ </ion-toolbar>
+</ion-header>
+<ion-content>
+ 
+  <ion-nav [root]="root"></ion-nav>
+</ion-content>
+  <ion-footer>
+    <ion-toolbar>
+    <ion-tabs >
+    <ion-tab [root]="tab1Root"  tabIcon="contacts" (ionSelect)="switch1()"></ion-tab>
+  <ion-tab [root]="tab2Root"  tabIcon="videocam" (ionSelect)="switch2()"></ion-tab>
+
+  <ion-tab [root]="tab3Root"  tabIcon="person" (ionSelect)="switch3()"></ion-tab>
+ </ion-tabs>
+    
+  </ion-toolbar>
+  </ion-footer>

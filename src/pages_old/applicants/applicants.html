@@ -1,0 +1,45 @@
+<!--
+  Generated template for the Applicants page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>applicants</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<ion-slides pager >
+
+  <ion-slide *ngFor="let x of applicants" >
+    <ion-toolbar>
+        <ion-buttons end>
+          <button ion-button icon-only color="primary" (click)="accepted()"> <ion-icon name="done-all"></ion-icon>accept</button>
+        </ion-buttons>
+</ion-toolbar>
+    <ion-row>
+      <ion-col col-3>
+    <ion-avatar class="card-avatar">
+      <img src="https://image.freepik.com/free-icon/emoticon-square-smiling-face-with-closed-eyes_318-58597.jpg">
+    </ion-avatar>
+      </ion-col>
+    <ion-col col-9 >
+    
+    <h3 style="text-align:left;"> {{x.name}}</h3>
+    <p style="text-align:left;margin-top:0rem;margin-bottom:0.5rem; font-size:small;"> {{x.age}} years</p>
+    <p style="text-align:left;margin-top:0rem; font-size:small;"> {{x.school}}</p>
+   </ion-col>
+    </ion-row>
+   <rating [(ngModel)]="x.rating"  readOnly="true"  max="5" emptyStarIconName="star-outline" halfStarIconName="star-half"  starIconName="star" nullable="false" ></rating>
+    
+  </ion-slide>
+
+  
+
+</ion-slides>
+</ion-content>
