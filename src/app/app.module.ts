@@ -28,6 +28,7 @@ import { Ionic2RatingModule } from 'ionic2-rating';
 import { DatePickerModule } from 'datepicker-ionic2';
 import {IonicStorageModule} from '@ionic/storage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SafepipePipe } from '../pipes/safepipe/safepipe';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     Registerform,
     Listcareer,
     ItemDetailPage,
-    Profile
+    Profile,
+    SafepipePipe
   ],
   imports: [
     BrowserModule,
