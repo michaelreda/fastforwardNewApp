@@ -43,7 +43,7 @@ this.DS.load().subscribe(
         );*/
 if(this.check){
 this.navCtrl.pop;
-this.navCtrl.push(LoginPage);
+this.navCtrl.push(TabsPage);
 
 }/*}
 else{

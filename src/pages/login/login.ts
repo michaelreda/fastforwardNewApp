@@ -39,16 +39,16 @@ this.navCtrl.push(LoginPage);
 }
 else{
 
-  this.showAlert(this.check.msg);
+  this.showAlert();
 }
 }
 
 }
 
-showAlert(msg) {
+showAlert() {
     let alert = this.alertCtrl.create({
       title: ' ',
-      subTitle: msg,
+      subTitle: ' wrong mail or password',
       buttons: ['OK']
     });
     alert.present();

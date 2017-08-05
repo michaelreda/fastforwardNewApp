@@ -1,19 +1,15 @@
 import { Component } from '@angular/core';
 
-import {IonicPage, NavController } from 'ionic-angular';
 import { AboutPage } from '../about/about';
 import{Vedios} from'../vedios/vedios';
 import {  Profile} from "../profile/profile";
-<<<<<<< HEAD
-=======
 import { ActionSheetController } from 'ionic-angular';
 import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import {Http} from '@angular/http';
 
 
-// import {  UserProfilePage} from "../user-profile/user-profile";
->>>>>>> 9b27b5d40f159541b1bc8ee40748b81aa07469b2
+
 @Component({
 	templateUrl: 'tabs.html'
 })
