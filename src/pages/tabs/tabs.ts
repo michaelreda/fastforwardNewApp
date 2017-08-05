@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
+import {IonicPage, NavController } from 'ionic-angular';
 import { AboutPage } from '../about/about';
 import{Vedios} from'../vedios/vedios';
 import {  Profile} from "../profile/profile";
-// import {  UserProfilePage} from "../user-profile/user-profile";
 @Component({
 	templateUrl: 'tabs.html'
 })

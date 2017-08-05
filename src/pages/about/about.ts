@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { IonicPage,NavController } from 'ionic-angular';
 
 import {Listcareer} from '../listcareer/listcareer';
 import { trigger, state, style, transition, animate } from '@angular/animations';

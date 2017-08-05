@@ -15,6 +15,7 @@ import {Vedios} from '../pages/vedios/vedios';
 import {Listcareer} from '../pages/listcareer/listcareer';
 import { ItemDetailPage} from '../pages/item-detail/item-detail'
 import { Profile } from "../pages/profile/profile";
+import {LoginPage  } from "../pages/login/login";
 
 import{DataService} from '../providers/data-service';
 import { User } from '../providers/user';
@@ -29,7 +30,6 @@ import { DatePickerModule } from 'datepicker-ionic2';
 import {IonicStorageModule} from '@ionic/storage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SafepipePipe } from '../pipes/safepipe/safepipe';
-
 @NgModule({
   declarations: [
     MyApp,
@@ -44,7 +44,8 @@ import { SafepipePipe } from '../pipes/safepipe/safepipe';
     Listcareer,
     ItemDetailPage,
     Profile,
-    SafepipePipe
+    SafepipePipe,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -68,7 +69,8 @@ import { SafepipePipe } from '../pipes/safepipe/safepipe';
     Registerform,
     Listcareer,
     ItemDetailPage,
-    Profile
+    Profile,
+    LoginPage
   ],
   providers: [
     StatusBar,
