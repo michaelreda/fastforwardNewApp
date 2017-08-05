@@ -49,7 +49,10 @@
 	<div style="top:-20vw;position:relative;">
 		<div  >
 			<p text-center class="description">{{company_details.description}}</p>
-			<h3 text-center ion-text color="ffPrimary" >{{company_details.followers}} <i class="fa fa-user" aria-hidden="true"></i></h3>
+			<div text-center >
+				<h3 text-center style="display:inline-block;margin-left:auto;margin-right:auto;" ion-text color="ffPrimary" >{{company_details.followers}} <i class="fa fa-user" aria-hidden="true"></i></h3>
+				<h3 text-center style="display:inline-block;margin-left:auto;margin-right:auto;padding-left:12vw;" ion-text color="ffPrimary" >{{company_details.rating}}/5 <i class="fa fa-star" aria-hidden="true"></i></h3>
+			</div>
 			<div style="text-align: center;">
 				<button ion-button round style="display: inline-block;" color="ffPrimary" (click)="follow=follow=='Follow'?'Unfollow':'Follow'"  [color]="follow=='Follow'?'primary':'grey'">{{follow}}</button>
 				<button ion-button round style="margin-left: 5px;display: inline-block;" color="ffPrimary" (click)="open_email_content_popup()">Message</button>
