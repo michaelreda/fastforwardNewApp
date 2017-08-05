@@ -1,7 +1,10 @@
 <ion-header>
 
 	<ion-navbar align-title="center" color="ffPrimary">
-		<ion-title>{{user_info.user_name}}</ion-title>
+		<ion-title>{{user_info.user_name}}
+			<span (click)="edit_user_info('name')" style="color: white!important;" class="fa-icon fa fa-pencil edit-btn"></span>
+		</ion-title>
+
 	</ion-navbar>
 
 </ion-header>
@@ -17,21 +20,30 @@
 			<br>
 			<a  class="description about" href="#"> <strong>Simulations Attended</strong></a>
 		</div>-->
-
-		<ion-card padding-top style="background-color:rgb(248, 72, 56)">
+		<h3 text-center ion-text color="ffPrimary" >{{user_info.rating==-1?'Not Rated':''+user_info.rating+'/5'}} <i class="fa fa-star" aria-hidden="true"></i></h3>
+		<ion-card padding-top style="background-color:white">
 
 			<ion-card-content>
 				<span class="fa-icon fa fa-envelope-o"></span>
 				<a  class="description about" href="mailto:{{user_info.user_email}}">
 					<i class="about-title">EMAIL</i> <br>
 					<p class="about-detail">{{user_info.user_email}}</p>
-				</a> <br>
+				</a>
+				<span (click)="edit_user_info('email')"  class="fa-icon fa fa-pencil edit-btn"></span>
+				 <br>
 				<span class="fa-icon fa fa-phone"></span>
 				<a  class="description about" href="tel:{{user_info.phone_no}}">
 					 <i class="about-title">MOBILE</i> <br>
-					 <p class="about-detail"> {{user_info.phone_no}}</p></a><br>
-				<span class="fa-icon fa fa-graduation-cap"></span> <a  class="description about" href="#"> <i class="about-title">DEGREE</i> <br>  <p class="about-detail">{{user_info.degree}}</p></a><br>
+					 <p class="about-detail"> {{user_info.phone_no}}</p>
+				 </a>
+				<span (click)="edit_user_info('phone')" class="fa-icon fa fa-pencil edit-btn"></span>
+				<br>
+				<span class="fa-icon fa fa-graduation-cap"></span> <a  class="description about" href="#"> <i class="about-title">DEGREE</i>
+				<br>  <p class="about-detail">{{user_info.degree}}</p></a>
+				<span (click)="edit_user_info('degree')" class="fa-icon fa fa-pencil edit-btn"></span>
+				<br>
 				<span class="fa-icon fa fa-building-o"></span> <a  class="description about" href="#"><i class="about-title">SCHOOL</i> <br>  <p class="about-detail">{{user_info.school}}</p></a>
+				<span (click)="edit_user_info('school')"  class="fa-icon fa fa-pencil edit-btn"></span>
 				<br>
 
 			</ion-card-content>

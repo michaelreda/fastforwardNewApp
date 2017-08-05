@@ -39,7 +39,7 @@
 
 
 	<!-- <div class="item-profile" text-center #profilePic [style.background-image]="'url(' + item.profilePic + ')'"> -->
-	<div class="item-profile" text-center #profilePic [style.background-image]="'url('+company_details.cover_pic_link+')'" style="box-shadow: 0px 10px 15px #ccc;height: 52vw;background-size: 100% 100%;">
+	<div class="item-profile" text-center #profilePic [style.background-image]="'url('+company_details.cover_pic_link+')'" style="box-shadow: 0px 10px 15px #ccc;height: 45vw;background-size: 100% 100%;">
 	</div>
 
 	<!-- <ion-avatar class="circular-profile" > </ion-avatar> -->
@@ -49,7 +49,10 @@
 	<div style="top:-20vw;position:relative;">
 		<div  >
 			<p text-center class="description">{{company_details.description}}</p>
-			<h3 text-center ion-text color="ffPrimary" >{{company_details.followers}} <i class="fa fa-user" aria-hidden="true"></i></h3>
+			<div text-center >
+				<h3 text-center style="display:inline-block;margin-left:auto;margin-right:auto;" ion-text color="ffPrimary" >{{company_details.followers}} <i class="fa fa-user" aria-hidden="true"></i></h3>
+				<h3 text-center style="display:inline-block;margin-left:auto;margin-right:auto;padding-left:12vw;" ion-text color="ffPrimary" >{{company_details.rating}}/5 <i class="fa fa-star" aria-hidden="true"></i></h3>
+			</div>
 			<div style="text-align: center;">
 				<button ion-button round style="display: inline-block;" color="ffPrimary" (click)="follow=follow=='Follow'?'Unfollow':'Follow'"  [color]="follow=='Follow'?'primary':'grey'">{{follow}}</button>
 				<button ion-button round style="margin-left: 5px;display: inline-block;" color="ffPrimary" (click)="open_email_content_popup()">Message</button>
@@ -71,7 +74,7 @@
 				<h2 style="color:#24b950" item-end><strong>{{simulation.price}}</strong> EGP </h2>
 			</ion-item>
 
-			<img src="{{company_details._pic_link}}" />
+			<!-- <img src="{{company_details._pic_link}}" /> -->
 
 			<ion-card-content>
 				<!-- {{simulation.simulation_name}} -->
@@ -98,7 +101,7 @@
 			</ion-card-content>
 
 			<ion-row>
-				<div  style="color:#24b950; text-align:center;padding-right: 20px;margin-left: auto;font-size: 17px;">
+				<div  style="color:#24b950; text-align:center;padding-left: 20px;margin-right: auto;font-size: 17px;">
 					<i class="fa fa-users" aria-hidden="true"></i>
 					<strong> 152</strong>
 				</div>
