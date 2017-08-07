@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { AboutPage } from '../about/about';
 import{Vedios} from'../vedios/vedios';
 import {  Profile} from "../profile/profile";
-import { ActionSheetController } from 'ionic-angular';
+import { ActionSheetController, Platform } from 'ionic-angular';
 import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import {Http} from '@angular/http';
@@ -18,10 +18,13 @@ export class TabsPage {
 	tab1Root = AboutPage;
 	tab2Root = Vedios;
 	tab3Root = Profile;
-
+	ios:boolean=false;
 	root;
-	constructor(public actionSheetCtrl: ActionSheetController,public navCtrl: NavController, navParams: NavParams,public alertCtrl:AlertController,public http: Http) {
+	constructor(public actionSheetCtrl: ActionSheetController,public navCtrl: NavController, navParams: NavParams,public alertCtrl:AlertController,public http: Http,public plt: Platform) {
 		this.root=this.tab1Root;
+		if(plt.is('ios')){
+			this.ios=true;
+		}
 	}
 	switch1(){
 			this.root=this.tab1Root;
