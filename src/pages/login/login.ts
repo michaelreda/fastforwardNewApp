@@ -1,14 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { IonicPage, NavController } from 'ionic-angular';
+import {TabsPage} from '../tabs/tabs';
 import { AlertController } from 'ionic-angular';
 import {DataService} from '../../providers/data-service';
-/**
- * Generated class for the LoginPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import{Registerform} from '../registerform/registerform';
+import { Facebook} from '@ionic-native/facebook';
+
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -16,14 +13,27 @@ import {DataService} from '../../providers/data-service';
 })
 export class LoginPage {
   check;
+  splash = true;
+  name;
+  email;
+  age; 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private DS:DataService,public alertCtrl: AlertController) {
+
+
+
+  constructor(public navCtrl: NavController,private DS:DataService,public alertCtrl: AlertController,private fb: Facebook) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+ //new 
+ionViewDidLoad() {
+    //this.tabBarElement.style.display = 'none';
+    setTimeout(() => {
+      this.splash = false;
+    //  this.tabBarElement.style.display = 'flex';
+    }, 4000);
   }
 
+ 
 
 nav(us,pw){
 if(us!=null && pw!=null){
@@ -34,7 +44,7 @@ this.DS.load().subscribe(
         );
 if(this.check.result){
 this.navCtrl.pop;
-this.navCtrl.push(LoginPage);
+this.navCtrl.push(TabsPage);
 
 }
 else{
@@ -53,4 +63,51 @@ showAlert() {
     });
     alert.present();
   }
+
+
+ form(){
+ this.navCtrl.push(Registerform);
+
+
+  }
+
+
+get_details(){
+  this.loginfacebook();
+     this.fb.getLoginStatus().then((response)=>{
+       if(response.status=='connected'){
+       this.fb.api('/'+response.authResponse.userID+'?fields=email,name,birthday',[]).then((response)=>{
+         alert(this.setdata(response))},(error)=>{alert(error)});
+     }
+        else{
+          alert('not logged in');
+        }
+      
+    
+    })
+
+ }
+
+
+  loginfacebook(){
+   
+    this.fb.login(['email','user_birthday']).then((response)=>{
+
+      //alert('Logged in');
+     // alert(JSON.stringify(response.authResponse))
+    },(error)=>{alert(error)})
+ }
+
+ 
+
+ setdata(response){
+
+this.name=response.name;
+this.email=response.email;
+this.age=response.birthday;
+
+this.navCtrl.push(Registerform,{name:this.name,email:this.email,birthday:this.age});
+ }
+
+
 }

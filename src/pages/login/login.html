@@ -1,3 +1,13 @@
+
+<div id="custom-overlay" [style.display]="splash ? 'flex': 'none'">
+  <div class="flb">
+    <div class="Aligner-item Aligner-item--top"></div>
+    <img src="assets/ff.png">
+    <div class="Aligner-item Aligner-item--bottom"></div>
+  </div>
+</div>
+
+
 <!--
   Generated template for the LoginPage page.
 
@@ -38,7 +48,7 @@
 </div>
 
 <div>
-<button ion-button color="primary" outline style="width:49%; border-radius:25px 0px 0px 25px;margin:0px;height:5rem;" (click)="login()"><img src="assets/facebook.png" width="15" height="15"></button>
+<button ion-button color="primary" outline style="width:49%; border-radius:25px 0px 0px 25px;margin:0px;height:5rem;" (click)="get_details()"><img src="assets/facebook.png" width="15" height="15"></button>
 <button ion-button color="primary" outline style="width:49%; border-radius:0px 25px 25px 0px;margin:0px;height:5rem;"(click)="form()">sign up </button>
 </div>
 </div>

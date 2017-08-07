@@ -21,14 +21,15 @@ export class Registerform {
   email="";
   age="";
   check;
+
+
   constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController,private DS:DataService,private fb: Facebook) {
-  
+  this.name=navParams.get("name");
+  this.age=navParams.get("birthday");
+  this.email=navParams.get("email");
   }
 
-  ionViewDidLoad() {
-     
-     
-  }
+ 
   register(pass,school,phone)
   {
     console.log("register");
@@ -99,7 +100,7 @@ get_details(){
 
       //alert('Logged in');
      // alert(JSON.stringify(response.authResponse))
-    },(error)=>{alert(error)})
+    },(error)=>{alert(JSON.stringify(error))})
  }
 
  
