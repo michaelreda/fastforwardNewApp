@@ -37,7 +37,7 @@ ionViewDidLoad() {
 
 nav(us,pw){
 if(us!=null && pw!=null){
-this.DS.seturl("https://walidpc.eu-gb.mybluemix.net/login?user_name="+us+"&password="+pw);
+this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/login?user_name="+us+"&password="+pw);
 this.DS.load().subscribe(
             data => (this.check=data)
             

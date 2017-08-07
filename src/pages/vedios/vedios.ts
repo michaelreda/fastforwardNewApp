@@ -36,7 +36,7 @@ dump:any;
 
 	 ngOnInit() {
 
-this.DS.seturl("https://walidpc.eu-gb.mybluemix.net/allVideos?user_id=1");
+this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/allVideos?user_id=1");
 this.DS.load().subscribe(
 						data => this.setresponse(data)
 
@@ -53,7 +53,7 @@ like(x){
 if(x.liked) {
 	x.liked=false;
 	//like link
-	this.DS.seturl("https://walidpc.eu-gb.mybluemix.net/dislike-video?user_id=1&video_id="+x.video_id);
+	this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/dislike-video?user_id=1&video_id="+x.video_id);
 this.DS.load().subscribe(
 						data => this.dump
 
@@ -63,7 +63,7 @@ else{
 x.liked=true;
 //unlike link
 
-	this.DS.seturl("https://walidpc.eu-gb.mybluemix.net/like-video?user_id=1&video_id="+x.video_id);
+	this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/like-video?user_id=1&video_id="+x.video_id);
 this.DS.load().subscribe(
 						data => this.dump
 
@@ -79,7 +79,7 @@ follow(x){
 	if(x.followed) {
 	x.followed=false;
 	//like link
-	this.DS.seturl("https://walidpc.eu-gb.mybluemix.net/unfollow-company?user_id=1&company_id="+x.company_id);
+	this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/unfollow-company?user_id=1&company_id="+x.company_id);
 this.DS.load().subscribe(
 						data => this.dump
 
@@ -97,7 +97,7 @@ else{
 x.followed=true;
 //unlike link
 
-	this.DS.seturl("https://walidpc.eu-gb.mybluemix.net/follow-company?user_id=1&company_id="+x.company_id);
+	this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/follow-company?user_id=1&company_id="+x.company_id);
 this.DS.load().subscribe(
 						data => this.dump
 

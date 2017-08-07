@@ -45,7 +45,7 @@ resetarray(){
 
 
  ngOnInit(){
-this.DS.seturl("https://walidpc.eu-gb.mybluemix.net/get-field-simulation?field_id="+this.id);
+this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/get-field-simulation?field_id="+this.id);
 this.DS.load().subscribe(
             data => this.setvalue(data)
             

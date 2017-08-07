@@ -20,7 +20,7 @@ export class ContactPage {
 
    ngOnInit() {
  
-this.DS.seturl("https://walidpc.eu-gb.mybluemix.net/login?user_name=mohamed_salah95&password=123456");
+this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/login?user_name=mohamed_salah95&password=123456");
 this.DS.load().subscribe(
             data => this.setresponse(data)
             

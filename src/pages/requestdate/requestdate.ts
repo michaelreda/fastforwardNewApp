@@ -37,7 +37,7 @@ setDate(event){
 this.nowDate=event;
 this.nowDate.setHours(this.nowDate.getHours()+2);
 
-this.DS.seturl("https://walidpc.eu-gb.mybluemix.net/gar?q="+this.nowDate.toISOString());
+this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/gar?q="+this.nowDate.toISOString());
 this.DS.load().subscribe(
             data => (this.dump=data)
             
@@ -47,7 +47,7 @@ this.DS.load().subscribe(
   
 }
  ngOnInit(){
-this.DS.seturl("https://walidpc.eu-gb.mybluemix.net/dateso");
+this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/dateso");
 this.DS.load().subscribe(
             data => (this.dump1=data)
             

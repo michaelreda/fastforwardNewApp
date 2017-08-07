@@ -27,14 +27,14 @@ companyid=3;
 		//this.loading=true;
 	this.companyid=navParams.get("co_id");
 	//	this.presentLoading();
-		http.get("https://walidpc.eu-gb.mybluemix.net/company_details?company_id="+this.companyid).subscribe(data => {
+		http.get("https://ffserver.eu-gb.mybluemix.net/company_details?company_id="+this.companyid).subscribe(data => {
 			var res = JSON.parse(data['_body']);
 			this.company_details=res;
 			console.log(this.company_details);
 			//this.loader.dismiss();
 			// this.loading=false;
 		});
-		http.get("https://walidpc.eu-gb.mybluemix.net/get_company_simulations?company_id="+this.companyid).subscribe(data => {
+		http.get("https://ffserver.eu-gb.mybluemix.net/get_company_simulations?company_id="+this.companyid).subscribe(data => {
 			var res = JSON.parse(data['_body']);
 			this.company_simulations =res;
 			for (let entry of this.read_more) {
