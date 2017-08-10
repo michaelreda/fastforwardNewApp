@@ -1,8 +1,17 @@
-<ion-header>
- <ion-toolbar>
-<ion-title style=" width:100%;display:inline-block;">
- <h3 style="color:#F84838;display:inline-block;font-weight:bold;font-size:1.5rem">FAST</h3>
- <h3 style="color:black;display:inline-block;font-weight:bold;font-size:1.5rem"> FORWARD</h3>
+<ion-header >
+	<style>
+		/* .ios .toolbarH{
+			height:60px!important;
+		}
+		.ios .titleMT{
+			margin-top:15px!important;
+		} */
+	</style>
+ <ion-toolbar  [style.height]="ios?'70px':''">
+<ion-title style=" width:100%;display:inline-block;" [style.margin-top]="ios?'15px':''">
+	<!-- <div *ngIf="true" ></div> -->
+ <h3 style="color:#F84838;display:inline-block;font-weight:bold;font-size:1.4rem">FAST</h3>
+ <h3 style="color:black;display:inline-block;font-weight:bold;font-size:1.4rem"> FORWARD</h3>
 
 </ion-title>
  </ion-toolbar>
