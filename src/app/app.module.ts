@@ -31,6 +31,7 @@ import { DatePickerModule } from 'datepicker-ionic2';
 import {IonicStorageModule} from '@ionic/storage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SafepipePipe } from '../pipes/safepipe/safepipe';
+
 @NgModule({
   declarations: [
     MyApp,

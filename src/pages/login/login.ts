@@ -6,6 +6,8 @@ import {DataService} from '../../providers/data-service';
 import{Registerform} from '../registerform/registerform';
 import { Facebook} from '@ionic-native/facebook';
 import {TimerPage} from '../timer/timer';
+import { Storage } from '@ionic/storage';
+
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -18,10 +20,20 @@ export class LoginPage {
   email;
   age; 
 
+  storage;
 
 
 
-  constructor(public navCtrl: NavController,private DS:DataService,public alertCtrl: AlertController,private fb: Facebook) {
+
+  constructor(public navCtrl: NavController,private DS:DataService,public alertCtrl: AlertController,private fb: Facebook,private store: Storage) {
+     // set a key/value
+ /* store.set('user_id', 1);
+
+  // Or to get a key/value pair
+  store.get('user_id').then((val) => {
+    this.storage=val;
+    
+  });*/
   }
 
  //new 
@@ -43,12 +55,14 @@ this.DS.load().subscribe(
             
         );
 if(this.check.result){
+   this. store.set('user_id', this.check.user_id);
 this.navCtrl.pop;
 this.navCtrl.push(TabsPage);
 
 }
 else{
 
+   this. store.set('user_id',"");
   this.showAlert();
 }
 }
@@ -89,13 +103,14 @@ get_details(){
             
             if (this.check.result===true){
 
-
-            this.navCtrl.push(TimerPage);
+   this. store.set('user_id', this.check.user_id);
+            this.navCtrl.push(TabsPage);
 
             }
 
             // or register
             else if(this.check.result===false){
+              
               this.navCtrl.push(Registerform,{name:this.name,email:this.email,age:this.age});
             
 
@@ -124,8 +139,8 @@ get_details(){
             
             if (this.check.result===true){
 
-
-            this.navCtrl.push(TimerPage);
+   this. store.set('user_id', this.check.user_id);
+            this.navCtrl.push(TabsPage);
 
             }
 
@@ -136,7 +151,7 @@ get_details(){
 
 
             }
-            //alert(this.email+this.check.result+this.fb.getLoginStatus());
+           
             
             
             
