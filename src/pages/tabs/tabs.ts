@@ -59,7 +59,7 @@ export class TabsPage {
 					text: 'Add Video',
 					handler: () => {
 						setTimeout(() => {
-						this.show_add_video_popup();
+								this.show_add_video_popup();
 						},100);
 					}
 				},
