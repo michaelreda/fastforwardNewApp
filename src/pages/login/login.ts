@@ -4,8 +4,8 @@ import {TabsPage} from '../tabs/tabs';
 import { AlertController } from 'ionic-angular';
 import {DataService} from '../../providers/data-service';
 import{Registerform} from '../registerform/registerform';
-import { Facebook} from '@ionic-native/facebook';
 import {TimerPage} from '../timer/timer';
+import { Facebook} from '@ionic-native/facebook';
 import { Storage } from '@ionic/storage';
 
 @IonicPage()

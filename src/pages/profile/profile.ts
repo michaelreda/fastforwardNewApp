@@ -5,7 +5,10 @@ import { LoadingController } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular'
 import {  Requestdate } from "../requestdate/requestdate";
 import {Http} from '@angular/http';
+import {LoginPage} from'../login/login';
 
+import { Facebook} from '@ionic-native/facebook';
+import { Storage } from '@ionic/storage';
 
 
 @Component({
@@ -18,7 +21,7 @@ export class Profile {
 	user_simulations:any=[];
 	refresher:any;
 
-	constructor(public navCtrl: NavController, navParams: NavParams,public http: Http, public alertCtrl:AlertController,public loadingCtrl: LoadingController,public actionSheetCtrl: ActionSheetController) {
+	constructor(public navCtrl: NavController, navParams: NavParams,public http: Http, public alertCtrl:AlertController,public loadingCtrl: LoadingController,public actionSheetCtrl: ActionSheetController,private fb: Facebook,private store: Storage) {
 		http.get("https://ffserver.eu-gb.mybluemix.net/user_info?id=1").subscribe(data => {
 			var res = JSON.parse(data['_body']);
 			this.user_info=res;
@@ -101,6 +104,17 @@ export class Profile {
 				this.refresher.complete();
 		}
 
+
+
+		logout(){
+
+this. store.set('user_id', "");
+this.fb.logout();
+this.navCtrl.popToRoot();
+this.navCtrl.setRoot(LoginPage);
+          
+
+		}
 
 
 }

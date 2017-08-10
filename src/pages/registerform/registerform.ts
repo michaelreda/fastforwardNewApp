@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {DataService} from '../../providers/data-service';
 import { AlertController } from 'ionic-angular';
 import { Facebook} from '@ionic-native/facebook';
-import {TimerPage} from '../timer/timer'
+import {TabsPage} from '../tabs/tabs'
 
 
 
@@ -70,7 +70,7 @@ this.showAlert(this.check.msg);
 }
 else if(this.check.result==true){
 this.navCtrl.pop();
-this.navCtrl.push(TimerPage);
+this.navCtrl.push(TabsPage);
 
 }
   }

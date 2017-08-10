@@ -9,7 +9,7 @@
 
 </ion-header>
 
-<ion-content class="separatingBG">
+<ion-content  class="separatingBG">
 
 	<ion-avatar class="circular-profile" style="background-image: url(http://www.fastforwardsim.com/alpha/male.png)"> </ion-avatar>
 		<!-- <div style="margin-top:15px;">
@@ -72,15 +72,13 @@
 		</ion-card>
 
 
-		<ion-card padding-top >
-		<ion-card-content>
-       <span class="fa fa-sign-out" aria-hidden="true"></span>
-			<a  class="description sim" style="margin-left:44px;">
-				 <i class="sim-title"></i> <br>
-				 <p class="sim-detail">LOG OUT</p></a><br>
+      <ion-card text-center padding-top color="primary"  style="padding-top:0rem;" (click)="logout()">
+		  <ion-card-content>
+			  <strong style="font-size:2rem;">LOG OUT</strong>
+		  </ion-card-content>
+	</ion-card>
 
-	    </ion-card-content>
-		</ion-card>
+		
 
 		<!-- <ion-list>
 			<ion-item>
