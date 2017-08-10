@@ -16,6 +16,7 @@ import {Listcareer} from '../pages/listcareer/listcareer';
 import { ItemDetailPage} from '../pages/item-detail/item-detail'
 import { Profile } from "../pages/profile/profile";
 import {LoginPage  } from "../pages/login/login";
+import { TimerPage } from '../pages/timer/timer';
 
 import{DataService} from '../providers/data-service';
 import { User } from '../providers/user';
@@ -45,7 +46,8 @@ import { SafepipePipe } from '../pipes/safepipe/safepipe';
     ItemDetailPage,
     Profile,
     SafepipePipe,
-    LoginPage
+    LoginPage,
+    TimerPage
   ],
   imports: [
     BrowserModule,
@@ -70,7 +72,8 @@ import { SafepipePipe } from '../pipes/safepipe/safepipe';
     Listcareer,
     ItemDetailPage,
     Profile,
-    LoginPage
+    LoginPage,
+    TimerPage
   ],
   providers: [
     StatusBar,

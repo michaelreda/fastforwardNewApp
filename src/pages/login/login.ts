@@ -5,7 +5,7 @@ import { AlertController } from 'ionic-angular';
 import {DataService} from '../../providers/data-service';
 import{Registerform} from '../registerform/registerform';
 import { Facebook} from '@ionic-native/facebook';
-
+import {TimerPage} from '../timer/timer';
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -74,17 +74,92 @@ showAlert() {
 
 get_details(){
   this.loginfacebook();
-     this.fb.getLoginStatus().then((response)=>{
-       if(response.status=='connected'){
-       this.fb.api('/'+response.authResponse.userID+'?fields=email,name,birthday',[]).then((response)=>{
-         alert(this.setdata(response))},(error)=>{alert(error)});
-     }
-        else{
-          alert('not logged in');
+    this.fb.getLoginStatus().then((responsefb)=>{
+      
+        this.fb.api('/'+responsefb.authResponse.userID+'?fields=email,name,birthday',[]).then((response)=>{
+
+
+
+         this.setdata(response)
+            
+        this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/login-fb?user_email="+this.email);
+        this.DS.load().subscribe(
+            data =>{ this.check=data;
+            
+            
+            if (this.check.result===true){
+
+
+            this.navCtrl.push(TimerPage);
+
+            }
+
+            // or register
+            else if(this.check.result===false){
+              this.navCtrl.push(Registerform,{name:this.name,email:this.email,age:this.age});
+            
+
+
+            }
+            //alert(this.email+this.check.result+this.fb.getLoginStatus());
+            
+            
+            
+            }
+
+          
+
+
+          
+            
+        );
+        },(error)=>{
+
+        this.setdata(error)
+            
+        this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/login-fb?user_email="+this.email);
+        this.DS.load().subscribe(
+            data =>{ this.check=data;
+            
+            
+            if (this.check.result===true){
+
+
+            this.navCtrl.push(TimerPage);
+
+            }
+
+            // or register
+            else if(this.check.result===false){
+              this.navCtrl.push(Registerform,{name:this.name,email:this.email,age:this.age});
+            
+
+
+            }
+            //alert(this.email+this.check.result+this.fb.getLoginStatus());
+            
+            
+            
+            }
+
+          
+
+
+          
+            
+        );
+
+
+
+        });
+    
         }
+     
       
     
-    })
+    );
+
+
 
  }
 
@@ -93,9 +168,9 @@ get_details(){
    
     this.fb.login(['email','user_birthday']).then((response)=>{
 
-      //alert('Logged in');
+     
      // alert(JSON.stringify(response.authResponse))
-    },(error)=>{alert(error)})
+    },(error)=>{})
  }
 
  
@@ -106,8 +181,7 @@ this.name=response.name;
 this.email=response.email;
 this.age=response.birthday;
 
-this.navCtrl.push(Registerform,{name:this.name,email:this.email,birthday:this.age});
- }
+}
 
 
 }

@@ -3,12 +3,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {DataService} from '../../providers/data-service';
 import { AlertController } from 'ionic-angular';
 import { Facebook} from '@ionic-native/facebook';
-/**
- * Generated class for the Registerform page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import {TimerPage} from '../timer/timer'
+
+
+
 @IonicPage()
 @Component({
   selector: 'page-registerform',
@@ -25,7 +23,7 @@ export class Registerform {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController,private DS:DataService,private fb: Facebook) {
   this.name=navParams.get("name");
-  this.age=navParams.get("birthday");
+  this.age=navParams.get("age");
   this.email=navParams.get("email");
   }
 
@@ -71,7 +69,8 @@ this.showAlert(this.check.msg);
 
 }
 else if(this.check.result==true){
-this.showAlert("Done");
+this.navCtrl.pop();
+this.navCtrl.push(TimerPage);
 
 }
   }
@@ -80,16 +79,10 @@ this.showAlert("Done");
 get_details(){
   this.loginfacebook();
      this.fb.getLoginStatus().then((response)=>{
-       if(response.status=='connected'){
-       this.fb.api('/'+response.authResponse.userID+'?fields=email,name,birthday',[]).then((response)=>{
-         alert(this.setdata(response))},(error)=>{alert(error)});
-     }
-        else{
-          alert('not logged in');
-        }
       
-    
-    })
+       this.fb.api('/'+response.authResponse.userID+'?fields=email,name,birthday',[]).then((response)=>{
+         alert(this.setdata(response))},(error)=>{});}
+    )
 
  }
 
