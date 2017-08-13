@@ -4,6 +4,7 @@ import {DataService} from '../../providers/data-service';
 import { AlertController } from 'ionic-angular';
 import { Facebook} from '@ionic-native/facebook';
 import {TabsPage} from '../tabs/tabs'
+import {TimerPage} from '../timer/timer'
 
 
 
@@ -70,7 +71,7 @@ this.showAlert(this.check.msg);
 }
 else if(this.check.result==true){
 this.navCtrl.pop();
-this.navCtrl.push(TabsPage);
+this.navCtrl.push(TimerPage);
 
 }
   }

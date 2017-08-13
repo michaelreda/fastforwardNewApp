@@ -31,6 +31,7 @@ import { DatePickerModule } from 'datepicker-ionic2';
 import {IonicStorageModule} from '@ionic/storage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SafepipePipe } from '../pipes/safepipe/safepipe';
+import { CountdownPipe } from '../pipes/countdown/countdown';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { SafepipePipe } from '../pipes/safepipe/safepipe';
     Profile,
     SafepipePipe,
     LoginPage,
-    TimerPage
+    TimerPage,
+    CountdownPipe
   ],
   imports: [
     BrowserModule,

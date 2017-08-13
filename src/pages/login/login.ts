@@ -8,6 +8,7 @@ import {TimerPage} from '../timer/timer';
 import { Facebook} from '@ionic-native/facebook';
 import { Storage } from '@ionic/storage';
 
+
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -24,7 +25,6 @@ export class LoginPage {
 
 
 
-
   constructor(public navCtrl: NavController,private DS:DataService,public alertCtrl: AlertController,private fb: Facebook,private store: Storage) {
      // set a key/value
  /* store.set('user_id', 1);
@@ -35,6 +35,7 @@ export class LoginPage {
     
   });*/
   }
+
 
  //new 
 ionViewDidLoad() {
@@ -57,7 +58,7 @@ this.DS.load().subscribe(
 if(this.check.result){
    this. store.set('user_id', this.check.user_id);
 this.navCtrl.pop;
-this.navCtrl.push(TabsPage);
+this.navCtrl.push(TimerPage);
 
 }
 else{
@@ -104,7 +105,7 @@ get_details(){
             if (this.check.result===true){
 
    this. store.set('user_id', this.check.user_id);
-            this.navCtrl.push(TabsPage);
+            this.navCtrl.push(TimerPage);
 
             }
 
@@ -140,7 +141,7 @@ get_details(){
             if (this.check.result===true){
 
    this. store.set('user_id', this.check.user_id);
-            this.navCtrl.push(TabsPage);
+            this.navCtrl.push(TimerPage);
 
             }
 

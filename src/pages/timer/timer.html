@@ -13,14 +13,19 @@
 </ion-header>
 
 
-<ion-content padding>
-<nav class="controls">
-			<a href="#" class="button" onClick="stopwatch.start();">Start</a>
-			<a href="#" class="button" onClick="stopwatch.lap();">Lap</a>
-			<a href="#" class="button" onClick="stopwatch.stop();">Stop</a>
-			<a href="#" class="button" onClick="stopwatch.restart();">Restart</a>
-			<a href="#" class="button" onClick="stopwatch.clear();">Clear Laps</a>
-		</nav>
-		<div class="stopwatch"></div>
-		<ul class="results"></ul>
+<ion-content padding style="text-align:center;">
+<ion-grid style="vertical-align: middle;">
+  <ion-row>
+		<ion-col col-3>{{diffDays}}</ion-col>
+		
+		<ion-col col-3>{{diffhours}}</ion-col>
+		
+		<ion-col col-3>{{diffmins}}</ion-col>
+		
+		<ion-col col-3>{{diffsecs}}</ion-col>
+		
+  </ion-row>
+  
+</ion-grid>
+
 </ion-content>

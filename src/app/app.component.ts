@@ -23,6 +23,9 @@ export class MyApp {
       splashScreen.hide();
 
     });
+   // this.rootPage=TimerPage;
+    
+   
     store.get('user_id').then((val) => {
       console.log('store',val);
       
@@ -32,7 +35,7 @@ this.rootPage = LoginPage;
     }
 else{
 
-this.rootPage=TabsPage;
+this.rootPage=TimerPage;
 
 }
     
