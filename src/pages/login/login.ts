@@ -1,3 +1,4 @@
+import { Http } from '@angular/http';
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
@@ -19,13 +20,12 @@ export class LoginPage {
   name;
   email;
   age;
-
   storage;
 
 
 
 
-  constructor(public navCtrl: NavController, private DS: DataService, public alertCtrl: AlertController, private fb: Facebook, private store: Storage) {
+  constructor(public navCtrl: NavController, private DS: DataService, public alertCtrl: AlertController, private fb: Facebook, private store: Storage,public http:Http) {
     // set a key/value
     /* store.set('user_id', 1);
    
@@ -201,5 +201,36 @@ export class LoginPage {
 
   }
 
+  forgot_pass(){
+    this.alertCtrl.create({
+      title: 'Forgot your password?',
+      subTitle: 'No problem! Just provide your email and you will receive your password immediately..',
+			inputs: [
+				{
+					name: 'email',
+					placeholder: 'Enter your email here...',
+					type: 'text'
+				},
+			],
+			buttons: [
+				{
+					text: 'Cancel',
+					role: 'cancel',
+					handler: data => {
+						console.log('Cancel clicked');
+					}
+				},
+				{
+					text: 'Send Password',
+					handler: data => {
+						this.http.post("https://ffserver.eu-gb.mybluemix.net/forgot_pass",{email:data.email} ).subscribe(data => {
+							
+						});
+
+					}
+				}
+			]
+		}).present();
+  }
 
 }
