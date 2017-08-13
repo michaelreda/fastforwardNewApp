@@ -221,7 +221,7 @@ export class LoginPage {
 					}
 				},
 				{
-					text: 'Send Password',
+					text: 'Send',
 					handler: data => {
 						this.http.post("https://ffserver.eu-gb.mybluemix.net/forgot_pass",{email:data.email} ).subscribe(data => {
 							

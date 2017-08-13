@@ -4,10 +4,10 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<ion-header color="primary">
 
-  <ion-navbar color="primary">
-    <ion-title style="">Register</ion-title>
+  <ion-navbar color="primary" style="height:6rem;padding-top:3rem;">
+    <ion-title style="margin-top:1rem;">Register</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -17,45 +17,51 @@
 
 
 
-    <ion-list  >
+  <ion-list>
 
-  <ion-item style="text-align:left;">
-    <ion-input   [(ngModel)]="name" id="name"type="text" placeholder="Username"></ion-input>
-  </ion-item>
+    <ion-item style="text-align:left;">
+      <ion-input [(ngModel)]="email" type="email" placeholder="Email"></ion-input>
+    </ion-item>
+
+    <ion-item style="text-align:left;">
+      <ion-input #pass type="password" placeholder="Password"></ion-input>
+    </ion-item>
+
+    <ion-item style="text-align:left;">
+      <ion-input #phone type="number" placeholder="Phone"></ion-input>
+    </ion-item>
+
+    <ion-item style="text-align:left;">
+      <ion-input #school type="text" placeholder="School"></ion-input>
+    </ion-item>
+
+    <ion-item style="text-align:left;">
+      <ion-label floating>Degree</ion-label>
+      <ion-select [(ngModel)]="degree">
+        <ion-option value="High School">in High School</ion-option>
+        <ion-option value="College">in College</ion-option>
+        <ion-option value="Graduate">Graduate</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item style="text-align:left;">
+      <ion-input [(ngModel)]="age" type="number" placeholder="Age"></ion-input>
+    </ion-item>
 
    <ion-item style="text-align:left;">
-    <ion-input  [(ngModel)]="email" type="email" placeholder="Email"></ion-input>
-  </ion-item>
+      <ion-label floating>Interests</ion-label>
+      <ion-select [(ngModel)]="interests" multiple="true" placeholder="Interests">
+        <ion-option value="High School">Interests</ion-option>
+        <ion-option value="High School">in High School</ion-option>
+        <ion-option value="College">in College</ion-option>
+        <ion-option value="Graduate">Graduate</ion-option>
+      </ion-select>
+    </ion-item>
 
-
-   <ion-item style="text-align:left;">
-    <ion-input #phone  type="number" placeholder="Phone"></ion-input>
-  </ion-item>
-
-  <ion-item style="text-align:left;">
-    <ion-input #pass  type="password" placeholder="Password"></ion-input>
-  </ion-item>
-
-   <ion-item style="text-align:left;">
-    <ion-input #school type="text" placeholder="School"></ion-input>
-  </ion-item>
-
-   <ion-item style="text-align:left;">
-    <ion-label floating>degree</ion-label>
-    <ion-select [(ngModel)]="degree">
-      <ion-option value="High School">High School</ion-option>
-      <ion-option value="College">College</ion-option>
-    </ion-select>
-  </ion-item>
-  
-   <ion-item style="text-align:left;">
-    <ion-input  [(ngModel)]="age" type="number" placeholder="age"></ion-input>
-  </ion-item>
-
-</ion-list>
-<div style="text-align:right;">
-<button ion-button color="primary" round (click)="register(pass.value,school.value,phone.value)">done</button>
-</div>
+  </ion-list>
+  <div style="text-align:right;">
+    <button ion-button color="primary" round (click)="register(pass.value,school.value,phone.value)">done</button>
+  </div>
 
 
 </ion-content>
