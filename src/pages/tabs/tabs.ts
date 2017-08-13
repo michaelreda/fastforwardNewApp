@@ -14,7 +14,7 @@ import { Http } from '@angular/http';
 	templateUrl: 'tabs.html'
 })
 export class TabsPage {
-
+	company_or_not: any;
 	tab1Root = AboutPage;
 	tab2Root = Vedios;
 	tab3Root = Profile;
@@ -22,6 +22,7 @@ export class TabsPage {
 	root;
 	constructor(public actionSheetCtrl: ActionSheetController, public navCtrl: NavController, navParams: NavParams, public http: Http, public plt: Platform,public alertCtrl: AlertController) {
 		this.root = this.tab1Root;
+		this.company_or_not=localStorage.getItem('company_or_not');
 		if (plt.is('ios')) {
 			this.ios = true;
 		}

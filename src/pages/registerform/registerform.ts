@@ -37,7 +37,7 @@ if(this.name!="" &&this.email!="" && pass!="" && school!="" && this.age!="" &&ph
 console.log("not null");
 
 
-this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/register2?user_name="+this.name+"&password="+pass+"&degree="+this.degree+"&user_email="+this.email+"&school="+school+"&phone_no="+phone+"&age="+this.age);  
+this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/register2?password="+pass+"&degree="+this.degree+"&user_email="+this.email+"&school="+school+"&phone_no="+phone+"&age="+this.age);  
 this.DS.load().subscribe(
             data => (this.setresponse(data))
             
