@@ -51,7 +51,6 @@
    <ion-item style="text-align:left;">
       <ion-label floating>Interests</ion-label>
       <ion-select [(ngModel)]="interests" multiple="true" placeholder="Interests">
-        <ion-option value="High School">Interests</ion-option>
         <ion-option value="High School">in High School</ion-option>
         <ion-option value="College">in College</ion-option>
         <ion-option value="Graduate">Graduate</ion-option>
@@ -59,8 +58,8 @@
     </ion-item>
 
   </ion-list>
-  <div style="text-align:right;">
-    <button ion-button color="primary" round (click)="register(pass.value,school.value,phone.value)">done</button>
+  <div style="">
+    <button ion-button color="primary" block (click)="register(pass.value,school.value,phone.value)">Done</button>
   </div>
 
 
