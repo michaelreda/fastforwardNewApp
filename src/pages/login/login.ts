@@ -190,15 +190,9 @@ alert(JSON.stringify(response));
 
 
 
-<<<<<<< HEAD
        }); }//
     
     );
-=======
-      }//
-
-      );
->>>>>>> 72239ef9a063f67435fff0fb59f90f449c2f259c
 
     }
     );

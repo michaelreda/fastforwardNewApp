@@ -24,7 +24,7 @@ export class MyApp {
       splashScreen.hide();
 
     });
-    this.rootPage=TimerAnimatePage;
+    this.rootPage=TimerPage;
     /*
    
     store.get('user_id').then((val) => {
