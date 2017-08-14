@@ -6,7 +6,7 @@
 -->
 <ion-header color="primary">
 
-  <ion-navbar color="primary" style="height:6rem;padding-top:3rem;">
+  <ion-navbar color="primary" [style.height]="ios?'6rem':''" [style.padding-top]="ios?'3rem':''">
     <ion-title style="margin-top:1rem;">Register</ion-title>
   </ion-navbar>
 
@@ -38,8 +38,8 @@
     </ion-item>
 
     <ion-item style="text-align:left;">
-      <ion-label floating>Degree</ion-label>
-      <ion-select [(ngModel)]="degree">
+
+      <ion-select [(ngModel)]="degree" style="max-width:100%;" placeholder="Degree">
         <ion-option value="High School">in High School</ion-option>
         <ion-option value="College">in College</ion-option>
         <ion-option value="Graduate">Graduate</ion-option>

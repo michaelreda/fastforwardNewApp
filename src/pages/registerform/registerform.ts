@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import {DataService} from '../../providers/data-service';
 import { AlertController } from 'ionic-angular';
 import { Facebook} from '@ionic-native/facebook';
 import {TabsPage} from '../tabs/tabs'
 import {TimerPage} from '../timer/timer'
-
 
 
 @IonicPage()
@@ -15,18 +14,21 @@ import {TimerPage} from '../timer/timer'
 })
 export class Registerform {
 
-  degree="High School";
+  degree="";
   name="";
   email="";
   age="";
   check;
+  ios: boolean = false;
 
-
-  constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController,private DS:DataService,private fb: Facebook) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController,private DS:DataService,private fb: Facebook,public plt: Platform,) {
   this.name=navParams.get("name");
   this.age=navParams.get("age");
   this.email=navParams.get("email");
   //alert(this.name+this.age+this.email);
+  if (plt.is('ios')) {
+			this.ios = true;
+		}
   }
 
  
