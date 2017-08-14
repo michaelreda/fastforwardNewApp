@@ -528,7 +528,9 @@
           <ion-option value="Ziplining">Ziplining</ion-option>
           <ion-option value="Zumba">Zumba</ion-option>      </ion-select>
     </ion-item>
-
+    <ion-item style="text-align:left;">
+      <ion-input [(ngModel)]="promo_code" type="text" placeholder="Promo code"></ion-input>
+    </ion-item>
   </ion-list>
   <div style="">
     <button ion-button color="primary" block large (click)="register(pass.value,school.value,phone.value)">Done</button>

@@ -22,6 +22,7 @@ export class Registerform {
   check;
   ios: boolean = false;
   connection_error_popup:any;
+  promo_code:string="";
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController,private DS:DataService,private fb: Facebook,public plt: Platform,private network: Network, private loadingCtrl: LoadingController) {
 
@@ -49,12 +50,13 @@ export class Registerform {
   register(pass,school,phone)
   {
     console.log("register");
+    console.log(this.promo_code)
     
 if(this.name!="" &&this.email!="" && pass!="" && school!="" && this.age!="" &&phone!=""){
 console.log("not null");
 
 
-this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/register2?password="+pass+"&user_name"+this.name+"&degree="+this.degree+"&user_email="+this.email+"&school="+school+"&phone_no="+phone+"&age="+this.age);  
+this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/register2?password="+pass+"&user_name"+this.name+"&degree="+this.degree+"&user_email="+this.email+"&school="+school+"&phone_no="+phone+"&age="+this.age+"&promo_code="+this.promo_code);  
 this.DS.load().subscribe(
             data => (this.setresponse(data))
             
