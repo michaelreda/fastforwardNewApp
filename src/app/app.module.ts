@@ -17,7 +17,7 @@ import { ItemDetailPage} from '../pages/item-detail/item-detail'
 import { Profile } from "../pages/profile/profile";
 import {LoginPage  } from "../pages/login/login";
 import { TimerPage } from '../pages/timer/timer';
-
+import { AnimatedPage } from '../pages/animated/animated';
 import{DataService} from '../providers/data-service';
 import { User } from '../providers/user';
 
@@ -32,6 +32,8 @@ import {IonicStorageModule} from '@ionic/storage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SafepipePipe } from '../pipes/safepipe/safepipe';
 import { CountdownPipe } from '../pipes/countdown/countdown';
+
+import { TimerAnimatePage } from '../pages/timer-animate/timer-animate';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { CountdownPipe } from '../pipes/countdown/countdown';
     SafepipePipe,
     LoginPage,
     TimerPage,
-    CountdownPipe
+    CountdownPipe,
+    AnimatedPage,
+    TimerAnimatePage
   ],
   imports: [
     BrowserModule,
@@ -76,7 +80,9 @@ import { CountdownPipe } from '../pipes/countdown/countdown';
     ItemDetailPage,
     Profile,
     LoginPage,
-    TimerPage
+    TimerPage,
+    AnimatedPage,
+    TimerAnimatePage
   ],
   providers: [
     StatusBar,

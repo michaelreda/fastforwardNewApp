@@ -8,6 +8,7 @@ import { LoginPage } from '../pages/login/login';
 import {TimerPage} from '../pages/timer/timer';
 
 import { Storage } from '@ionic/storage';
+import { TimerAnimatePage } from '../pages/timer-animate/timer-animate';
 
 @Component({
   templateUrl: 'app.html'
@@ -23,7 +24,7 @@ export class MyApp {
       splashScreen.hide();
 
     });
-    this.rootPage=LoginPage;
+    this.rootPage=TimerAnimatePage;
     /*
    
     store.get('user_id').then((val) => {

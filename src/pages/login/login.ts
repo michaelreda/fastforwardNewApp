@@ -137,10 +137,12 @@ ionViewDidLoad() {
 
         );
       }, (error) => {
+alert('aykalm');
+         this.fb.api('/' + responsefb.authResponse.userID + '?fields=email,name,birthday', []).then((response) => {
 
-       
-      this.setdata(error)
-//alert(JSON.stringify(error));
+
+      //this.setdata(response);
+alert(JSON.stringify(response));
         this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/login-fb?user_email=" + this.email);
         this.DS.load().subscribe(
           data => {
@@ -171,7 +173,7 @@ ionViewDidLoad() {
 
 
 
-      }//
+       }); }//
     
     );
 
