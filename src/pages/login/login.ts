@@ -1,6 +1,7 @@
+import { Network } from '@ionic-native/network';
 import { Http } from '@angular/http';
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, NavController, LoadingController } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import { AlertController } from 'ionic-angular';
 import { DataService } from '../../providers/data-service';
@@ -25,7 +26,19 @@ export class LoginPage {
 
 
 
-  constructor(public navCtrl: NavController,private http:Http,private DS:DataService,public alertCtrl: AlertController,private fb: Facebook,private store: Storage) {
+  constructor(public navCtrl: NavController,private http:Http,private DS:DataService,public alertCtrl: AlertController,private fb: Facebook,private store: Storage,private network: Network, private loadingCtrl: LoadingController) {
+
+
+    var connection_error_popup = this.loadingCtrl.create({
+			content: "No internet connection !",
+			spinner: 'hide'
+		});
+		this.network.onDisconnect().subscribe(() => {
+			connection_error_popup.present();
+		});
+		this.network.onConnect().subscribe(() => {
+			connection_error_popup.dismiss();
+		});
      // set a key/value
  /* store.set('user_id', 1);
 

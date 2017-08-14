@@ -3,10 +3,11 @@ import { Component } from '@angular/core';
 import { AboutPage } from '../about/about';
 import { Vedios } from '../vedios/vedios';
 import { Profile } from "../profile/profile";
-import { ActionSheetController, Platform } from 'ionic-angular';
+import { ActionSheetController, Platform, LoadingController } from 'ionic-angular';
 import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { Http } from '@angular/http';
+import { Network } from '@ionic-native/network';
 
 
 
@@ -20,9 +21,21 @@ export class TabsPage {
 	tab3Root = Profile;
 	ios: boolean = false;
 	root;
-	constructor(public actionSheetCtrl: ActionSheetController, public navCtrl: NavController, navParams: NavParams, public http: Http, public plt: Platform,public alertCtrl: AlertController) {
+	constructor(public actionSheetCtrl: ActionSheetController, public navCtrl: NavController, navParams: NavParams, public http: Http, public plt: Platform, public alertCtrl: AlertController, private network: Network, private loadingCtrl: LoadingController) {
+		var connection_error_popup = this.loadingCtrl.create({
+			content: "No internet connection !",
+			spinner: 'hide'
+		});
+		this.network.onDisconnect().subscribe(() => {
+			connection_error_popup.present();
+		});
+		this.network.onConnect().subscribe(() => {
+			connection_error_popup.dismiss();
+		});
+
+
 		this.root = this.tab1Root;
-		this.company_or_not=localStorage.getItem('company_or_not');
+		this.company_or_not = localStorage.getItem('company_or_not');
 		if (plt.is('ios')) {
 			this.ios = true;
 		}
@@ -60,8 +73,8 @@ export class TabsPage {
 					text: 'Add Video',
 					handler: () => {
 						setTimeout(() => {
-								this.show_add_video_popup();
-						},100);
+							this.show_add_video_popup();
+						}, 100);
 					}
 				},
 				{
@@ -120,8 +133,8 @@ export class TabsPage {
 				}
 			]
 		}).present();
-		
-		
+
+
 
 	}
 }
