@@ -61,11 +61,14 @@ export class LoginPage {
 
 
   nav(us, pw) {
+    this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/login?user_email=" + us + "&password=" + pw);
+    this.DS.load().subscribe(
+      data => (alert(JSON.stringify(data)))
+    );
     if (us != null && pw != null) {
       this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/login?user_email=" + us + "&password=" + pw);
       this.DS.load().subscribe(
         data => (this.check = data)
-
       );
       if (this.check.result) {
         this.store.set('user_id', this.check.user_id);
