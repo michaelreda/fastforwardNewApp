@@ -24,6 +24,8 @@ diffhours;
 diffmins;
 diffsecs;
 
+price:any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams,private DS:DataService) {
 
   }
@@ -38,7 +40,11 @@ ngOnInit() {
           console.log(this.check.dead_line);
           
           });
+<<<<<<< HEAD
     
+=======
+        this.price=80;
+>>>>>>> 72239ef9a063f67435fff0fb59f90f449c2f259c
             
 /*
     this.nowDate.setDate(20);

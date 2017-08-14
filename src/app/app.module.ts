@@ -32,6 +32,7 @@ import {IonicStorageModule} from '@ionic/storage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SafepipePipe } from '../pipes/safepipe/safepipe';
 import { CountdownPipe } from '../pipes/countdown/countdown';
+import { Network } from '@ionic-native/network';
 
 import { TimerAnimatePage } from '../pages/timer-animate/timer-animate';
 
@@ -92,7 +93,8 @@ import { TimerAnimatePage } from '../pages/timer-animate/timer-animate';
     AndroidPermissions,
     DataService,
     User,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Network
   ]
 })
 export class AppModule {}
