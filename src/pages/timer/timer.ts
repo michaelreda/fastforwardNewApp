@@ -24,6 +24,8 @@ diffhours;
 diffmins;
 diffsecs;
 
+price:any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams,private DS:DataService) {
  this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-date?");
         this.DS.load().subscribe(
@@ -32,6 +34,7 @@ diffsecs;
           console.log('date',this.StartDate);
           this.StartDate.setMilliseconds(0);
           });
+        this.price=80;
             
 /*
     this.nowDate.setDate(20);
