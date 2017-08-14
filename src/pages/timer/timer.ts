@@ -40,23 +40,13 @@ ngOnInit() {
           console.log(this.check.dead_line);
           
           });
-<<<<<<< HEAD
     
-=======
-        this.price=80;
->>>>>>> 72239ef9a063f67435fff0fb59f90f449c2f259c
-            
-/*
-    this.nowDate.setDate(20);
-    this.nowDate.setHours(13);
-    this.nowDate.setMinutes(0);
-    this.nowDate.setSeconds(0);*/
+       this.price=80;
     Observable.interval(1000 ).subscribe(x => {
       this.timercal();
   });
 
 }
-
   timercal(){
 let dump =new Date();
 var timeDiff = Math.abs(this.StartDate.getTime() - dump.getTime());

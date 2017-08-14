@@ -18,24 +18,30 @@
 </style>
 
 <ion-content padding style="text-align:center;">
-  <br>
-  <br>
-<ion-grid style="vertical-align: middle;">
-  <ion-row>
-		<ion-col col-3>{{diffDays}}</ion-col>
-		
-		<ion-col col-3>{{diffhours}}</ion-col>
-		
-		<ion-col col-3>{{diffmins}}</ion-col>
-		
-		<ion-col col-3>{{diffsecs}}</ion-col>
-		
-  </ion-row>
+<br><br>
   
-</ion-grid>
-<br>
-<br>
-<br>
+<h1></h1>
+
+<div id="clockdiv">
+  <div>
+    <span class="days">{{diffDays}}</span>
+    <div class="smalltext">Days</div>
+  </div>
+  <div>
+    <span class="hours">{{diffhours}}</span>
+    <div class="smalltext">Hours</div>
+  </div>
+  <div>
+    <span class="minutes">{{diffmins}}</span>
+    <div class="smalltext">Minutes</div>
+  </div>
+  <div>
+    <span class="seconds">{{diffsecs}}</span>
+    <div class="smalltext">Seconds</div>
+  </div>
+</div>
+
+<br><br>
 <h2 style="vertical-align:middle;">Ticket Price: <h1 style="color:green;font-size: -webkit-xxx-large;">EGP {{price}}</h1></h2>
 
 <h4 style="position:absolute;bottom:4rem;">Our team will be happy to help you! <br> <a href="mailto:support@fastforwardsim.com">support@fastforwardsim.com</a></h4>
