@@ -59,7 +59,7 @@ ionViewDidLoad() {
         this.store.set('user_id', this.check.user_id);
         localStorage.setItem('company_or_not', this.check.company_or_not);
         this.navCtrl.pop;
-        this.navCtrl.push(TabsPage);
+        this.navCtrl.setRoot(TimerPage);
 
       }
       else {
@@ -90,6 +90,7 @@ ionViewDidLoad() {
 
   get_details() {
     this.loginfacebook();
+    
     this.fb.getLoginStatus().then((responsefb) => {
 
       this.fb.api('/' + responsefb.authResponse.userID + '?fields=email,name,birthday', []).then((response) => {
@@ -103,14 +104,16 @@ ionViewDidLoad() {
           data => {
           this.check = data;
 
-
-   this. store.set('user_id', this.check.user_id);
-            this.navCtrl.push(TimerPage);
+//alert(this.check.result);
+  // this. store.set('user_id', this.check.user_id);
+          //  this.navCtrl.push(TimerPage);
             if (this.check.result === true) {
+             
               localStorage.setItem('company_or_not', this.check.company_or_not);
               this.store.set('user_id', this.check.user_id);
-              this.navCtrl.push(TimerPage);
-
+             // this.navCtrl.pop();
+              this.navCtrl.setRoot(TimerPage);
+ 
             }
 
             // or register
@@ -135,20 +138,22 @@ ionViewDidLoad() {
         );
       }, (error) => {
 
-        this.setdata(error)
-
+       
+      this.setdata(error)
+//alert(JSON.stringify(error));
         this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/login-fb?user_email=" + this.email);
         this.DS.load().subscribe(
           data => {
           this.check = data;
 
    this. store.set('user_id', this.check.user_id);
-            this.navCtrl.push(TimerPage);
+            //this.navCtrl.push(TimerPage);
 
             if (this.check.result === true) {
-
+ localStorage.setItem('company_or_not', this.check.company_or_not);
               this.store.set('user_id', this.check.user_id);
-              this.navCtrl.push(TimerPage);
+             // this.navCtrl.pop();
+              this.navCtrl.setRoot(TimerPage);
 
             }
 
@@ -160,26 +165,17 @@ ionViewDidLoad() {
 
             }
 
-
-
-
           }
-
-
-
-
-
 
         );
 
 
 
-      });
+      }//
+    
+    );
 
     }
-
-
-
     );
 
 

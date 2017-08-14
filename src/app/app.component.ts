@@ -23,8 +23,8 @@ export class MyApp {
       splashScreen.hide();
 
     });
-   // this.rootPage=TimerPage;
-    
+    this.rootPage=LoginPage;
+    /*
    
     store.get('user_id').then((val) => {
       console.log('store',val);
@@ -39,6 +39,6 @@ this.rootPage=TimerPage;
 
 }
     
-  });
+  });*/
   }
 }

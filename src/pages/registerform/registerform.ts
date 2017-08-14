@@ -26,6 +26,7 @@ export class Registerform {
   this.name=navParams.get("name");
   this.age=navParams.get("age");
   this.email=navParams.get("email");
+  //alert(this.name+this.age+this.email);
   }
 
  
@@ -37,7 +38,7 @@ if(this.name!="" &&this.email!="" && pass!="" && school!="" && this.age!="" &&ph
 console.log("not null");
 
 
-this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/register2?password="+pass+"&degree="+this.degree+"&user_email="+this.email+"&school="+school+"&phone_no="+phone+"&age="+this.age);  
+this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/register2?password="+pass+"&user_name"+this.name+"&degree="+this.degree+"&user_email="+this.email+"&school="+school+"&phone_no="+phone+"&age="+this.age);  
 this.DS.load().subscribe(
             data => (this.setresponse(data))
             
