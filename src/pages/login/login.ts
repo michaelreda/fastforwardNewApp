@@ -23,35 +23,34 @@ export class LoginPage {
   email;
   age;
   storage;
+  connection_error_popup: any;
 
 
+  constructor(public navCtrl: NavController, private http: Http, private DS: DataService, public alertCtrl: AlertController, private fb: Facebook, private store: Storage, private network: Network, private loadingCtrl: LoadingController) {
 
-  constructor(public navCtrl: NavController,private http:Http,private DS:DataService,public alertCtrl: AlertController,private fb: Facebook,private store: Storage,private network: Network, private loadingCtrl: LoadingController) {
-
-
-    var connection_error_popup = this.loadingCtrl.create({
-			content: "No internet connection !",
-			spinner: 'hide'
-		});
-		this.network.onDisconnect().subscribe(() => {
-			connection_error_popup.present();
-		});
-		this.network.onConnect().subscribe(() => {
-			connection_error_popup.dismiss();
-		});
-     // set a key/value
- /* store.set('user_id', 1);
-
-  // Or to get a key/value pair
-  store.get('user_id').then((val) => {
-    this.storage=val;
-    
-  });*/
+    this.network.onDisconnect().subscribe(() => {
+      this.connection_error_popup = this.loadingCtrl.create({
+        content: "No internet connection !",
+        spinner: 'hide'
+      });
+      this.connection_error_popup.present();
+    });
+    this.network.onConnect().subscribe(() => {
+      this.connection_error_popup.dismiss();
+    });
+    // set a key/value
+    /* store.set('user_id', 1);
+   
+     // Or to get a key/value pair
+     store.get('user_id').then((val) => {
+       this.storage=val;
+       
+     });*/
   }
 
 
- //new 
-ionViewDidLoad() {
+  //new 
+  ionViewDidLoad() {
     //this.tabBarElement.style.display = 'none';
     setTimeout(() => {
       this.splash = false;
@@ -103,7 +102,7 @@ ionViewDidLoad() {
 
   get_details() {
     this.loginfacebook();
-    
+
     this.fb.getLoginStatus().then((responsefb) => {
 
       this.fb.api('/' + responsefb.authResponse.userID + '?fields=email,name,birthday', []).then((response) => {
@@ -115,18 +114,18 @@ ionViewDidLoad() {
         this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/login-fb?user_email=" + this.email);
         this.DS.load().subscribe(
           data => {
-          this.check = data;
+            this.check = data;
 
-//alert(this.check.result);
-  // this. store.set('user_id', this.check.user_id);
-          //  this.navCtrl.push(TimerPage);
+            //alert(this.check.result);
+            // this. store.set('user_id', this.check.user_id);
+            //  this.navCtrl.push(TimerPage);
             if (this.check.result === true) {
-             
+
               localStorage.setItem('company_or_not', this.check.company_or_not);
               this.store.set('user_id', this.check.user_id);
-             // this.navCtrl.pop();
+              // this.navCtrl.pop();
               this.navCtrl.setRoot(TimerPage);
- 
+
             }
 
             // or register
@@ -151,21 +150,21 @@ ionViewDidLoad() {
         );
       }, (error) => {
 
-       
-      this.setdata(error)
-//alert(JSON.stringify(error));
+
+        this.setdata(error)
+        //alert(JSON.stringify(error));
         this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/login-fb?user_email=" + this.email);
         this.DS.load().subscribe(
           data => {
-          this.check = data;
+            this.check = data;
 
-   this. store.set('user_id', this.check.user_id);
+            this.store.set('user_id', this.check.user_id);
             //this.navCtrl.push(TimerPage);
 
             if (this.check.result === true) {
- localStorage.setItem('company_or_not', this.check.company_or_not);
+              localStorage.setItem('company_or_not', this.check.company_or_not);
               this.store.set('user_id', this.check.user_id);
-             // this.navCtrl.pop();
+              // this.navCtrl.pop();
               this.navCtrl.setRoot(TimerPage);
 
             }
@@ -185,8 +184,8 @@ ionViewDidLoad() {
 
 
       }//
-    
-    );
+
+      );
 
     }
     );
@@ -215,36 +214,36 @@ ionViewDidLoad() {
 
   }
 
-  forgot_pass(){
+  forgot_pass() {
     this.alertCtrl.create({
       title: 'Forgot your password?',
       subTitle: 'No problem! Just provide your email and you will receive your password immediately..',
-			inputs: [
-				{
-					name: 'email',
-					placeholder: 'Enter your email here...',
-					type: 'text'
-				},
-			],
-			buttons: [
-				{
-					text: 'Cancel',
-					role: 'cancel',
-					handler: data => {
-						console.log('Cancel clicked');
-					}
-				},
-				{
-					text: 'Send',
-					handler: data => {
-						this.http.post("https://ffserver.eu-gb.mybluemix.net/forgot_pass",{email:data.email} ).subscribe(data => {
-							
-						});
+      inputs: [
+        {
+          name: 'email',
+          placeholder: 'Enter your email here...',
+          type: 'text'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Send',
+          handler: data => {
+            this.http.post("https://ffserver.eu-gb.mybluemix.net/forgot_pass", { email: data.email }).subscribe(data => {
 
-					}
-				}
-			]
-		}).present();
+            });
+
+          }
+        }
+      ]
+    }).present();
   }
 
 }

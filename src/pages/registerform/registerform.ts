@@ -21,19 +21,20 @@ export class Registerform {
   age="";
   check;
   ios: boolean = false;
+  connection_error_popup:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController,private DS:DataService,private fb: Facebook,public plt: Platform,private network: Network, private loadingCtrl: LoadingController) {
 
-  var connection_error_popup = this.loadingCtrl.create({
-			content: "No internet connection !",
-			spinner: 'hide'
-		});
 		this.network.onDisconnect().subscribe(() => {
-			connection_error_popup.present();
-		});
-		this.network.onConnect().subscribe(() => {
-			connection_error_popup.dismiss();
-		});  
+      this.connection_error_popup = this.loadingCtrl.create({
+        content: "No internet connection !",
+        spinner: 'hide'
+      });
+      this.connection_error_popup.present();
+    });
+    this.network.onConnect().subscribe(() => {
+      this.connection_error_popup.dismiss();
+    }); 
 
   this.name=navParams.get("name");
   this.age=navParams.get("age");
