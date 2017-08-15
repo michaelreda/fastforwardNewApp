@@ -68,7 +68,7 @@ export class LoginPage {
         data => {this.check = data;
       
       if (this.check.result) {
-        //this.store.set('user_id', this.check.user_id);
+        this.store.set('user_id', this.check.user_id);
         localStorage.setItem('company_or_not', this.check.company_or_not);
         this.navCtrl.pop;
         this.navCtrl.push(TimerPage);
@@ -101,13 +101,14 @@ export class LoginPage {
 
 
   get_details() {
-    this.loginfacebook();
+    alert('451');
+   this.loginfacebook();
 
     this.fb.getLoginStatus().then((responsefb) => {
 
       this.fb.api('/' + responsefb.authResponse.userID + '?fields=email,name,birthday', []).then((response) => {
 
-
+alert('response');
 
         this.setdata(response)
 
@@ -123,8 +124,8 @@ export class LoginPage {
 
               localStorage.setItem('company_or_not', this.check.company_or_not);
               this.store.set('user_id', this.check.user_id);
-              // this.navCtrl.pop();
-              this.navCtrl.setRoot(TimerPage);
+              this.navCtrl.pop();
+              this.navCtrl.push(TimerPage);
 
             }
 
@@ -149,7 +150,12 @@ export class LoginPage {
 
         );
       }, (error) => {
-
+        alert('error');
+          this.loginfacebook();
+        
+        
+        /*
+alert('here');
          this.fb.api('/' + responsefb.authResponse.userID + '?fields=email,name,birthday', []).then((response) => {
 
 
@@ -168,8 +174,8 @@ alert('here'+JSON.stringify(response));
             if (this.check.result === true) {
               localStorage.setItem('company_or_not', this.check.company_or_not);
               this.store.set('user_id', this.check.user_id);
-              // this.navCtrl.pop();
-              this.navCtrl.setRoot(TimerPage);
+              this.navCtrl.pop();
+              this.navCtrl.push(TimerPage);
 
             }
 
@@ -181,13 +187,13 @@ alert('here'+JSON.stringify(response));
 
             }
 
-          }
+          },(error)=>{alert('error2');}
 
         );
 
 
 
-       }); }//
+       }); */}//
     
     );
 
@@ -204,7 +210,7 @@ alert('here'+JSON.stringify(response));
     this.fb.login(['email', 'user_birthday']).then((response) => {
 
 
-      // alert(JSON.stringify(response.authResponse))
+       
     }, (error) => { })
   }
 
