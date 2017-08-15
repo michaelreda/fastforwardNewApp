@@ -33,7 +33,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SafepipePipe } from '../pipes/safepipe/safepipe';
 import { CountdownPipe } from '../pipes/countdown/countdown';
 import { Network } from '@ionic-native/network';
-
+import {VersionCheckPage} from '../pages/version-check/version-check';
 import { TimerAnimatePage } from '../pages/timer-animate/timer-animate';
 
 @NgModule({
@@ -55,7 +55,8 @@ import { TimerAnimatePage } from '../pages/timer-animate/timer-animate';
     TimerPage,
     CountdownPipe,
     AnimatedPage,
-    TimerAnimatePage
+    TimerAnimatePage,
+    VersionCheckPage 
   ],
   imports: [
     BrowserModule,
@@ -83,7 +84,8 @@ import { TimerAnimatePage } from '../pages/timer-animate/timer-animate';
     LoginPage,
     TimerPage,
     AnimatedPage,
-    TimerAnimatePage
+    TimerAnimatePage,
+    VersionCheckPage
   ],
   providers: [
     StatusBar,

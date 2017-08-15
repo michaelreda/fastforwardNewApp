@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage,NavController } from 'ionic-angular';
-
+import {DataService} from '../../providers/data-service';
+import {VersionCheckPage} from '../version-check/version-check';
 import {Listcareer} from '../listcareer/listcareer';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
@@ -20,10 +21,10 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 	]
 })
 export class AboutPage {
-
+	check ; 
 	 visibleState = 'visible';
 public fields:any[];
-	constructor(public navCtrl: NavController) {
+	constructor(public navCtrl: NavController,private DS: DataService) {
 
 this.fields=[
 	{name:"MARKETING",img:"assets/mktgx.png",id:1},
@@ -37,6 +38,23 @@ this.fields=[
 ];
 
 
+}
+
+ngOnInit() {
+    this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-version?version=1");
+    this.DS.load().subscribe(
+            data => (this.handelResponse(data))
+            
+        );
+	  }
+
+
+handelResponse (data){
+    this.check = data.result ;
+    console.log(this.check); 
+       if(!this.check){
+        this.navCtrl.push(VersionCheckPage);
+      }
 }
 nav(img,id){
 

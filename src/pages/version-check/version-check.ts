@@ -25,38 +25,4 @@ export class VersionCheckPage {
     
 }
 
-ngOnInit() {
-    this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-version?version=1");
-    this.DS.load().subscribe(
-            data => (this.setValue(data))
-            
-        );
-        console.log(this.check); 
-       if(this.check){
-        this.navCtrl.pop;
-        this.navCtrl.push(AboutPage);
-
-        }else {
-          this. showAlert() ; 
-        }
-
-
-}
-showAlert() {
-    let alert = this.alertCtrl.create({
-      title: ' ',
-      subTitle: 'shit',
-      buttons: ['OK']
-    });
-    alert.present();
-  }
-setValue (data){
-    this.check = data.result ;
-    console.log(this.check); 
-       if(this.check){
-        this.navCtrl.pop;
-        this.navCtrl.push(AboutPage);
-      }
-}
-
 }
