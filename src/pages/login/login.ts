@@ -61,20 +61,17 @@ export class LoginPage {
 
 
   nav(us, pw) {
-    this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/login?user_email=" + us + "&password=" + pw);
-    this.DS.load().subscribe(
-      data => (alert(JSON.stringify(data)))
-    );
+    
     if (us != null && pw != null) {
       this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/login?user_email=" + us + "&password=" + pw);
       this.DS.load().subscribe(
-        data => (this.check = data)
-      );
+        data => {this.check = data;
+      
       if (this.check.result) {
-        this.store.set('user_id', this.check.user_id);
+        //this.store.set('user_id', this.check.user_id);
         localStorage.setItem('company_or_not', this.check.company_or_not);
         this.navCtrl.pop;
-        this.navCtrl.setRoot(TimerPage);
+        this.navCtrl.push(TimerPage);
 
       }
       else {
@@ -82,8 +79,8 @@ export class LoginPage {
         this.store.set('user_id', "");
         this.showAlert();
       }
+    });
     }
-
   }
 
   showAlert() {
@@ -152,12 +149,12 @@ export class LoginPage {
 
         );
       }, (error) => {
-alert('aykalm');
+
          this.fb.api('/' + responsefb.authResponse.userID + '?fields=email,name,birthday', []).then((response) => {
 
 
       //this.setdata(response);
-alert(JSON.stringify(response));
+alert('here'+JSON.stringify(response));
         this.setdata(response)
         //alert(JSON.stringify(error));
         this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/login-fb?user_email=" + this.email);

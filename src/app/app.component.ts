@@ -39,15 +39,16 @@ this.rootPage = LoginPage;
     }
 else{
 
-this.rootPage=this.nextpage;
+this.rootPage=TimerPage;
 
 }
     
   });
+
   }
 
   ngOnInit() {
-
+/*
  this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-date?");
         this.DS.load().subscribe(
             data =>{ this.date=data;
@@ -63,6 +64,6 @@ this.rootPage=this.nextpage;
           
           
           
-          }
+          */}
 
 }
