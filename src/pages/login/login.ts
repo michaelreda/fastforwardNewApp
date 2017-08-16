@@ -71,7 +71,7 @@ export class LoginPage {
         this.store.set('user_id', this.check.user_id);
         localStorage.setItem('company_or_not', this.check.company_or_not);
         this.navCtrl.pop;
-        this.navCtrl.push(TimerPage);
+        this.navCtrl.setRoot(TimerPage);
 
       }
       else {
@@ -125,7 +125,7 @@ alert('response');
               localStorage.setItem('company_or_not', this.check.company_or_not);
               this.store.set('user_id', this.check.user_id);
               this.navCtrl.pop();
-              this.navCtrl.push(TimerPage);
+              this.navCtrl.setRoot(TimerPage);
 
             }
 

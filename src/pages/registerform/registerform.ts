@@ -90,7 +90,7 @@ this.showAlert(this.check.msg);
 }
 else if(this.check.result==true){
 this.navCtrl.pop();
-this.navCtrl.push(TimerPage);
+this.navCtrl.setRoot(TimerPage);
 
 }
   }
