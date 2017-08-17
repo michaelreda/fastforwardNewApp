@@ -21,7 +21,8 @@ export class MyApp {
   timer;
 date;
 nextpage;
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,private store:Storage,private DS:DataService) {
+  check;
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private store: Storage, private DS: DataService) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -30,64 +31,27 @@ nextpage;
       
 
     });
-  //this.rootPage=LoginPage;
-    
-   
-   
-  }
+    //  this.rootPage=TimerPage;
 
-  ngOnInit() {
 
- this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-date?");
-        this.DS.load().subscribe(
-            data =>{ this.date=data;
-            if(this.date.result===true){
+    store.get('user_id').then((val) => {
+      console.log('store', val);
+      this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-version?version=1");
+      this.DS.load().subscribe(
+        data => (this.handelResponse(data))
+      );
+      if (val == null || val == "") {
 
-             this.timer=true;
-              this.store.set('timer','1');
-            }
-            else{
+        this.rootPage = LoginPage;
+      }
+      else {
 
-              this.timer=false;
-              this.store.set('timer',"");
-            }
-            
-             this.store.get('user_id').then((val) => {
-      console.log('store',val);
-      
-    if (val== null || val==""){
-
-//this.id = false;
-this.setdata(false);
-    }
-else{
-
-//this.id=true;
-  this.setdata(true);        
+        this.rootPage = TimerPage;
 
       }
 
     });
 
-<<<<<<< HEAD
-
-            });
-          
-          
-          
-          }
-
-setdata(id ){
-this.id=id;
-//console.log('id',this.id,'t',this.timer);
-if(this.id==true && this.timer==true) {this.rootPage=TimerPage; }
-else if(this.id==true && this.timer==false)this.rootPage=TabsPage;
-else if(this.id==false && this.timer==true)this.rootPage=LoginPage;
-else if(this.id==false && this.timer==false) this.rootPage=LoginPage;
-  //      this.store.get('timer').then((val)=>{console.log(val); })
- 
-}
-=======
   }
 
   ngOnInit() {
@@ -102,6 +66,5 @@ else if(this.id==false && this.timer==false) this.rootPage=LoginPage;
       this.rootPage = VersionCheckPage;
     }
   }
->>>>>>> 7db60688e9929c998e88007cac05d3875b5ec3c6
 }
 
