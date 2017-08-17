@@ -31,8 +31,8 @@ nextpage;
       
 
     });
-     this.rootPage=LoginPage;
-/*
+   //  this.rootPage=LoginPage;
+
 
     store.get('user_id').then((val) => {
       console.log('store', val);
@@ -64,7 +64,7 @@ nextpage;
     console.log(this.check);
     if (!this.check) {
       this.rootPage = VersionCheckPage;
-    }*/
+    }
   }
 }
 
