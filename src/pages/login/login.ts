@@ -262,7 +262,7 @@ alert('here'+JSON.stringify(response));
         {
           text: 'Send',
           handler: data => {
-            this.http.post("https://ffserver.eu-gb.mybluemix.net/forgot_pass", { email: data.email }).subscribe(data => {
+            this.http.post("https://ffserver.eu-gb.mybluemix.net/forgot-pasword", { email: data.email }).subscribe(data => {
 
             });
 
@@ -270,6 +270,21 @@ alert('here'+JSON.stringify(response));
         }
       ]
     }).present();
+  }
+
+  forgetpass(us){
+    if(us!=null || us!=""){
+    this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/forgot-password?user_email=" + us );
+    this.DS.load().subscribe(
+      data => {alert(data.msg);});
+    }
+    else {
+alert('Enter your mail please ');
+
+
+    }
+
+
   }
 
 }

@@ -6,7 +6,7 @@ import { ActionSheetController } from 'ionic-angular'
 import {  Requestdate } from "../requestdate/requestdate";
 import {Http} from '@angular/http';
 import {LoginPage} from'../login/login';
-
+import {DataService} from '../../providers/data-service';
 import { Facebook} from '@ionic-native/facebook';
 import { Storage } from '@ionic/storage';
 
@@ -21,13 +21,25 @@ export class Profile {
 	user_simulations:any=[];
 	refresher:any;
 
-	constructor(public navCtrl: NavController, navParams: NavParams,public http: Http, public alertCtrl:AlertController,public loadingCtrl: LoadingController,public actionSheetCtrl: ActionSheetController,private fb: Facebook,private store: Storage) {
-		http.get("https://ffserver.eu-gb.mybluemix.net/user_info?id=1").subscribe(data => {
-			var res = JSON.parse(data['_body']);
-			this.user_info=res;
-			console.log(this.user_info);
-			//this.loading=false;
-		});
+	constructor(public navCtrl: NavController, navParams: NavParams,public http: Http, public alertCtrl:AlertController,public loadingCtrl: LoadingController,public actionSheetCtrl: ActionSheetController,private fb: Facebook,private store: Storage,private DS:DataService) {
+	
+
+		this.store.get('user_id').then((val) => {
+	
+			  
+			http.get("https://ffserver.eu-gb.mybluemix.net/user_info?id="+val).subscribe(data => {
+				var res = JSON.parse(data['_body']);
+				this.user_info=res;
+				console.log(this.user_info);
+				//this.loading=false;
+			});
+			
+			
+			});
+				 
+
+		
+	
 
 
 

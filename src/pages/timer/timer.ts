@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {TabsPage} from '../tabs/tabs';
 import {DataService} from '../../providers/data-service';
 import {Observable} from 'rxjs/Rx';
-
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the TimerPage page.
  *
@@ -24,21 +24,40 @@ export class TimerPage {
   diffhours;
   diffmins;
   diffsecs;
-
+  user_id;
   price: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private DS:DataService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private DS:DataService, private store: Storage) {
   
  
   }
+  setprice(data){
+
+    this.price=data.price;
+   // alert('price'+this.price);
+  }
+
+setid(id){
+
+  this.user_id=id;
+  //alert('id'+this.user_id);
+
+}
+
 ngOnInit() {
+this.store.get('user_id').then((val) => {
+this.setid(val);
 
-//price
+  
+this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/get-ticket-price?user_id="+this.user_id);
+this.DS.load().subscribe(
+    data =>( this.setprice(data)));
 
-this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/get-ticket-price?user_id=2");
-        this.DS.load().subscribe(
-            data =>{ this.price=data.result;
-          });
+
+
+});
+            
+          
         
 
 
@@ -59,21 +78,24 @@ this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/get-ticket-price?user_id=2"
       this.timercal();
   });
 
+
+
 }
   timercal(){
 let dump =new Date();
 dump.getTimezoneOffset();
 //console.log('dump',dump);
-var timeDiff = Math.abs(this.StartDate.getTime() - dump.getTime());
+let diff=this.StartDate.getTime() - dump.getTime();
+var timeDiff = Math.abs(diff);
    this. diffDays = Math.floor(timeDiff / (1000 * 3600 * 24));  
    this. diffhours = Math.floor((timeDiff-this.diffDays*1000*3600*24)/(1000*3600)) ; 
    this.diffmins= Math.floor(((timeDiff-this.diffDays*1000*3600*24)-this.diffhours*1000*3600) /(1000 * 60) ) ;
    this. diffsecs= Math.floor((((timeDiff-this.diffDays*1000*3600*24)-this.diffhours*1000*3600)- this.diffmins*1000 * 60) /(1000));
 
-  let m=  Math.floor((timeDiff/1000));
+  let m=  Math.floor((diff/1000));
   //console.log('m',m);
   
-if(m==0){
+if(m <=0){
   console.log('tabs');
   
 //this.navCtrl.popToRoot();
