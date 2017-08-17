@@ -41,21 +41,10 @@ this.fields=[
 }
 
 ngOnInit() {
-    this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-version?version=1");
-    this.DS.load().subscribe(
-            data => (this.handelResponse(data))
-            
-        );
+    
 	  }
 
 
-handelResponse (data){
-    this.check = data.result ;
-    console.log(this.check); 
-       if(!this.check){
-        this.navCtrl.push(VersionCheckPage);
-      }
-}
 nav(img,id){
 
 this.navCtrl.push(Listcareer,{img:img,id:id});
