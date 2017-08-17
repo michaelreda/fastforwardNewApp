@@ -70,6 +70,7 @@ export class LoginPage {
       if (this.check.result) {
         this.store.set('user_id', this.check.user_id);
         localStorage.setItem('company_or_not', this.check.company_or_not);
+<<<<<<< HEAD
         //this.navCtrl.pop;
         let m;
           this.store.get('timer').then((val)=>{m=val;})
@@ -77,6 +78,10 @@ export class LoginPage {
             this.navCtrl.setRoot(TabsPage);
        }
         else  this.navCtrl.setRoot(TimerPage);
+=======
+        this.navCtrl.pop;
+        this.navCtrl.setRoot(TimerPage);
+>>>>>>> 7db60688e9929c998e88007cac05d3875b5ec3c6
 
       }
       else {

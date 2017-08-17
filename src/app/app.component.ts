@@ -1,15 +1,16 @@
+import { VersionCheckPage } from './../pages/version-check/version-check';
 import { TabsPage } from './../pages/tabs/tabs';
 import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Platform, NavController, NavParams } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import{HomePage} from '../pages/home/home';
+import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
-import {TimerPage} from '../pages/timer/timer';
+import { TimerPage } from '../pages/timer/timer';
 
 import { Storage } from '@ionic/storage';
 
-import {DataService} from '../providers/data-service';
+import { DataService } from '../providers/data-service';
 
 @Component({
   templateUrl: 'app.html'
@@ -64,10 +65,11 @@ else{
 //this.id=true;
   this.setdata(true);        
 
-}
-    
-  });
+      }
 
+    });
+
+<<<<<<< HEAD
 
             });
           
@@ -85,5 +87,21 @@ else if(this.id==false && this.timer==false) this.rootPage=LoginPage;
   //      this.store.get('timer').then((val)=>{console.log(val); })
  
 }
+=======
+  }
+
+  ngOnInit() {
+
+
+  }
+
+  handelResponse(data) {
+    this.check = data.result;
+    console.log(this.check);
+    if (!this.check) {
+      this.rootPage = VersionCheckPage;
+    }
+  }
+>>>>>>> 7db60688e9929c998e88007cac05d3875b5ec3c6
 }
 

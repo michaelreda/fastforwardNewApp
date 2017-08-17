@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+<<<<<<< HEAD
 import {TabsPage} from '../tabs/tabs';
 import {DataService} from '../../providers/data-service';
 import {Observable} from 'rxjs/Rx';
+=======
+import { DataService } from '../../providers/data-service';
+import { Observable } from 'rxjs/Rx';
+>>>>>>> 7db60688e9929c998e88007cac05d3875b5ec3c6
 
 /**
  * Generated class for the TimerPage page.
@@ -16,16 +21,16 @@ import {Observable} from 'rxjs/Rx';
   templateUrl: 'timer.html',
 })
 export class TimerPage {
-check:any;
+  check: any;
 
-StartDate;
-nowDate=new Date();
-diffDays;
-diffhours;
-diffmins;
-diffsecs;
+  StartDate;
+  nowDate = new Date();
+  diffDays;
+  diffhours;
+  diffmins;
+  diffsecs;
 
-price:any;
+  price: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private DS:DataService) {
   
@@ -92,5 +97,5 @@ this.navCtrl.setRoot(TabsPage);
 
 
 
-  
+
 }

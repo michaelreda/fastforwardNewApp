@@ -1,12 +1,18 @@
 import { Network } from '@ionic-native/network';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform, LoadingController } from 'ionic-angular';
-import {DataService} from '../../providers/data-service';
+import { DataService } from '../../providers/data-service';
 import { AlertController } from 'ionic-angular';
+<<<<<<< HEAD
 import { Facebook} from '@ionic-native/facebook';
 import {TabsPage} from '../tabs/tabs';
 import {TimerPage} from '../timer/timer';
 import { Storage } from '@ionic/storage';
+=======
+import { Facebook } from '@ionic-native/facebook';
+import { TabsPage } from '../tabs/tabs'
+import { TimerPage } from '../timer/timer'
+>>>>>>> 7db60688e9929c998e88007cac05d3875b5ec3c6
 
 
 @IonicPage()
@@ -16,18 +22,22 @@ import { Storage } from '@ionic/storage';
 })
 export class Registerform {
 
-  degree="";
-  name="";
-  email="";
-  age="";
+  degree = "";
+  name = "";
+  email = "";
+  age = "";
   check;
   ios: boolean = false;
-  connection_error_popup:any;
-  promo_code:string="";
+  connection_error_popup: any;
+  promo_code: string = "";
 
+<<<<<<< HEAD
   constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController,private DS:DataService,private fb: Facebook,public plt: Platform,private network: Network, private loadingCtrl: LoadingController, private store: Storage) {
+=======
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private DS: DataService, private fb: Facebook, public plt: Platform, private network: Network, private loadingCtrl: LoadingController) {
+>>>>>>> 7db60688e9929c998e88007cac05d3875b5ec3c6
 
-		this.network.onDisconnect().subscribe(() => {
+    this.network.onDisconnect().subscribe(() => {
       this.connection_error_popup = this.loadingCtrl.create({
         content: "No internet connection !",
         spinner: 'hide'
@@ -36,44 +46,43 @@ export class Registerform {
     });
     this.network.onConnect().subscribe(() => {
       this.connection_error_popup.dismiss();
-    }); 
+    });
 
-  this.name=navParams.get("name");
-  this.age=navParams.get("age");
-  this.email=navParams.get("email");
-  //alert(this.name+this.age+this.email);
-  if (plt.is('ios')) {
-			this.ios = true;
-		}
+    this.name = navParams.get("name");
+    this.age = navParams.get("age");
+    this.email = navParams.get("email");
+    //alert(this.name+this.age+this.email);
+    if (plt.is('ios')) {
+      this.ios = true;
+    }
   }
 
- 
-  register(pass,school,phone)
-  {
+
+  register(pass, school, phone) {
     console.log("register");
     console.log(this.promo_code)
-    
-if(this.name!="" &&this.email!="" && pass!="" && school!="" && this.age!="" &&phone!=""){
-console.log("not null");
+
+    if (this.name != "" && this.email != "" && pass != "" && school != "" && this.age != "" && phone != "") {
+      console.log("not null");
 
 
-this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/register2?password="+pass+"&user_name"+this.name+"&degree="+this.degree+"&user_email="+this.email+"&school="+school+"&phone_no="+phone+"&age="+this.age+"&promo_code="+this.promo_code);  
-this.DS.load().subscribe(
-            data => (this.setresponse(data))
-            
-        );
+      this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/register2?password=" + pass + "&user_name" + this.name + "&degree=" + this.degree + "&user_email=" + this.email + "&school=" + school + "&phone_no=" + phone + "&age=" + this.age + "&promo_code=" + this.promo_code);
+      this.DS.load().subscribe(
+        data => (this.setresponse(data))
 
-}
+      );
 
-else{
+    }
 
-this.showAlert("Fill all information please");
+    else {
 
-}
+      this.showAlert("Fill all information please");
+
+    }
 
 
   }
-showAlert(msg) {
+  showAlert(msg) {
     let alert = this.alertCtrl.create({
       title: ' ',
       subTitle: msg,
@@ -81,12 +90,12 @@ showAlert(msg) {
     });
     alert.present();
   }
-  setresponse(value){
+  setresponse(value) {
 
-this.check=value;
+    this.check = value;
 
-if(this.check.result == false){
-this.showAlert(this.check.msg);
+    if (this.check.result == false) {
+      this.showAlert(this.check.msg);
 
 }
 else if(this.check.result==true){
@@ -108,13 +117,13 @@ this.store.set('user_id', this.check.user_id);
 
 
 
- setdata(response){
+  setdata(response) {
 
-this.name=response.name;
-this.email=response.email;
-this.age=response.birthday;
+    this.name = response.name;
+    this.email = response.email;
+    this.age = response.birthday;
 
 
- }
+  }
 
 }
