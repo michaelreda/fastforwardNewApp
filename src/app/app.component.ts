@@ -8,7 +8,6 @@ import { LoginPage } from '../pages/login/login';
 import {TimerPage} from '../pages/timer/timer';
 
 import { Storage } from '@ionic/storage';
-import { TimerAnimatePage } from '../pages/timer-animate/timer-animate';
 
 import {DataService} from '../providers/data-service';
 
@@ -17,6 +16,8 @@ import {DataService} from '../providers/data-service';
 })
 export class MyApp {
   rootPage:any ;
+  id;
+  timer;
 date;
 nextpage;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,private store:Storage,private DS:DataService) {
@@ -25,45 +26,64 @@ nextpage;
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+      
 
     });
-  //  this.rootPage=TimerPage;
+  //this.rootPage=LoginPage;
     
    
-    store.get('user_id').then((val) => {
-      console.log('store',val);
-      
-    if (val== null || val==""){
-
-this.rootPage = LoginPage;
-    }
-else{
-
-this.rootPage=TimerPage;
-
-}
-    
-  });
-
+   
   }
 
   ngOnInit() {
-/*
+
  this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-date?");
         this.DS.load().subscribe(
             data =>{ this.date=data;
             if(this.date.result===true){
 
-             this.nextpage=TimerPage;
+             this.timer=true;
+              this.store.set('timer','1');
             }
             else{
 
-              this.nextpage=TabsPage;
+              this.timer=false;
+              this.store.set('timer',"");
             }
+            
+             this.store.get('user_id').then((val) => {
+      console.log('store',val);
+      
+    if (val== null || val==""){
+
+//this.id = false;
+this.setdata(false);
+    }
+else{
+
+//this.id=true;
+  this.setdata(true);        
+
+}
+    
+  });
+
+
             });
           
           
           
-          */}
+          }
 
+setdata(id ){
+this.id=id;
+//console.log('id',this.id,'t',this.timer);
+if(this.id==true && this.timer==true) {this.rootPage=TimerPage; }
+else if(this.id==true && this.timer==false)this.rootPage=TabsPage;
+else if(this.id==false && this.timer==true)this.rootPage=LoginPage;
+else if(this.id==false && this.timer==false) this.rootPage=LoginPage;
+  //      this.store.get('timer').then((val)=>{console.log(val); })
+ 
 }
+}
+

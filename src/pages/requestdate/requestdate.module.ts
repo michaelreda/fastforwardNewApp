@@ -4,7 +4,7 @@ import { Requestdate } from './requestdate';
 
 @NgModule({
   declarations: [
-    Requestdate,
+  
   ],
   imports: [
     IonicPageModule.forChild(Requestdate),

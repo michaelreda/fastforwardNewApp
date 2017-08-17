@@ -4,7 +4,7 @@ import { TimerPage } from './timer';
 
 @NgModule({
   declarations: [
-    TimerPage,
+
   ],
   imports: [
     IonicPageModule.forChild(TimerPage),

@@ -4,7 +4,7 @@ import { Profile } from './profile';
 
 @NgModule({
   declarations: [
-    Profile,
+   
   ],
   imports: [
     IonicPageModule.forChild(Profile),

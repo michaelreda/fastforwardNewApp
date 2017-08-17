@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {TabsPage} from '../tabs/tabs';
 import {DataService} from '../../providers/data-service';
 import {Observable} from 'rxjs/Rx';
 
@@ -27,10 +28,21 @@ diffsecs;
 price:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private DS:DataService) {
-
+  
+ 
   }
 ngOnInit() {
 
+//price
+
+this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/get-ticket-price?user_id=2");
+        this.DS.load().subscribe(
+            data =>{ this.price=data.result;
+          });
+        
+
+
+//date
  this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-date?");
         this.DS.load().subscribe(
             data =>{ this.check=data;
@@ -40,8 +52,9 @@ ngOnInit() {
           console.log(this.check.dead_line);
           
           });
-    
-       this.price=80;
+        
+       
+       
     Observable.interval(1000 ).subscribe(x => {
       this.timercal();
   });
@@ -49,26 +62,25 @@ ngOnInit() {
 }
   timercal(){
 let dump =new Date();
+dump.getTimezoneOffset();
+//console.log('dump',dump);
 var timeDiff = Math.abs(this.StartDate.getTime() - dump.getTime());
    this. diffDays = Math.floor(timeDiff / (1000 * 3600 * 24));  
    this. diffhours = Math.floor((timeDiff-this.diffDays*1000*3600*24)/(1000*3600)) ; 
    this.diffmins= Math.floor(((timeDiff-this.diffDays*1000*3600*24)-this.diffhours*1000*3600) /(1000 * 60) ) ;
    this. diffsecs= Math.floor((((timeDiff-this.diffDays*1000*3600*24)-this.diffhours*1000*3600)- this.diffmins*1000 * 60) /(1000));
 
-    
-/*
-this.StartDate.setSeconds( this.nowDate.getSeconds()-dump.getSeconds());
+  let m=  Math.floor((timeDiff/1000));
+  //console.log('m',m);
+  
+if(m==0){
+  console.log('tabs');
+  
+//this.navCtrl.popToRoot();
+this.navCtrl.setRoot(TabsPage);
+}
 
-this.StartDate.setMinutes(this.nowDate.getMinutes()-dump.getMinutes());
-this.StartDate.setHours(this.nowDate.getHours()- dump.getHours());
-this.StartDate.setDate( this.nowDate.getDate()-dump.getDate());
 
-this.StartDate.setMonth( this.nowDate.getMonth()-dump.getMonth());
- //this.StartDate.setSeconds(this.StartDate.getSeconds()-1);
- //if(this.StartDate.getSeconds()==0){
-
- //}
-*/
 }
 
   ionViewDidLoad() {

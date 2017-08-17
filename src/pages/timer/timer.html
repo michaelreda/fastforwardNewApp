@@ -4,23 +4,20 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
-<ion-navbar style="height: 6rem;">
-<ion-title style=" width:100%;display:inline-block;">
- <h3 style="color:#F84838;display:inline-block;font-weight:bold;">FAST</h3>
- <h3 style="color:black;display:inline-block;font-weight:bold;"> FORWARD</h3>
+<ion-header >
+ <ion-toolbar  [style.height]="ios?'70px':''">
+<ion-title style=" width:100%;display:inline-block;" [style.margin-top]="ios?'15px':''">
+	<!-- <div *ngIf="true" ></div> -->
+ <h3 style="color:#F84838;display:inline-block;font-weight:bold;font-size:1.4rem">FAST</h3>
+ <h3 style="color:black;display:inline-block;font-weight:bold;font-size:1.4rem"> FORWARD</h3>
 
 </ion-title>
-</ion-navbar>
+ </ion-toolbar>
 </ion-header>
-<style>
 
-</style>
-
-<ion-content padding style="text-align:center;">
+<ion-content>
 <br><br>
-  
-<h1></h1>
+
 
 <div id="clockdiv">
   <div>

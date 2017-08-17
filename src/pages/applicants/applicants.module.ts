@@ -4,7 +4,7 @@ import { Applicants } from './applicants';
 
 @NgModule({
   declarations: [
-    Applicants,
+  
   ],
   imports: [
     IonicPageModule.forChild(Applicants),

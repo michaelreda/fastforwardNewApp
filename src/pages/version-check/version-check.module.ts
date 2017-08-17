@@ -4,7 +4,7 @@ import { VersionCheckPage } from './version-check';
 
 @NgModule({
   declarations: [
-    VersionCheckPage,
+   
   ],
   imports: [
     IonicPageModule.forChild(VersionCheckPage),

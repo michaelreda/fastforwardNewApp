@@ -3,15 +3,14 @@ page-timer {
 ion-content{
 	text-align: center;
 	
-  font-family: sans-serif;
-  font-weight: 100;
+  
 }
 
 h1{
-  color: #F84838;
+ color: #F84838;
   font-weight: 100;
-  font-size: 40px;
-  margin: 40px 0px 20px;
+  font-size: 5rem;
+  margin: 2% 0  1%; 
 }
 
 #clockdiv{
@@ -20,21 +19,21 @@ h1{
 	display: inline-block;
 	font-weight: 100;
 	text-align: center;
-	font-size: 30px;
+  font-size: 3rem;
+  width:100%;
 }
 
 #clockdiv > div{
-	padding: 10px;
-	border-radius: 3px;
+	padding: 2%;
+	border-radius: 0.1%;
 	background: #F84838;
 	display: inline-block;
 }
 
 #clockdiv div > span{
-	padding: 15px;
-	border-radius: 3px;
+	padding: 5px;
+	border-radius: 5%;
   background: rgba(0, 0,0, 0.3);
-  
 	display: inline-block;
 }
 

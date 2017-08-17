@@ -4,7 +4,7 @@ import { Vedios } from './vedios';
 
 @NgModule({
   declarations: [
-    Vedios,
+    
   ],
   imports: [
     IonicPageModule.forChild(Vedios),

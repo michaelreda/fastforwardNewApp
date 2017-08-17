@@ -4,7 +4,7 @@ import { Listcareer } from './listcareer';
 
 @NgModule({
   declarations: [
-    Listcareer,
+    
   ],
   imports: [
     IonicPageModule.forChild(Listcareer),

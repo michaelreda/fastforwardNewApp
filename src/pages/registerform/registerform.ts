@@ -4,8 +4,9 @@ import { IonicPage, NavController, NavParams, Platform, LoadingController } from
 import {DataService} from '../../providers/data-service';
 import { AlertController } from 'ionic-angular';
 import { Facebook} from '@ionic-native/facebook';
-import {TabsPage} from '../tabs/tabs'
-import {TimerPage} from '../timer/timer'
+import {TabsPage} from '../tabs/tabs';
+import {TimerPage} from '../timer/timer';
+import { Storage } from '@ionic/storage';
 
 
 @IonicPage()
@@ -24,7 +25,7 @@ export class Registerform {
   connection_error_popup:any;
   promo_code:string="";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController,private DS:DataService,private fb: Facebook,public plt: Platform,private network: Network, private loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController,private DS:DataService,private fb: Facebook,public plt: Platform,private network: Network, private loadingCtrl: LoadingController, private store: Storage) {
 
 		this.network.onDisconnect().subscribe(() => {
       this.connection_error_popup = this.loadingCtrl.create({
@@ -89,34 +90,23 @@ this.showAlert(this.check.msg);
 
 }
 else if(this.check.result==true){
-this.navCtrl.pop();
-this.navCtrl.push(TimerPage);
+this.store.set('user_id', this.check.user_id);
+
+ let m;
+          this.store.get('timer').then((val)=>{m=val;
+           if(m==""){
+        this.navCtrl.setRoot(TabsPage);}
+        else  this.navCtrl.setRoot(TimerPage);
+      alert(m);
+      })
+         
+
+      
 
 }
   }
 
 
-get_details(){
-  this.loginfacebook();
-     this.fb.getLoginStatus().then((response)=>{
-      
-       this.fb.api('/'+response.authResponse.userID+'?fields=email,name,birthday',[]).then((response)=>{
-         alert(this.setdata(response))},(error)=>{});}
-    )
-
- }
-
-
-  loginfacebook(){
-   
-    this.fb.login(['email','user_birthday']).then((response)=>{
-
-      //alert('Logged in');
-     // alert(JSON.stringify(response.authResponse))
-    },(error)=>{alert(JSON.stringify(error))})
- }
-
- 
 
  setdata(response){
 

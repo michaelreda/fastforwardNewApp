@@ -34,7 +34,7 @@ dump:any;
 
 
 
-	 ngOnInit() {
+	ngOnInit() { 
 
 this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/allVideos?user_id=1");
 this.DS.load().subscribe(

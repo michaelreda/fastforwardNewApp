@@ -70,8 +70,13 @@ export class LoginPage {
       if (this.check.result) {
         this.store.set('user_id', this.check.user_id);
         localStorage.setItem('company_or_not', this.check.company_or_not);
-        this.navCtrl.pop;
-        this.navCtrl.push(TimerPage);
+        //this.navCtrl.pop;
+        let m;
+          this.store.get('timer').then((val)=>{m=val;})
+          if(m== ""){
+            this.navCtrl.setRoot(TabsPage);
+       }
+        else  this.navCtrl.setRoot(TimerPage);
 
       }
       else {
@@ -101,14 +106,14 @@ export class LoginPage {
 
 
   get_details() {
-    alert('451');
+    
    this.loginfacebook();
-
+//alert(1);
     this.fb.getLoginStatus().then((responsefb) => {
-
+//alert(2);
       this.fb.api('/' + responsefb.authResponse.userID + '?fields=email,name,birthday', []).then((response) => {
 
-alert('response');
+//alert('response');
 
         this.setdata(response)
 
@@ -124,15 +129,22 @@ alert('response');
 
               localStorage.setItem('company_or_not', this.check.company_or_not);
               this.store.set('user_id', this.check.user_id);
-              this.navCtrl.pop();
-              this.navCtrl.push(TimerPage);
+            let m;
+          this.store.get('timer').then((val)=>{m=val;})
+          if(m== ""){
+            this.navCtrl.setRoot(TabsPage);
+        }
+        else this.navCtrl.setRoot(TimerPage);
+
+      
+     //       this.navCtrl.setRoot(TabsPage);
 
             }
 
             // or register
             else if (this.check.result === false) {
-
-              this.navCtrl.push(Registerform, { name: this.name, email: this.email, age: this.age });
+//alert('registration');
+              this.navCtrl.setRoot(Registerform, { name: this.name, email: this.email, age: this.age });
 
 
 
@@ -150,8 +162,8 @@ alert('response');
 
         );
       }, (error) => {
-        alert('error');
-          this.loginfacebook();
+        alert(3);
+          
         
         
         /*
@@ -174,9 +186,13 @@ alert('here'+JSON.stringify(response));
             if (this.check.result === true) {
               localStorage.setItem('company_or_not', this.check.company_or_not);
               this.store.set('user_id', this.check.user_id);
-              this.navCtrl.pop();
-              this.navCtrl.push(TimerPage);
+               let m;
+          this.store.get('timer').then((val)=>{m=val;})
+          if(m==""){
+       this.navCtrl.setRoot(TabsPage); }
+        else this.navCtrl.setRoot(TimerPage);
 
+      
             }
 
             // or register
