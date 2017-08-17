@@ -1,13 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-<<<<<<< HEAD
 import {TabsPage} from '../tabs/tabs';
 import {DataService} from '../../providers/data-service';
 import {Observable} from 'rxjs/Rx';
-=======
-import { DataService } from '../../providers/data-service';
-import { Observable } from 'rxjs/Rx';
->>>>>>> 7db60688e9929c998e88007cac05d3875b5ec3c6
 
 /**
  * Generated class for the TimerPage page.

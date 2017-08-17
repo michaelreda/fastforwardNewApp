@@ -3,16 +3,10 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform, LoadingController } from 'ionic-angular';
 import { DataService } from '../../providers/data-service';
 import { AlertController } from 'ionic-angular';
-<<<<<<< HEAD
 import { Facebook} from '@ionic-native/facebook';
 import {TabsPage} from '../tabs/tabs';
 import {TimerPage} from '../timer/timer';
 import { Storage } from '@ionic/storage';
-=======
-import { Facebook } from '@ionic-native/facebook';
-import { TabsPage } from '../tabs/tabs'
-import { TimerPage } from '../timer/timer'
->>>>>>> 7db60688e9929c998e88007cac05d3875b5ec3c6
 
 
 @IonicPage()
@@ -31,11 +25,7 @@ export class Registerform {
   connection_error_popup: any;
   promo_code: string = "";
 
-<<<<<<< HEAD
   constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController,private DS:DataService,private fb: Facebook,public plt: Platform,private network: Network, private loadingCtrl: LoadingController, private store: Storage) {
-=======
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private DS: DataService, private fb: Facebook, public plt: Platform, private network: Network, private loadingCtrl: LoadingController) {
->>>>>>> 7db60688e9929c998e88007cac05d3875b5ec3c6
 
     this.network.onDisconnect().subscribe(() => {
       this.connection_error_popup = this.loadingCtrl.create({
