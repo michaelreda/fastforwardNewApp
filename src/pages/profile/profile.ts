@@ -122,8 +122,7 @@ export class Profile {
 
 this. store.set('user_id', "");
 this.fb.logout();
-this.navCtrl.popToRoot();
-this.navCtrl.setRoot(LoginPage);
+this.navCtrl.parent().setRoot(LoginPage);
           
 
 		}

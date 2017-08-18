@@ -4,12 +4,9 @@ import {TabsPage} from '../tabs/tabs';
 import {DataService} from '../../providers/data-service';
 import {Observable} from 'rxjs/Rx';
 import { Storage } from '@ionic/storage';
-/**
- * Generated class for the TimerPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { VersionCheckPage } from '../version-check/version-check';
+
+
 @IonicPage()
 @Component({
   selector: 'page-timer',
@@ -26,7 +23,7 @@ export class TimerPage {
   diffsecs;
   user_id;
   price: any;
-
+timer;
   constructor(public navCtrl: NavController, public navParams: NavParams,private DS:DataService, private store: Storage) {
   
  
@@ -45,6 +42,8 @@ setid(id){
 }
 
 ngOnInit() {
+  console.log('timer page');
+  
 this.store.get('user_id').then((val) => {
 this.setid(val);
 
@@ -74,7 +73,7 @@ this.DS.load().subscribe(
         
        
        
-    Observable.interval(1000 ).subscribe(x => {
+  this.timer=  Observable.interval(1000 ).subscribe(x => {
       this.timercal();
   });
 
@@ -97,19 +96,20 @@ var timeDiff = Math.abs(diff);
   
 if(m <=0){
   console.log('tabs');
-  
+  this.timer.unsubscribe();
 //this.navCtrl.popToRoot();
-this.navCtrl.setRoot(TabsPage);
+
+this.store.get('version').then((val)=>{
+if(val=="")this.navCtrl.setRoot(VersionCheckPage);
+else this.navCtrl.setRoot(TabsPage);
+});
+
 }
 
 
 }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TimerPage');
-  }
-
-
+ 
 
 
 

@@ -13,8 +13,12 @@ import { Storage } from '@ionic/storage';
 import { DataService } from '../providers/data-service';
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  
+  
 })
+
+
 export class MyApp {
   rootPage:any ;
   id;
@@ -64,7 +68,9 @@ nextpage;
     console.log(this.check);
     if (!this.check) {
       this.rootPage = VersionCheckPage;
+      this.store.set('version',"");
     }
+    else this.store.set('version',null);
   }
 }
 
