@@ -61,7 +61,7 @@ export class Registerform {
         user_name:this.name,
         user_email:this.email,
         age:this.age,
-        pass:pass,
+        password:pass,
         school:school,
         phone_no:phone,
         promo_code:promo,
