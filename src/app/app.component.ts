@@ -20,7 +20,7 @@ import { DataService } from '../providers/data-service';
 
 
 export class MyApp {
-  rootPage:any ;
+ rootPage:any ;
   id;
   timer;
 date;
@@ -32,10 +32,10 @@ nextpage;
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
-      
+    
 
     });
-   //  this.rootPage=LoginPage;
+ //    this.rootPage=TimerPage;}
 
 
     store.get('user_id').then((val) => {

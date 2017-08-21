@@ -22,8 +22,17 @@ export class ItemDetailPage {
 	read_more=[];
 	follow="Follow";
 companyid=3;
+/*
+dates:any=[];
+nowDate=new Date();*/
 	constructor(public navCtrl: NavController, navParams: NavParams, http: Http, public alertCtrl:AlertController,public loadingCtrl: LoadingController,public actionSheetCtrl: ActionSheetController) {
+/*this.dates=[
+this.nowDate.toISOString(),
+this.nowDate.toISOString(),
+this.nowDate.toISOString(),
+this.nowDate.toISOString(),
 
+]*/
 		//this.loading=true;
 	this.companyid=navParams.get("co_id");
 	//	this.presentLoading();
@@ -94,10 +103,11 @@ companyid=3;
 			this.loader.present();
 		}
 
-		presentActionSheet() {
+		presentActionSheet(x) {
 			let actionSheet = this.actionSheetCtrl.create({
 				// title: '',
 				buttons: [
+				
 					{
 						text: '17 Jan, 11:00 AM',
 						handler: () => {

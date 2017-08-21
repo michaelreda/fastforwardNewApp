@@ -9,6 +9,7 @@ import {LoginPage} from'../login/login';
 import {DataService} from '../../providers/data-service';
 import { Facebook} from '@ionic-native/facebook';
 import { Storage } from '@ionic/storage';
+import { App } from 'ionic-angular';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class Profile {
 	user_simulations:any=[];
 	refresher:any;
 
-	constructor(public navCtrl: NavController, navParams: NavParams,public http: Http, public alertCtrl:AlertController,public loadingCtrl: LoadingController,public actionSheetCtrl: ActionSheetController,private fb: Facebook,private store: Storage,private DS:DataService) {
+	constructor(private app:App,public navCtrl: NavController, navParams: NavParams,public http: Http, public alertCtrl:AlertController,public loadingCtrl: LoadingController,public actionSheetCtrl: ActionSheetController,private fb: Facebook,private store: Storage,private DS:DataService) {
 	
 
 		this.store.get('user_id').then((val) => {
@@ -122,8 +123,8 @@ export class Profile {
 
 this. store.set('user_id', "");
 this.fb.logout();
-this.navCtrl.parent().setRoot(LoginPage);
-          
+const root = this.app.getRootNav().setRoot(LoginPage);
+//root.popToRoot();
 
 		}
 

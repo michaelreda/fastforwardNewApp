@@ -67,14 +67,13 @@ this.DS.load().subscribe(
             this.StartDate=new Date(this.check.dead_line);
           console.log('date',this.StartDate);
           this.StartDate.setMilliseconds(0);
-          console.log(this.check.dead_line);
-          
+         
+          this.timer=  Observable.interval(1000 ).subscribe(x => {
+            this.timercal();
           });
         
        
-       
-  this.timer=  Observable.interval(1000 ).subscribe(x => {
-      this.timercal();
+ 
   });
 
 
@@ -83,7 +82,6 @@ this.DS.load().subscribe(
   timercal(){
 let dump =new Date();
 dump.getTimezoneOffset();
-//console.log('dump',dump);
 let diff=this.StartDate.getTime() - dump.getTime();
 var timeDiff = Math.abs(diff);
    this. diffDays = Math.floor(timeDiff / (1000 * 3600 * 24));  
