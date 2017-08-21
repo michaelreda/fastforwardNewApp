@@ -35,7 +35,12 @@ export class Profile {
 				//this.loading=false;
 			});
 			
-			
+			http.get("https://ffserver.eu-gb.mybluemix.net/user_simulations?id="+val).subscribe(data => {
+				var res = JSON.parse(data['_body']);
+				this.user_simulations=res;
+				console.log(this.user_info);
+				//this.loading=false;
+			});
 			});
 				 
 
