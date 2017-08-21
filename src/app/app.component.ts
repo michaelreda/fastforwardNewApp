@@ -35,7 +35,8 @@ nextpage;
     
 
     });
- //    this.rootPage=TimerPage;}
+  
+   //  this.rootPage=TabsPage;}
 
 
     store.get('user_id').then((val) => {
@@ -49,8 +50,8 @@ nextpage;
         this.rootPage = LoginPage;
       }
       else {
-
-        this.rootPage = TimerPage;
+        if (val==324) this.rootPage=TabsPage;
+       else this.rootPage = TimerPage;
 
       }
 

@@ -5,7 +5,8 @@
     <author email="hi@ionicframework" href="http://ionicframework.com/">Fast Forward</author>
      <content src="index.html" />
     <access origin="*" />
-    <allow-navigation href="http://ionic.local/*" />
+    <allow-nav
+    <allow-navigation href="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />

@@ -5,7 +5,7 @@ import { LoadingController } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular'
 import {  Requestdate } from "../requestdate/requestdate";
 import {Http} from '@angular/http';
-
+import { Storage } from '@ionic/storage';
 
 
 @Component({
@@ -21,37 +21,13 @@ export class ItemDetailPage {
 	loader:any={};
 	read_more=[];
 	follow="Follow";
-companyid=3;
-/*
-dates:any=[];
-nowDate=new Date();*/
-	constructor(public navCtrl: NavController, navParams: NavParams, http: Http, public alertCtrl:AlertController,public loadingCtrl: LoadingController,public actionSheetCtrl: ActionSheetController) {
-/*this.dates=[
-this.nowDate.toISOString(),
-this.nowDate.toISOString(),
-this.nowDate.toISOString(),
-this.nowDate.toISOString(),
-
-]*/
-		//this.loading=true;
+  companyid=3;
+userid;
+	constructor( private store:Storage,public navCtrl: NavController, navParams: NavParams, private http: Http, public alertCtrl:AlertController,public loadingCtrl: LoadingController,public actionSheetCtrl: ActionSheetController) {
+	//this.loading=true;
 	this.companyid=navParams.get("co_id");
 	//	this.presentLoading();
-		http.get("https://ffserver.eu-gb.mybluemix.net/company_details?company_id="+this.companyid).subscribe(data => {
-			var res = JSON.parse(data['_body']);
-			this.company_details=res;
-			console.log(this.company_details);
-			//this.loader.dismiss();
-			// this.loading=false;
-		});
-		http.get("https://ffserver.eu-gb.mybluemix.net/get_company_simulations?company_id="+this.companyid).subscribe(data => {
-			var res = JSON.parse(data['_body']);
-			this.company_simulations =res;
-			for (let entry of this.read_more) {
-				entry=false;
-			}
-			console.log(this.company_simulations);
-			// this.loading=false;
-		});
+	
 	}
 
 
@@ -108,25 +84,7 @@ this.nowDate.toISOString(),
 				// title: '',
 				buttons: [
 				
-					{
-						text: '17 Jan, 11:00 AM',
-						handler: () => {
-							console.log('17 Jan, 11:00 AM');
-						}
-					},
-					{
-						text: '20 Feb, 7:300 AM',
-						handler: () => {
-							console.log('20 Feb, 7:300 AM');
-						}
-					},
-					{
-						text: 'Request new Time',
-						role: 'destructive',
-						handler: () => {
-						this.navCtrl.push(Requestdate);
-						}
-					},
+					
 					{
 						text: 'Cancel',
 						role: 'cancel',
@@ -136,15 +94,59 @@ this.nowDate.toISOString(),
 					}
 				]
 			});
-
+			
+			x.dates.forEach(element => {
+				actionSheet.addButton({text:element.date,
+				handler:()=>{
+				this.showalert(element.date_id,x);
+				}})
+			});
 			actionSheet.present();
 		}
 
 
-		// read_more(i){
-		// 	// console.log(i);
-		// 	// document.getElementsById("more_text_"+i).style.display = 'block';
-		// 	// document.getElementsById("read_more_"+i).style.display = 'none';
-		// }
+showalert(y,x){
 
+	this.http.get("https://ffserver.eu-gb.mybluemix.net/apply?user_id="+this.userid+"&simulation_date_id="+y).subscribe(
+		data => {
+			var res = JSON.parse(data['_body']);
+          	x.status=res.result;
+
+	});
+}
+	
+
+
+		ngOnInit() {
+			//console.log('timer page');
+			
+		  this.store.get('user_id').then((val) => {
+		  this.setid(val);
+		  this.http.get("https://ffserver.eu-gb.mybluemix.net/company_details?company_id="+this.companyid).subscribe(data => {
+			var res = JSON.parse(data['_body']);
+			this.company_details=res;
+			console.log(this.company_details);
+			//this.loader.dismiss();
+			// this.loading=false;
+		});
+		this.http.get("https://ffserver.eu-gb.mybluemix.net/get_company_simulations2?company_id="+this.companyid+"&user_id="+this.userid).subscribe(data => {
+			var res = JSON.parse(data['_body']);
+			this.company_simulations =res;
+			for (let entry of this.read_more) {
+				entry=false;
+			}
+			console.log(this.company_simulations);
+			// this.loading=false;
+		});
+		  
+		  
+		  });
+					  
+		}
+
+		setid(val){
+
+        this.userid=val;
+
+		}
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ItemDetailPage } from '../item-detail/item-detail';
-
+import { Storage } from '@ionic/storage';
 import {DataService} from '../../providers/data-service';
 /**
  * Generated class for the Listcareer page.
@@ -26,8 +26,8 @@ class:any=[];
 date:any=[];
 size:any[];
 setdage:any={lower:0,upper:1000};
-
-  constructor(public navCtrl: NavController, public navParams: NavParams,private DS:DataService) {
+userid;
+  constructor(public navCtrl: NavController, public navParams: NavParams,private DS:DataService,private store:Storage) {
 this.img=navParams.get("img");
 this.id=navParams.get("id");
  this.colleage="menu";
@@ -45,12 +45,16 @@ resetarray(){
 
 
  ngOnInit(){
-this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/get-field-simulation2?field_id="+this.id);
+  this.store.get('user_id').then((val) => {
+    this.userid=val;
+   console.log('user',this.userid);
+   
+this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/get-field-simulation?field_id="+this.id+"&user_id="+this.userid);
 this.DS.load().subscribe(
-            data => this.setvalue(data)
+            data => {this.setvalue(data);}
             
         );
-          
+      });
           
  }
       setvalue(value){

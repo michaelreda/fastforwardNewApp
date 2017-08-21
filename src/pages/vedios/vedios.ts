@@ -55,8 +55,8 @@ if(x.liked) {
 	//like link
 	this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/dislike-video?user_id=1&video_id="+x.video_id);
 this.DS.load().subscribe(
-						data => this.dump
-
+						data =>{ this.dump
+						x.likes--;}
 				);
 }
 else{
@@ -65,8 +65,8 @@ x.liked=true;
 
 	this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/like-video?user_id=1&video_id="+x.video_id);
 this.DS.load().subscribe(
-						data => this.dump
-
+						data =>{ this.dump;
+						x.likes++;}
 );
 }
 
