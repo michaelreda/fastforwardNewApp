@@ -20,12 +20,12 @@ export class Registerform {
   degree = "";
   name = "";
   email = "";
-  age = "";
+  localDate ;
   check;
   ios: boolean = false;
   connection_error_popup: any;
   promo_code: string = "";
-
+  age=new Date();
   constructor(public navCtrl: NavController,  public http: Http,public navParams: NavParams,public alertCtrl: AlertController,private DS:DataService,private fb: Facebook,public plt: Platform,private network: Network, private loadingCtrl: LoadingController, private store: Storage) {
 
     this.network.onDisconnect().subscribe(() => {
@@ -38,7 +38,7 @@ export class Registerform {
     this.network.onConnect().subscribe(() => {
       this.connection_error_popup.dismiss();
     });
-
+  
     this.name = navParams.get("name");
     this.age = navParams.get("age");
     this.email = navParams.get("email");
@@ -46,21 +46,31 @@ export class Registerform {
     if (plt.is('ios')) {
       this.ios = true;
     }
+    this.localDate=new Date();
+    this.localDate.setMonth(1);
+    this.localDate.setFullYear(1917);
+    this.localDate.setHours(0);
   }
+  setDate(event){
+    this.age=event;
+    this.age.setHours(this.age.getHours()+2);
+    }
 
 
   register(pass, school, phone,promo) {
     console.log("register");
     console.log(this.promo_code)
 
-    if (this.name != "" && this.email != "" && pass != "" && school != "" && this.age != "" && phone != "") {
+    if (this.name != "" && this.email != "" && pass != "" && school != "" && this.age !=this.localDate && phone != "" ){
       console.log("not null");
+      if(phone<1299999999 &&phone>1000000000)this.showAlert("Enter a valid phone number");
+      else{
      let user={
         
         degree:this.degree,
         user_name:this.name,
         user_email:this.email,
-        age:this.age,
+        birth_date:this.age.toISOString(),
         password:pass,
         school:school,
         phone_no:phone,
@@ -69,13 +79,7 @@ export class Registerform {
         
         }
         
-/*
-      this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/register2?password=" + pass + "&user_name" + this.name + "&degree=" + this.degree + "&user_email=" + this.email + "&school=" + school + "&phone_no=" + phone + "&age=" + this.age + "&promo_code=" + this.promo_code);
-      this.DS.load().subscribe(
-        data => (this.setresponse(data))
 
-      );
-*/
 console.log('user',user);
 
 this.http.post("https://ffserver.eu-gb.mybluemix.net/register2", user).subscribe(data => {
@@ -88,7 +92,7 @@ this.http.post("https://ffserver.eu-gb.mybluemix.net/register2", user).subscribe
   console.log('res',res);
 });
 
-    }
+    }}
 
     else {
 

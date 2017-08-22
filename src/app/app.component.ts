@@ -36,7 +36,7 @@ nextpage;
 
     });
   
-   //  this.rootPage=TabsPage;}
+   //this.rootPage=Registerform;}
 
 
     store.get('user_id').then((val) => {

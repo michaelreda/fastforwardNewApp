@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {DataService} from '../../providers/data-service';
-import {AboutPage} from '../about/about' ; 
 import { AlertController } from 'ionic-angular';
 
 /**
@@ -17,12 +15,9 @@ import { AlertController } from 'ionic-angular';
 })
 export class VersionCheckPage {
   check ; 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private DS: DataService ,public alertCtrl: AlertController ) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController ) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad VersionCheckPage');
-    
-}
+ 
 
 }
