@@ -19,19 +19,20 @@
 	<ion-list>
 		<ion-item *ngFor="let x of date">
 			<div class="row" padding-left>
-				<div style="width:79.5%">
-					<p style="font-size: 1.6rem;float: left;">{{x.date}}</p>
+				<div style="width:70.5%">
+					<p style="font-size: 1.4rem;float: left;">{{x.date}}</p>
 				</div>
-				<div style="width:19.5%;float: right;"> <i class="fa fa-users" style="color:#32db64;font-size: 2rem;"></i>
-					<p style="color:#32db64;font-size:2rem;">{{x.votes}}</p>
+				<div style="width:25.5%;float: right;"> <button ion-button block ion-datepicker color="ffPrimary" (click)="presentActionSheet()" style="height: 2rem;font-size: 17px;"><strong>VOTE</strong></button>
+					<p style="color:#32db64;font-size:1.8rem;">{{x.votes}}</p>
 				</div>
 			</div>
 		</ion-item>
 	</ion-list>
-	<!-- <ion-toolbar style="text-align:center;">
+	<!-- <ion-toolbar style="text-align:center;"><button color="ffPrimary" (click)="presentActionSheet()"><strong>VOTE</strong></button>
+	 													
 			 <span ion-datepicker (ionChanged)="setDate($event);" [value]="localDate" [min]="localDate" full="true" calendar="true" clear class="ScheduleDate">
 				<span color="primary" style="font-size:2rem;font-weight:bold;text-align:center;">{{nowDate | date:"dd MM yyyy HH:mm "}} <ion-icon name="clipboard" item-right color="primary" ></ion-icon> </span>
-		</span>
+		</span><i class="fa fa-users" style="color:#32db64;font-size: 2rem;"></i>
 </ion-toolbar> -->
 
 	<button ion-button block ion-datepicker (ionChanged)="setDate($event);" [value]="localDate" [min]="localDate" style="height: 50px;font-size: 17px;"
