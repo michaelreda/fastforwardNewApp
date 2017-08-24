@@ -25,6 +25,9 @@ export class Registerform {
   ios: boolean = false;
   connection_error_popup: any;
   promo_code: string = "";
+  day;
+  month;
+  year;
   age=new Date();
   constructor(public navCtrl: NavController,  public http: Http,public navParams: NavParams,public alertCtrl: AlertController,private DS:DataService,private fb: Facebook,public plt: Platform,private network: Network, private loadingCtrl: LoadingController, private store: Storage) {
 
@@ -40,16 +43,13 @@ export class Registerform {
     });
   
     this.name = navParams.get("name");
-    this.age = navParams.get("age");
+   // this.age = navParams.get("age");
     this.email = navParams.get("email");
     //alert(this.name+this.age+this.email);
     if (plt.is('ios')) {
       this.ios = true;
     }
-    this.localDate=new Date();
-    this.localDate.setMonth(1);
-    this.localDate.setFullYear(1917);
-    this.localDate.setHours(0);
+  
   }
   setDate(event){
     this.age=event;
@@ -60,6 +60,9 @@ export class Registerform {
   register(pass, school, phone,promo) {
     console.log("register");
     console.log(this.promo_code)
+
+this.age.setFullYear(this.year,this.month,this.day);
+console.log('age',this.age);
 
     if (this.name != "" && this.email != "" && pass != "" && school != "" && this.age !=this.localDate && phone != "" ){
       console.log("not null");

@@ -114,8 +114,8 @@ this.DS.load().subscribe(
 
 			//alert('vedio is shared');
 			//alert(JSON.stringify(response.authResponse)
-		)
-		},(error)=>{})
+		
+		},(error)=>{});
 
 
 

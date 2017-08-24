@@ -7,7 +7,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { TimerPage } from '../pages/timer/timer';
-
 import { Storage } from '@ionic/storage';
 
 import { DataService } from '../providers/data-service';
@@ -36,8 +35,7 @@ nextpage;
 
     });
   
- //  this.rootPage=TabsPage;}
-
+//  this.rootPage=Registerform;}
 
     store.get('user_id').then((val) => {
       console.log('store', val);
