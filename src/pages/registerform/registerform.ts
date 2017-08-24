@@ -89,7 +89,7 @@ console.log('age',this.age);
 
 console.log('user',user);
 
-this.http.post("https://ffserver.eu-gb.mybluemix.net/register2", user).subscribe(data => {
+this.http.post("https://ffserver.eu-gb.mybluemix.net/register3", user).subscribe(data => {
   //var res = JSON.parse(data['_body']);
 
   
