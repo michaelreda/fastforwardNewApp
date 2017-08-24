@@ -101,6 +101,16 @@ userid;
 				this.showalert(element.date_id,x);
 				}})
 			});
+
+				actionSheet.addButton(
+				{
+						text: 'Request New Date!',
+						handler: () => {
+
+							this.navCtrl.push(Requestdate,{SimID:x.simulation_id }) ; 
+						}
+				}
+			); 
 			actionSheet.present();
 		}
 
