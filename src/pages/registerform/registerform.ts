@@ -28,6 +28,8 @@ export class Registerform {
   day;
   month;
   year;
+  major="";
+//  getage;
   age=new Date();
   constructor(public navCtrl: NavController,  public http: Http,public navParams: NavParams,public alertCtrl: AlertController,private DS:DataService,private fb: Facebook,public plt: Platform,private network: Network, private loadingCtrl: LoadingController, private store: Storage) {
 
@@ -43,9 +45,10 @@ export class Registerform {
     });
   
     this.name = navParams.get("name");
-   // this.age = navParams.get("age");
+  // this.getage = navParams.get("age");
     this.email = navParams.get("email");
     //alert(this.name+this.age+this.email);
+    
     if (plt.is('ios')) {
       this.ios = true;
     }
@@ -66,7 +69,7 @@ console.log('age',this.age);
 
     if (this.name != "" && this.email != "" && pass != "" && school != "" && this.age !=this.localDate && phone != "" ){
       console.log("not null");
-      if(phone<1299999999 &&phone>1000000000)this.showAlert("Enter a valid phone number");
+      if(phone>1299999999 && phone<1000000000)this.showAlert("Enter a valid phone number");
       else{
      let user={
         
@@ -79,6 +82,7 @@ console.log('age',this.age);
         phone_no:phone,
         promo_code:promo,
         interests:this.interests,
+        major:this.major
         
         }
         

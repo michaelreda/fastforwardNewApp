@@ -52,7 +52,7 @@ import {VersionCheckPage} from '../pages/version-check/version-check';
     LoginPage,
     TimerPage,
     CountdownPipe,
-    VersionCheckPage 
+    VersionCheckPage,
   ],
   imports: [
     BrowserModule,
