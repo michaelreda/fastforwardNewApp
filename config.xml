@@ -3,9 +3,8 @@
     <name>Fast Forward</name>
     <description>An awesome app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Fast Forward</author>
-     <content src="index.html" />
+    <content src="index.html" />
     <access origin="*" />
-    <allow-nav
     <allow-navigation href="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -46,7 +45,6 @@
         <splash density="port-xxhdpi" src="resources/SplashScreen.png" />
         <splash density="port-xxxhdpi" src="resources/SplashScreen.png" />
     </platform>
-    
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
@@ -84,6 +82,7 @@
     <allow-navigation href="http://192.168.163.1:8100" />
     <allow-navigation href="http://192.168.163.1:8101" />
     <engine name="android" spec="^6.2.3" />
+    <engine name="ios" spec="^4.4.0" />
     <plugin name="cordova-plugin-android-permissions" spec="^1.0.0" />
     <plugin name="cordova-plugin-console" spec="^1.0.5" />
     <plugin name="cordova-plugin-device" spec="^1.1.4" />
