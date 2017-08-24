@@ -109,12 +109,13 @@ this.DS.load().subscribe(
 }
 }
 
- share(){
-		 this.sharefb.shareViaFacebook("Download the app",null,"https://www.youtube.com/embed/_Xcmh1LQB9I").then((response)=>{
+ share(vedio_link){
+		 this.sharefb.shareViaFacebook("Fast Forward",null,vedio_link).then((response)=>{
 
 			//alert('vedio is shared');
-			alert(JSON.stringify(response.authResponse))
-		},(error)=>{alert(error)})
+			//alert(JSON.stringify(response.authResponse)
+		)
+		},(error)=>{})
 
 
 
