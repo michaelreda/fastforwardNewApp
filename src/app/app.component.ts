@@ -36,8 +36,8 @@ nextpage;
 
     });
   
-   //this.rootPage=Registerform;}
-
+   this.rootPage=TabsPage;}
+/*
 
     store.get('user_id').then((val) => {
       console.log('store', val);
@@ -72,6 +72,6 @@ nextpage;
       this.store.set('version',"");
     }
     else this.store.set('version',null);
-  }
+  }*/
 }
 
