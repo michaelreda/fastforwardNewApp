@@ -71,7 +71,57 @@ userid;
 			alert.present();
 		}
 
+			open_promo_code_popup(){
+			let alert = this.alertCtrl.create({
+				title: 'PromoCode',
+				inputs: [
+					{
+						name: 'promo_code',
+						placeholder: 'Enter Your Promo Code here...',
+						type: 'text'
+					}
+				],
+				buttons: [
+					{
+						text: 'Cancel',
+						role: 'cancel',
+						handler: data => {
+							console.log('Cancel clicked');
+							//alert.dismiss() ; 
+						}
+					},
+					{
+						text: 'Enter',
+						handler: data => {  
+							console.log("data" , data) ; 
+							var url = "https://ffserver.eu-gb.mybluemix.net/get-promo-code-discount?company_id="+this.companyid+"&promo_code="+data.promo_code ;
+							console.log(url) ;  
+							this.http.get("https://ffserver.eu-gb.mybluemix.net/get-promo-code-discount?company_id="+this.companyid+"&promo_code="+data.promo_code).subscribe(
+								data2 => {
+									//console.log("got response" ,res.price) ; 
+									var res = JSON.parse(data2['_body']);
+									if (res.length ===0 )
+										this.showNotValidAlert() ; 
+									else {
+									for ( var i = 0 ; i< this.company_simulations.length ; i++ )
+											this.company_simulations[i].price = this.company_simulations[i].price * res.price ; 
+									} 
+										});
+						}
+					}
+				]
+			}).present();
+			//alert.present();
+		}
 
+		showNotValidAlert() {
+			let alert = this.alertCtrl.create({
+			title: ' ',
+			subTitle: 'This Promo Code is not Valid For This Simulation',
+			buttons: ['OK']
+			});
+			alert.present();
+		}
 		presentLoading() {
 			this.loader = this.loadingCtrl.create({
 				content: "Please wait..."
@@ -109,7 +159,19 @@ userid;
 
 							this.navCtrl.push(Requestdate,{SimID:x.simulation_id }) ; 
 						}
-				}
+				} 
+			); 
+			actionSheet.addButton(
+
+			
+				{
+						text: 'Add Promo Code',
+						handler: () => {
+							setTimeout(() => {
+							this.open_promo_code_popup() ; 
+						}, 100);
+						}
+				} 
 			); 
 			actionSheet.present();
 		}

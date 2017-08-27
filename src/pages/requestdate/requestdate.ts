@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {DataService} from '../../providers/data-service';
 import {Http} from '@angular/http';
 import { Storage } from '@ionic/storage';
+import { AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the Requestdate page.
@@ -24,7 +25,7 @@ export class Requestdate {
    dump:any;
     dump1:any;
     formGroup;
-  constructor(public http: Http,public navCtrl: NavController, public navParams: NavParams,private DS:DataService,private store:Storage) {
+  constructor(public http: Http,public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams,private DS:DataService,private store:Storage) {
     this.simulation_id = navParams.get("SimID"); 
   
   }
@@ -66,7 +67,8 @@ var theDate = this.nowDate.toISOString() ;
                         console.log(theDate2) ; 
                         var dateObj = {
                         date : theDate , 
-                        votes :"1" 
+                        votes :"1" ,
+                        id: data.simDateID    
                         }
                       this.date.push(dateObj) ;   
                       console.log("done"); 
@@ -79,6 +81,34 @@ var theDate = this.nowDate.toISOString() ;
 
   
 }
+
+vote (simulation_date_id , index){
+
+  console.log("iam here" , simulation_date_id) ;
+  this.store.get('user_id').then((val) => {
+
+    this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/vote-for-date?simulation_date_id="+simulation_date_id+"&user_id="+val);
+    this.DS.load().subscribe(
+            data => { //this.date= data ;
+                  console.log("inside" , simulation_date_id) ;
+                if (data.msg==="")
+                  this.date[index].votes += 1 ; 
+                else 
+                 this. showAlert() ; 
+            });
+  }) ; 
+
+}
+
+
+showAlert() {
+    let alert = this.alertCtrl.create({
+      title: ' ',
+      subTitle: 'You Have Already Voted For This Date',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
 
 TransfromDate (date)
 {
