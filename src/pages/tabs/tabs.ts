@@ -8,6 +8,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { Network } from '@ionic-native/network';
+import { AcceptapplicantsPage } from "../acceptapplicants/acceptapplicants";
 
 
 
@@ -55,7 +56,7 @@ export class TabsPage {
 
 	presentAdminActionSheet() {
 		let actionSheet = this.actionSheetCtrl.create({
-			// title: '',
+
 			buttons: [
 				{
 					text: 'Add Simulation',
@@ -77,6 +78,13 @@ export class TabsPage {
 						}, 100);
 					}
 				},
+				{
+					text: 'Accept Applicants',
+					handler: () => {
+					this.navCtrl.push(AcceptapplicantsPage);
+					}
+				},
+									
 				{
 					text: 'Cancel',
 					role: 'cancel',

@@ -11,7 +11,6 @@ import { Storage } from '@ionic/storage';
 import {Registerform} from '../pages/registerform/registerform';
 import { DataService } from '../providers/data-service';
 import { Network } from '@ionic-native/network';
-
 @Component({
   templateUrl: 'app.html',
   
@@ -38,7 +37,7 @@ nextpage;
 
     });
   
-// this.rootPage=TabsPage;}
+ //this.rootPage=TabsPage;}
 
     store.get('user_id').then((val) => {
       console.log('store', val);

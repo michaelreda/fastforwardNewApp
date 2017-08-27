@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Http } from '@angular/http';
 
-/**
- * Generated class for the Applicants page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 @IonicPage()
 @Component({
   selector: 'page-applicants',
@@ -14,24 +9,53 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class Applicants {
 
-  applicants:any=[];
-  rate=3;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.applicants=[{name:"Adel",age:19,school:"Helwan university", rating:3 },
-    {name:"Mariem",age:17,school:"El-Azhr High school", rating:2},
-    {name:"Ahmed",age:21,school:"Ein-Shams university", rating:5 },
-    {name:"Noha",age:18,school:"Ahmed Zewail High school", rating:4 },
-];
+  acceptedapplicants:any=[];
+  refusedapplicants:any=[];
+ sim_name;
+ sim_id;
+ list;
+ applied;
+ accepted;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
+   this.list="applied";
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Applicants');
-  }
+ 
 
-
-  accepted(){
+  accept(){
 
 
     
   }
+  ngOnInit() {
+
+this.sim_name=this.navParams.get("name");
+this.sim_id=this.navParams.get("id")
+
+this.http.get("https://ffserver.eu-gb.mybluemix.net/get-applicants?simulation_date_id="+this.sim_id).subscribe(data => {
+  var res = JSON.parse(data['_body']);
+  this.applied=res.applied;
+ this.accepted=res.accepted;
+ console.log("applied",this.applied);
+ console.log("accepted",this.accepted);
+ 
+ 
+});
+  }
+
+  switch(){
+    
+    
+    if(this.list=="applied"){
+    
+    this.list="accepted";
+    
+    
+    }
+    else{
+      this.list="applied";
+    }
+    
+    }
+
 }

@@ -19,6 +19,7 @@ import {LoginPage  } from "../pages/login/login";
 import { TimerPage } from '../pages/timer/timer';
 import{DataService} from '../providers/data-service';
 import { User } from '../providers/user';
+import { AcceptapplicantsPage } from "../pages/acceptapplicants/acceptapplicants";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -33,6 +34,7 @@ import { SafepipePipe } from '../pipes/safepipe/safepipe';
 import { CountdownPipe } from '../pipes/countdown/countdown';
 import { Network } from '@ionic-native/network';
 import {VersionCheckPage} from '../pages/version-check/version-check';
+import { RatingPipe } from '../pipes/rating/rating';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import {VersionCheckPage} from '../pages/version-check/version-check';
     TimerPage,
     CountdownPipe,
     VersionCheckPage,
+    AcceptapplicantsPage,
+    RatingPipe
   ],
   imports: [
     BrowserModule,
@@ -79,7 +83,8 @@ import {VersionCheckPage} from '../pages/version-check/version-check';
     Profile,
     LoginPage,
     TimerPage,
-    VersionCheckPage
+    VersionCheckPage,
+    AcceptapplicantsPage
   ],
   providers: [
     StatusBar,
