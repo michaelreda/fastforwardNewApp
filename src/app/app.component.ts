@@ -1,15 +1,16 @@
 import { VersionCheckPage } from './../pages/version-check/version-check';
 import { TabsPage } from './../pages/tabs/tabs';
 import { Component } from '@angular/core';
-import { Platform, NavController, NavParams } from 'ionic-angular';
+import { Platform, NavController, NavParams , LoadingController} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { TimerPage } from '../pages/timer/timer';
 import { Storage } from '@ionic/storage';
-
+import {Registerform} from '../pages/registerform/registerform';
 import { DataService } from '../providers/data-service';
+import { Network } from '@ionic-native/network';
 
 @Component({
   templateUrl: 'app.html',
@@ -25,7 +26,9 @@ export class MyApp {
 date;
 nextpage;
   check;
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private store: Storage, private DS: DataService) {
+
+  connection_error_popup: any;
+  constructor(platform: Platform, statusBar: StatusBar, private loadingCtrl: LoadingController, splashScreen: SplashScreen, private store: Storage, private DS: DataService,private network: Network) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -35,7 +38,7 @@ nextpage;
 
     });
   
- //this.rootPage=TabsPage;}
+// this.rootPage=TabsPage;}
 
     store.get('user_id').then((val) => {
       console.log('store', val);
@@ -59,7 +62,16 @@ nextpage;
 
   ngOnInit() {
 
-
+    this.network.onDisconnect().subscribe(() => {
+      this.connection_error_popup = this.loadingCtrl.create({
+        content: "No internet connection !",
+        spinner: 'hide'
+      });
+      this.connection_error_popup.present();
+    });
+    this.network.onConnect().subscribe(() => {
+      this.connection_error_popup.dismiss();
+    });
   }
 
   handelResponse(data) {

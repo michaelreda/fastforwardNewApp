@@ -29,7 +29,7 @@ export class Registerform {
   month;
   year;
   major="";
-//  getage;
+loader;
   age=new Date();
   constructor(public navCtrl: NavController,  public http: Http,public navParams: NavParams,public alertCtrl: AlertController,private DS:DataService,private fb: Facebook,public plt: Platform,private network: Network, private loadingCtrl: LoadingController, private store: Storage) {
 
@@ -71,6 +71,7 @@ console.log('age',this.age);
       console.log("not null");
       if(phone>1299999999 && phone<1000000000)this.showAlert("Enter a valid phone number");
       else{
+        this.presentLoading() ;
      let user={
         
         degree:this.degree,
@@ -89,6 +90,7 @@ console.log('age',this.age);
 
 console.log('user',user);
 
+
 this.http.post("https://ffserver.eu-gb.mybluemix.net/register3", user).subscribe(data => {
   //var res = JSON.parse(data['_body']);
 
@@ -97,6 +99,7 @@ this.http.post("https://ffserver.eu-gb.mybluemix.net/register3", user).subscribe
   this.setresponse(res);
   // this.user_simulations=res;
   console.log('res',res);
+  this.dismissLoading();
 });
 
     }}
@@ -150,6 +153,21 @@ this.store.set('user_id', this.check.user_id);
     this.email = response.email;
     this.age = response.birthday;
 
+
+  }
+
+  presentLoading() {
+    this. loader = this.loadingCtrl.create({
+      content: "Please wait...",
+      
+    });
+   this. loader.present();
+  }
+
+  dismissLoading() {
+
+
+this.loader.dismiss();
 
   }
 
