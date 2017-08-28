@@ -1,3 +1,4 @@
+import { TutorialPage } from './../pages/tutorial/tutorial';
 import { VersionCheckPage } from './../pages/version-check/version-check';
 import { TabsPage } from './../pages/tabs/tabs';
 import { Component } from '@angular/core';
@@ -47,12 +48,14 @@ nextpage;
       );
       if (val == null || val == "") {
 
-        this.rootPage = LoginPage;
+        // this.rootPage = LoginPage;
+        this.rootPage= TutorialPage;
       }
       else {
         if (val==324) this.rootPage=TabsPage;
-       else this.rootPage = TimerPage;
-
+       else 
+        // this.rootPage = TimerPage;
+        this.rootPage= TutorialPage;
       }
 
     });
@@ -77,7 +80,8 @@ nextpage;
     this.check = data.result;
     console.log(this.check);
     if (!this.check) {
-      this.rootPage = VersionCheckPage;
+      // this.rootPage = VersionCheckPage;
+      this.rootPage= TutorialPage;
       this.store.set('version',"");
     }
     else this.store.set('version',null);

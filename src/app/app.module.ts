@@ -1,3 +1,4 @@
+import { TutorialPage } from './../pages/tutorial/tutorial';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -56,7 +57,8 @@ import { RatingPipe } from '../pipes/rating/rating';
     CountdownPipe,
     VersionCheckPage,
     AcceptapplicantsPage,
-    RatingPipe
+    RatingPipe,
+    TutorialPage
   ],
   imports: [
     BrowserModule,
@@ -84,7 +86,8 @@ import { RatingPipe } from '../pipes/rating/rating';
     LoginPage,
     TimerPage,
     VersionCheckPage,
-    AcceptapplicantsPage
+    AcceptapplicantsPage,
+    TutorialPage
   ],
   providers: [
     StatusBar,
