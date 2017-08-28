@@ -32,5 +32,7 @@ page-tutorial {
         color: #000000;
       }
     }
-  
+    .swiper-pagination-bullet-active{
+      background: color($colors,ffPrimary);
+    }
   }

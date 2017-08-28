@@ -1,3 +1,4 @@
+import { AboutPage } from './../about/about';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -26,15 +27,25 @@ export class TutorialPage {
             title: "FIRST SLIDE",
             description: "hi HI",
             image: 'assets/facebook.png',
-          }
+          },
+          {
+            title: "Second SLIDE",
+            description: "hi HI",
+            image: 'assets/facebook.png',
+          },
+          {
+            title: "Third SLIDE",
+            description: "hi HI",
+            image: 'assets/facebook.png',
+          },
         ];
   }
 
   startApp() {
-    // this.navCtrl.setRoot(WelcomePage, {}, {
-    //   animate: true,
-    //   direction: 'forward'
-    // });
+    this.navCtrl.setRoot(AboutPage, {}, {
+      animate: true,
+      direction: 'forward'
+    });
   }
 
   onSlideChangeStart(slider) {
