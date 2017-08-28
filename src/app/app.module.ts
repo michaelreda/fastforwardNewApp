@@ -36,7 +36,18 @@ import { CountdownPipe } from '../pipes/countdown/countdown';
 import { Network } from '@ionic-native/network';
 import {VersionCheckPage} from '../pages/version-check/version-check';
 import { RatingPipe } from '../pipes/rating/rating';
+import {AngularFireModule} from "angularfire2" ; 
+import firebase from "firebase";
+ 
 
+ var config = {
+    apiKey: "AIzaSyDLdE-P0vHPTnxIpnA5-Nm3yFlabOaUE78",
+    authDomain: "wello-trial.firebaseapp.com",
+    databaseURL: "https://wello-trial.firebaseio.com",
+    projectId: "wello-trial",
+    storageBucket: "",
+    messagingSenderId: "694576382775"
+  };
 @NgModule({
   declarations: [
     MyApp,
@@ -67,7 +78,8 @@ import { RatingPipe } from '../pipes/rating/rating';
     DatePickerModule,
      HttpModule,
      BrowserAnimationsModule,
-     IonicStorageModule.forRoot()
+     IonicStorageModule.forRoot(),  
+     AngularFireModule.initializeApp(config) 
   ],
   bootstrap: [IonicApp],
   entryComponents: [
