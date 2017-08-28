@@ -21,23 +21,22 @@ export class Applicants {
  refrence;
  original;
  pretab;
+ sim_price;
+ app_bool=false;
+ acc_bool=false;
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
    this.list="applied";
+   this.app_bool=true;
   this. pretab=false;
   }
 
  
 
-  accept(){
-
-
-    
-  }
   ngOnInit() {
 
 this.sim_name=this.navParams.get("name");
 this.sim_id=this.navParams.get("id")
-
+this.sim_price=this.navParams.get("price")
 this.http.get("https://ffserver.eu-gb.mybluemix.net/get-applicants?simulation_date_id="+this.sim_id).subscribe(data => {
   var res = JSON.parse(data['_body']);
   this.applied=res.applied;
@@ -48,7 +47,8 @@ this.http.get("https://ffserver.eu-gb.mybluemix.net/get-applicants?simulation_da
   }
 
   switchapplied(){
-    
+    this.app_bool=true;
+    this.acc_bool=false;
    this.list="applied";
    
    if(this.pretab==true){
@@ -60,6 +60,9 @@ this.filter();
     }
     switchaccepted(){
       
+   this.app_bool=false;
+   this.acc_bool=true;
+
      this.list="accepted";
      if(this.pretab==true){
       
@@ -77,10 +80,13 @@ this.filter();
 this.list="filter";
 this.pretab=true;
 
+this.app_bool=false;
+this.acc_bool=false;
       }
       else{
 this.list="applied";
 this.pretab=false;
+this.app_bool=true;
 this.filter();
       }
     }
@@ -120,6 +126,45 @@ this.applied = this.original.filter(
      return (item.rating>=this.setdage.lower && item.rating<=this.setdage.upper);
    });
 
+
+}
+
+
+accept(i,x){
+  console.log("accept",i);
+  this.accepted.push(this.applied[i]);
+ this.applied.splice(i,1);
+ this.original=this.refrence=this.applied;
+ console.log("applied",this.applied);
+
+ let applicant={
+user_id:x.user_id,
+price:this.sim_price,
+simulation_date_id:this.sim_id
+
+ }
+     
+ this.http.post("https://ffserver.eu-gb.mybluemix.net/accept-applicants?",applicant).subscribe(data => {
+  var res = JSON.parse(data['_body']);
+
+ });
+    }
+
+reject(i,x){
+  console.log("reject",i);
+  this.applied.splice(i,1);
+  this.original=this.refrence=this.applied;
+  let applicant={
+    user_id:x.user_id,
+    price:this.sim_price,
+    simulation_date_id:this.sim_id
+    
+     }
+         
+     this.http.post("https://ffserver.eu-gb.mybluemix.net/reject-applicants?",applicant).subscribe(data => {
+      var res = JSON.parse(data['_body']);
+    
+     });
 
 }
 
