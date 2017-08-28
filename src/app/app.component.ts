@@ -37,7 +37,7 @@ nextpage;
 
     });
   
- //this.rootPage=TabsPage;}
+/ this.rootPage=TabsPage;}
 
     store.get('user_id').then((val) => {
       console.log('store', val);

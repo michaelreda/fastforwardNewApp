@@ -15,7 +15,7 @@ export class RatingPipe implements PipeTransform {
    */
   transform(value) {
     if (value=="-1"){
-      value="unrated";
+      value="-";
     }
     return value;
   }

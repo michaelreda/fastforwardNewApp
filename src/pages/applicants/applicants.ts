@@ -16,8 +16,14 @@ export class Applicants {
  list;
  applied;
  accepted;
+ degree:any[];
+ setdage:any={lower:0,upper:5};
+ refrence;
+ original;
+ pretab;
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
    this.list="applied";
+  this. pretab=false;
   }
 
  
@@ -36,26 +42,82 @@ this.http.get("https://ffserver.eu-gb.mybluemix.net/get-applicants?simulation_da
   var res = JSON.parse(data['_body']);
   this.applied=res.applied;
  this.accepted=res.accepted;
- console.log("applied",this.applied);
- console.log("accepted",this.accepted);
- 
+ this.original=this.refrence=this.applied;
  
 });
   }
 
-  switch(){
+  switchapplied(){
     
-    
-    if(this.list=="applied"){
-    
-    this.list="accepted";
-    
-    
+   this.list="applied";
+   
+   if(this.pretab==true){
+
+this.filter();
+
+   }
+   this.pretab=false;
     }
-    else{
-      this.list="applied";
-    }
+    switchaccepted(){
+      
+     this.list="accepted";
+     if(this.pretab==true){
+      
+      this.filter();
+      
+         }
+         this.pretab=false;
+      }
+
+
+
+    filterswitch(){
     
+      if (this.list!="filter"){
+this.list="filter";
+this.pretab=true;
+
+      }
+      else{
+this.list="applied";
+this.pretab=false;
+this.filter();
+      }
     }
+
+
+filter(){
+  this.original=this.refrence;
+  
+  
+  //degree
+if(this.degree!=null && this.degree.length>0){
+  
+  for (var _i = 0; _i < this.degree.length; _i++) {
+    this.original=this.refrence;
+   this.original = this.original.filter(
+     (item) => {
+
+       
+        return (item.degree===this.degree[_i]);
+      });
+        this.original.forEach(element => {
+         this.applied.push(element);
+       });
+
+}
+this.refrence=this.original=this.applied;
+}
+
+//rating
+this.applied = this.original.filter(
+  (item) => {
+
+    
+     return (item.rating>=this.setdage.lower && item.price<=this.setdage.upper);
+   });
+
+
+}
 
 }
