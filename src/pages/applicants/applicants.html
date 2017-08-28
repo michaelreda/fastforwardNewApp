@@ -11,8 +11,8 @@
 <ion-content padding> 
   	<ion-toolbar>
         
-<button ion-button icon-left clear small (click)="switchapplied()"><ion-icon name="list" item-start></ion-icon>applied</button>
-<button ion-button icon-left clear small (click)="switchaccepted()"><ion-icon name="ios-checkbox-outline" item-start></ion-icon>accepted</button>
+<button ion-button icon-left clear item-left  [color]="app_bool?'primary':'grey'"  (click)="switchapplied()"><ion-icon name="list" item-start></ion-icon>applied</button>
+<button ion-button icon-left clear  item-right  [color]="acc_bool?'primary':'grey'"  (click)="switchaccepted()"><ion-icon name="ios-checkbox-outline" item-start></ion-icon>accepted</button>
     </ion-toolbar>
 
     <ion-fab right bottom (click)="filterswitch()">
@@ -22,7 +22,7 @@
    <div [ngSwitch]="list">
 
       <ion-list *ngSwitchCase="'applied'">
-        <ion-card   *ngFor="let x of  applied">
+        <ion-card   *ngFor="let x of  applied; let i=index">
             <ion-item>
          <span item-left col-7 style="font-weight:bold;"> <ion-icon name="person" color ="blue" item-start></ion-icon> {{x.user_name| slice:0:19}}</span>
          <span item-right col-5 style="color:#B0B03F;"><ion-icon name="star"  [color]="(x.rating=='-1')?'grey':'yellow'"  item-start></ion-icon>{{x.rating | rating}}</span>
@@ -38,14 +38,14 @@
          
   <ion-row padding>
       <ion-col >
-        <button  ion-button icon-left clear small>
-          <ion-icon name="close-circle"></ion-icon>
+        <button  ion-button icon-left clear small color="danger" (click)="reject(i,x)">
+          <ion-icon name="close-circle"  ></ion-icon>
           <div>Reject</div>
         </button>
       </ion-col>
-      <ion-col>
-        <button ion-button icon-left clear small>
-          <ion-icon name="checkmark-circle"></ion-icon>
+      <ion-col item-right >
+        <button ion-button icon-left clear small color="secondary" (click)="accept(i,x)">
+          <ion-icon name="checkmark-circle" ></ion-icon>
           <div>Accept</div>
         </button>
       </ion-col>

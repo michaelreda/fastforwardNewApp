@@ -32,7 +32,7 @@ export class AcceptapplicantsPage {
 
 
   applicants_details(x){
-    this.navCtrl.push(Applicants,{name:x.simulation_name,id:x.simulation_date_id});
+    this.navCtrl.push(Applicants,{name:x.simulation_name,id:x.simulation_date_id,price:x.price});
   }
   
 
