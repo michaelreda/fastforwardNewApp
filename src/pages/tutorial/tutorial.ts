@@ -1,4 +1,4 @@
-import { AboutPage } from './../about/about';
+import { TabsPage } from './../tabs/tabs';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 
@@ -45,7 +45,7 @@ export class TutorialPage {
   }
 
   startApp() {
-    this.navCtrl.setRoot(AboutPage, {}, {
+    this.navCtrl.setRoot(TabsPage, {}, {
       animate: true,
       direction: 'forward'
     });
