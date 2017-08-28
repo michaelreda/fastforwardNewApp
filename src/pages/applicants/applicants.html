@@ -8,29 +8,82 @@
 </ion-header>
 
 
-<ion-content padding>
-    
+<ion-content padding> 
+  	<ion-toolbar>
+<button ion-button (click)="switchapplied()">applied</button>
+
+
+<button ion-button (click)="switchaccepted()">accepted</button>
+
+
+
+    </ion-toolbar>
+    <ion-fab right bottom (click)="filterswitch()">
+        <button ion-fab color="primary">    <i class="glyphicon glyphicon-sort" style=" font-size: 1.5rem;color:#ffffff"></i></button>
+       </ion-fab>                 
   
-	<div [ngSwitch]="list">
+   <div [ngSwitch]="list">
 
       <ion-list *ngSwitchCase="'applied'">
-        <ion-item  *ngFor="let x of  applied">
-      <ion-icon name="person" item-start></ion-icon><p> {{x.user_name}}</p>
-      <i class="fa fa-institution" style="font-size:24px"></i><p>{{x.degree}}</p>
-      <ion-icon name="star" item-start></ion-icon><p>{{x.rating | rating}}</p>
-      <ion-icon name="checkmark-circle-outline" item-start></ion-icon>
-        </ion-item>
+        <ion-card   *ngFor="let x of  applied">
+            <ion-item>
+         <span item-left col-7 style="font-weight:bold;"> <ion-icon name="person" color ="blue" item-start></ion-icon> {{x.user_name| slice:0:19}}</span>
+         <span item-right col-5 style="color:#B0B03F;"><ion-icon name="star"  [color]="(x.rating=='-1')?'grey':'yellow'"  item-start></ion-icon>{{x.rating | rating}}</span>
+            </ion-item>
+           
+         <div padding>
+             <div style="padding-bottom:0.5rem;"> <span  style="width:100%">  <ion-icon name="briefcase" item-start></ion-icon>    {{x.major}}</span></div>
+             <div> <span  style="width:100%"><i class="fa fa-institution" style="font-size:1.3rem"></i>   {{x.degree}}</span>
+           </div>
+         </div>
+        </ion-card>
       </ion-list>
   
       <ion-list  *ngSwitchCase="'accepted'">
-         
-      
-     
 
+          <ion-card   *ngFor="let x of  accepted">
+              <ion-item>
+           <span item-left col-7 style="font-weight:bold;"> <ion-icon name="person" color ="blue" item-start></ion-icon> {{x.user_name| slice:0:19}}</span>
+           <span item-right col-5 style="color:#B0B03F;"><ion-icon name="star"  [color]="(x.rating=='-1')?'grey':'yellow'"  item-start></ion-icon>{{x.rating | rating}}</span>
+              </ion-item>
+             
+           <div padding>
+               <div style="padding-bottom:0.5rem;"> <span  style="width:100%">  <ion-icon name="briefcase" item-start></ion-icon>    {{x.major}}</span></div>
+               <div> <span  style="width:100%"><i class="fa fa-institution" style="font-size:1.3rem"></i>   {{x.degree}}</span>
+             </div>
+           </div>
+          </ion-card>
+        
       </ion-list>
 
       <ion-list *ngSwitchCase="'filter'">
+
+        
+			<ion-item>
+          <ion-label>
+            Degree
+          </ion-label>
+          <ion-select [(ngModel)]="degree" multiple="true">
+            <ion-option>High school</ion-option>
+            <ion-option>College</ion-option>
+            <ion-option>Graduated</ion-option>
+          </ion-select>
+        </ion-item>
+  
+        <h6 padding> Rating </h6>
+      
+        <ion-item>
+            
+           
+                    <ion-range dualKnobs="true" pin="true" step="1" max="5" [(ngModel)]="setdage" color="danger">
+                      <ion-label range-left color="primary">{{setdage.lower}} <ion-icon name="star" color="yellow" item-start></ion-icon></ion-label>
+                      <ion-label range-right color="primary">{{setdage.upper}} <ion-icon name="star" color="yellow" item-start></ion-icon></ion-label>
+                    </ion-range>
+            
+                  </ion-item>
+
       </ion-list>
+
     </div>
   
   
@@ -42,10 +95,6 @@
 
 
 <ion-footer>
-    <button ion-button (click)="switch()">applied</button>
-    
-    
-    <button ion-button (click)="switch()">accepted</button>
     
     
       
