@@ -1,6 +1,6 @@
 import { AboutPage } from './../about/about';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 
 
 
@@ -19,9 +19,12 @@ export interface Slide {
 export class TutorialPage {
   slides: Slide[];
   showSkip = true;
+  ios: boolean = false;
 
-  constructor(public navCtrl: NavController) {
-   
+  constructor(public navCtrl: NavController,public plt: Platform) {
+    if (plt.is('ios')) {
+      this.ios = true;
+    }
         this.slides = [
           {
             title: "FIRST SLIDE",
