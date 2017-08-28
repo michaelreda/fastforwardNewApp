@@ -10,14 +10,11 @@
 
 <ion-content padding> 
   	<ion-toolbar>
-<button ion-button (click)="switchapplied()">applied</button>
-
-
-<button ion-button (click)="switchaccepted()">accepted</button>
-
-
-
+        
+<button ion-button icon-left clear small (click)="switchapplied()"><ion-icon name="list" item-start></ion-icon>applied</button>
+<button ion-button icon-left clear small (click)="switchaccepted()"><ion-icon name="ios-checkbox-outline" item-start></ion-icon>accepted</button>
     </ion-toolbar>
+
     <ion-fab right bottom (click)="filterswitch()">
         <button ion-fab color="primary">    <i class="glyphicon glyphicon-sort" style=" font-size: 1.5rem;color:#ffffff"></i></button>
        </ion-fab>                 
@@ -36,6 +33,24 @@
              <div> <span  style="width:100%"><i class="fa fa-institution" style="font-size:1.3rem"></i>   {{x.degree}}</span>
            </div>
          </div>
+
+
+         
+  <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="thumbs-up"></ion-icon>
+          <div>Reject</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="text"></ion-icon>
+          <div>Accept</div>
+        </button>
+      </ion-col>
+    
+    </ion-row>
         </ion-card>
       </ion-list>
   
@@ -64,9 +79,9 @@
             Degree
           </ion-label>
           <ion-select [(ngModel)]="degree" multiple="true">
-            <ion-option>High school</ion-option>
+            <ion-option>Highschool</ion-option>
             <ion-option>College</ion-option>
-            <ion-option>Graduated</ion-option>
+            <ion-option>Graduate</ion-option>
           </ion-select>
         </ion-item>
   
@@ -75,8 +90,8 @@
         <ion-item>
             
            
-                    <ion-range dualKnobs="true" pin="true" step="1" max="5" [(ngModel)]="setdage" color="danger">
-                      <ion-label range-left color="primary">{{setdage.lower}} <ion-icon name="star" color="yellow" item-start></ion-icon></ion-label>
+                    <ion-range dualKnobs="true" pin="true" step="1" min="-1" max="5" [(ngModel)]="setdage" color="danger">
+                      <ion-label range-left color="primary">{{setdage.lower |rating}} <ion-icon name="star" color="yellow" item-start></ion-icon></ion-label>
                       <ion-label range-right color="primary">{{setdage.upper}} <ion-icon name="star" color="yellow" item-start></ion-icon></ion-label>
                     </ion-range>
             

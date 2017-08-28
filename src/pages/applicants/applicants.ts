@@ -14,10 +14,10 @@ export class Applicants {
  sim_name;
  sim_id;
  list;
- applied;
- accepted;
+ applied:any=[];
+ accepted:any=[];
  degree:any[];
- setdage:any={lower:0,upper:5};
+ setdage:any={lower:-1,upper:5};
  refrence;
  original;
  pretab;
@@ -87,6 +87,9 @@ this.filter();
 
 
 filter(){
+  console.log("REF",this.refrence);
+  
+  this.applied=[];
   this.original=this.refrence;
   
   
@@ -106,7 +109,7 @@ if(this.degree!=null && this.degree.length>0){
        });
 
 }
-this.refrence=this.original=this.applied;
+this.original=this.applied;
 }
 
 //rating
@@ -114,7 +117,7 @@ this.applied = this.original.filter(
   (item) => {
 
     
-     return (item.rating>=this.setdage.lower && item.price<=this.setdage.upper);
+     return (item.rating>=this.setdage.lower && item.rating<=this.setdage.upper);
    });
 
 
