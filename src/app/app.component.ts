@@ -38,8 +38,8 @@ nextpage;
 
     });
   
- this.rootPage=TabsPage;}
-/*
+// this.rootPage=TabsPage;}
+
     store.get('user_id').then((val) => {
       console.log('store', val);
       this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-version?version=1");
@@ -85,6 +85,6 @@ nextpage;
       this.store.set('version',"");
     }
     else this.store.set('version',null);
-  }*/
+  }
 }
 
