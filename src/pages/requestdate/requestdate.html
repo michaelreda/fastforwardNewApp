@@ -17,12 +17,12 @@
 
 
 	<ion-list>
-		<ion-item *ngFor="let x of date">
+		<ion-item *ngFor="let x of date; let i = index">
 			<div class="row" padding-left>
-				<div style="width:70.5%">
+				<div style="width:70.5%;padding-top:.5rem;">
 					<p style="font-size: 1.4rem;float: left;">{{x.date}}</p>
 				</div>
-				<div style="width:25.5%;float: right;"> <button ion-button block ion-datepicker color="ffPrimary" (click)="presentActionSheet()" style="height: 2rem;font-size: 17px;"><strong>VOTE</strong></button>
+				<div style="width:25.5%;float: right;"> <button ion-button block  color="black" (click)="vote(x.id ,i)" style="height: 2rem;font-size: 17px;"><strong>VOTE</strong></button>
 					<p style="color:#32db64;font-size:1.8rem;">{{x.votes}}</p>
 				</div>
 			</div>
