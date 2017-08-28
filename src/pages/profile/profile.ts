@@ -10,19 +10,23 @@ import {DataService} from '../../providers/data-service';
 import { Facebook} from '@ionic-native/facebook';
 import { Storage } from '@ionic/storage';
 import { App } from 'ionic-angular';
-
-
+import {FileChooser , FilePath , File} from 'ionic-native'; 
+import firebase from 'firebase' ; 
+import { AngularFireAuth } from 'angularfire2/auth';
 @Component({
 	selector: 'page-profile',
-	templateUrl: 'profile.html'
+	templateUrl: 'profile.html',
+	providers: [AngularFireAuth]
 })
 export class Profile {
 
 	user_info:any={};
 	user_simulations:any=[];
 	refresher:any;
-
-	constructor(private app:App,public navCtrl: NavController, navParams: NavParams,public http: Http, public alertCtrl:AlertController,public loadingCtrl: LoadingController,public actionSheetCtrl: ActionSheetController,private fb: Facebook,private store: Storage,private DS:DataService) {
+	nativePath: any; 
+	firestore = firebase.storage() ; 
+	
+	constructor(private app:App,public navCtrl: NavController, navParams: NavParams,public http: Http, public alertCtrl:AlertController,public loadingCtrl: LoadingController,public actionSheetCtrl: ActionSheetController,private fb: Facebook,private store: Storage,private DS:DataService, public afa :AngularFireAuth) {
 	
 
 		this.store.get('user_id').then((val) => {
@@ -51,7 +55,54 @@ export class Profile {
 
 	}
 
+	loginToFireBase (){
 
+		
+		//var	fireauth = this.afa.auth() ; 
+
+		this.afa.auth.signInWithEmailAndPassword("walidmoussa995@gmail.com" , "wwwlll").then((res)=>{
+
+				alert('sucessfull Login') ; 
+				this.upload () ; 
+
+		}).catch((err)=>{
+				alert("error login "+err) ;
+		}) ; 
+
+	}
+	upload () {
+
+
+			FileChooser.open().then((url)=> {
+
+				(<any>window).FilePath.resolveNativePath(url, (result)=> {
+
+					this.nativePath = result ; 
+					this.uploadImage ( ) ;
+				})
+			})
+	}
+
+	uploadImage () 
+	{
+			(<any>window).resolveLocalFileSystemURL (this.nativePath , (res)=>{
+				res.file((resFile)=>{
+					var reader = new FileReader () ; 
+					reader.readAsArrayBuffer (resFile) ; 
+					reader.onload = (evt: any)=>{
+
+					var imgBlob = new Blob ([evt.target.result] , {type : 'image/jpeg'}) ;  
+					var imageStore = this.firestore.ref().child('image') ; 
+					imageStore.put(imgBlob).then((res)=>{
+						alert("uploaded sucessfully ") ; 
+					}).catch ((err)=>{
+						alert('upload faild'+ err) ; 
+					}) ;
+					} 
+
+				}) ; 
+			})
+	}
 	edit_user_info(type){
 		let value={};
 		switch(type){
