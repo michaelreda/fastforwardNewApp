@@ -27,19 +27,19 @@ export class TutorialPage {
     }
         this.slides = [
           {
-            title: "FIRST SLIDE",
-            description: "hi HI",
-            image: 'assets/facebook.png',
+            title: "Profession",
+            description: "Choose a profession you are interested in..",
+            image: 'assets/tut1.png',
           },
           {
-            title: "Second SLIDE",
-            description: "hi HI",
-            image: 'assets/facebook.png',
+            title: "Simulation/Company",
+            description: "Choose a simulation you want to try out..",
+            image: 'assets/tut2.png',
           },
           {
-            title: "Third SLIDE",
-            description: "hi HI",
-            image: 'assets/facebook.png',
+            title: "Finish up",
+            description: "Check out the company profile, apply, and book your simulation..",
+            image: 'assets/tut3.png',
           },
         ];
   }
