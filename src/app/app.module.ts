@@ -21,6 +21,8 @@ import { TimerPage } from '../pages/timer/timer';
 import{DataService} from '../providers/data-service';
 import { User } from '../providers/user';
 import { AcceptapplicantsPage } from "../pages/acceptapplicants/acceptapplicants";
+import { PaymentMethodPage } from '../pages/payment-method/payment-method';
+import {ExpotimerPage} from '../pages/expotimer/expotimer';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -69,7 +71,9 @@ import firebase from "firebase";
     VersionCheckPage,
     AcceptapplicantsPage,
     RatingPipe,
-    TutorialPage
+    TutorialPage,
+    PaymentMethodPage,
+    ExpotimerPage
   ],
   imports: [
     BrowserModule,
@@ -99,7 +103,9 @@ import firebase from "firebase";
     TimerPage,
     VersionCheckPage,
     AcceptapplicantsPage,
-    TutorialPage
+    TutorialPage,
+    PaymentMethodPage,
+    ExpotimerPage
   ],
   providers: [
     StatusBar,

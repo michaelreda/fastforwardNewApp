@@ -1,15 +1,15 @@
 
-<ion-header>
+<ion-header   [style.height]="ios?'70px':''">
 
-  <ion-navbar  align-title="center" color="ffPrimary" style="padding-right:5rem;">
-    <ion-title>{{sim_name}}</ion-title>
+  <ion-navbar [style.margin-top]="ios?'15px':''" align-title="center" color="ffPrimary" style="padding-right:5rem;">
+    <ion-title [style.margin-top]="ios?'15px':''"  >{{sim_name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding> 
-  	<ion-toolbar>
+  	<ion-toolbar style="text-align:center;">
         
 <button ion-button icon-left clear item-left  [color]="app_bool?'primary':'grey'"  (click)="switchapplied()"><ion-icon name="list" item-start></ion-icon>applied</button>
 <button ion-button icon-left clear  item-right  [color]="acc_bool?'primary':'grey'"  (click)="switchaccepted()"><ion-icon name="ios-checkbox-outline" item-start></ion-icon>accepted</button>

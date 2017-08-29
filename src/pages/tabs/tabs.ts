@@ -9,7 +9,7 @@ import { AlertController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { Network } from '@ionic-native/network';
 import { AcceptapplicantsPage } from "../acceptapplicants/acceptapplicants";
-
+import {ExpotimerPage} from '../expotimer/expotimer';
 
 
 @Component({
@@ -17,9 +17,11 @@ import { AcceptapplicantsPage } from "../acceptapplicants/acceptapplicants";
 })
 export class TabsPage {
 	company_or_not: any;
+	expo:any;
 	tab1Root = AboutPage;
 	tab2Root = Vedios;
 	tab3Root = Profile;
+	tab5Root = ExpotimerPage;
 	ios: boolean = false;
 	root;
 	connection_error_popup:any;
@@ -34,12 +36,14 @@ export class TabsPage {
 		this.network.onConnect().subscribe(() => {
 			this.connection_error_popup.dismiss();
 		});
-
+	
 		this.root = this.tab1Root;
 		this.company_or_not = localStorage.getItem('company_or_not');
 		if (plt.is('ios')) {
 			this.ios = true;
 		}
+		this.expo= localStorage.getItem('expo');
+	
 	}
 	switch1() {
 		this.root = this.tab1Root;
@@ -52,6 +56,9 @@ export class TabsPage {
 	}
 	switch4() {
 		this.presentAdminActionSheet();
+	}
+	switch5() {
+		this.root=this.tab5Root;
 	}
 
 	presentAdminActionSheet() {

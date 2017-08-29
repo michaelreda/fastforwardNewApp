@@ -134,8 +134,16 @@ accept(i,x){
   console.log("accept",i);
   this.accepted.push(this.applied[i]);
  this.applied.splice(i,1);
- this.original=this.refrence=this.applied;
- console.log("applied",this.applied);
+
+ this.refrence= this.refrence.filter(
+  (item) => {
+
+    
+     return (item.user_id!= x.user_id);
+   });
+
+this.original=this.refrence;
+
 
  let applicant={
 user_id:x.user_id,
@@ -144,26 +152,35 @@ simulation_date_id:this.sim_id
 
  }
      
- this.http.post("https://ffserver.eu-gb.mybluemix.net/accept-applicants?",applicant).subscribe(data => {
+ this.http.post("https://ffserver.eu-gb.mybluemix.net/accept-applicants",applicant).subscribe(data => {
   var res = JSON.parse(data['_body']);
+console.log("res",res);
 
  });
     }
 
 reject(i,x){
-  console.log("reject",i);
+
   this.applied.splice(i,1);
-  this.original=this.refrence=this.applied;
+  this.refrence= this.refrence.filter(
+    (item) => {
+       return (item.user_id!= x.user_id);
+     });
+  
+  this.original=this.refrence;
+ 
+  
   let applicant={
     user_id:x.user_id,
     price:this.sim_price,
     simulation_date_id:this.sim_id
     
-     }
+     } 
          
-     this.http.post("https://ffserver.eu-gb.mybluemix.net/reject-applicants?",applicant).subscribe(data => {
+     this.http.post("https://ffserver.eu-gb.mybluemix.net/reject-applicants",applicant).subscribe(data => {
       var res = JSON.parse(data['_body']);
-    
+      console.log("res",res);
+      
      });
 
 }

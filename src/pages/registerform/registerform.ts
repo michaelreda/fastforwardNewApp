@@ -31,7 +31,9 @@ export class Registerform {
   major="";
 loader;
   age=new Date();
+  expo;
   constructor(public navCtrl: NavController,  public http: Http,public navParams: NavParams,public alertCtrl: AlertController,private DS:DataService,private fb: Facebook,public plt: Platform,private network: Network, private loadingCtrl: LoadingController, private store: Storage) {
+
 
     this.network.onDisconnect().subscribe(() => {
       this.connection_error_popup = this.loadingCtrl.create({
@@ -52,7 +54,7 @@ loader;
     if (plt.is('ios')) {
       this.ios = true;
     }
-  
+  this.expo=false;
   }
   setDate(event){
     this.age=event;
@@ -61,8 +63,7 @@ loader;
 
 
   register(pass, school, phone,promo) {
-    console.log("register");
-    console.log(this.promo_code)
+    console.log('expo',this.expo);
 
 this.age.setFullYear(this.year,this.month,this.day);
 console.log('age',this.age);
@@ -83,12 +84,13 @@ console.log('age',this.age);
         phone_no:phone,
         promo_code:promo,
         interests:this.interests,
-        major:this.major
+        major:this.major,
+        expo:this.expo
         
         }
         
 
-console.log('user',user);
+
 
 
 this.http.post("https://ffserver.eu-gb.mybluemix.net/register3", user).subscribe(data => {

@@ -9,7 +9,6 @@ import{Registerform} from '../registerform/registerform';
 import {TabsPage} from '../tabs/tabs';
 import {DataService} from '../../providers/data-service';
 import { AlertController } from 'ionic-angular';
-import { LoginPage } from "../login/login";
 
 @Component({
   selector: 'page-home',

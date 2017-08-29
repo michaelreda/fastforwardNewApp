@@ -4,6 +4,7 @@ import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular'
 import {  Requestdate } from "../requestdate/requestdate";
+import { PaymentMethodPage } from '../payment-method/payment-method';
 import {Http} from '@angular/http';
 import { Storage } from '@ionic/storage';
 
@@ -129,7 +130,7 @@ userid;
 			this.loader.present();
 		}
 
-		presentActionSheet(x) {
+		presentActionSheet(x,event) {
 			let actionSheet = this.actionSheetCtrl.create({
 				// title: '',
 				buttons: [
@@ -148,7 +149,7 @@ userid;
 			x.dates.forEach(element => {
 				actionSheet.addButton({text:element.date,
 				handler:()=>{
-				this.showalert(element.date_id,x);
+				this.showalert(element.date_id,x,event);
 				}})
 			});
 
@@ -177,14 +178,22 @@ userid;
 		}
 
 
-showalert(y,x){
+showalert(id,x,event){
+	if(x.price ==0){
+		this.http.get("https://ffserver.eu-gb.mybluemix.net/apply?user_id="+this.userid+"&simulation_date_id="+id).subscribe(
+			data => {
+				var res = JSON.parse(data['_body']);
+				  x.status=res.result;
+	
+		});
+	}
+	else{
+		this.navCtrl.push(PaymentMethodPage);
+	
 
-	this.http.get("https://ffserver.eu-gb.mybluemix.net/apply?user_id="+this.userid+"&simulation_date_id="+y).subscribe(
-		data => {
-			var res = JSON.parse(data['_body']);
-          	x.status=res.result;
+	}
 
-	});
+	
 }
 	
 
