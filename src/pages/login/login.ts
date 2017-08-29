@@ -67,11 +67,11 @@ export class LoginPage {
       this.DS.load().subscribe(
         data => {
           this.check = data;
-      
+      if(this.check.expo)localStorage.setItem('expo','1');
       if (this.check.result) {
         this.store.set('user_id', this.check.user_id);
         localStorage.setItem('company_or_not', this.check.company_or_not);
-        //this.navCtrl.pop;
+        
         if ( this.check.user_id ==324){this.navCtrl.setRoot(TabsPage);}
         else{
         let m;

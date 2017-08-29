@@ -63,10 +63,10 @@ loader;
 
 
   register(pass, school, phone,promo) {
-    console.log('expo',this.expo);
+   
 
 this.age.setFullYear(this.year,this.month,this.day);
-console.log('age',this.age);
+
 
     if (this.name != "" && this.email != "" && pass != "" && school != "" && this.age !=this.localDate && phone != "" ){
       console.log("not null");
@@ -94,13 +94,10 @@ console.log('age',this.age);
 
 
 this.http.post("https://ffserver.eu-gb.mybluemix.net/register3", user).subscribe(data => {
-  //var res = JSON.parse(data['_body']);
-
   
   var res = JSON.parse(data['_body']);
   this.setresponse(res);
-  // this.user_simulations=res;
-  console.log('res',res);
+  if (this.expo)localStorage.setItem('expo','1');
   this.dismissLoading();
 });
 
