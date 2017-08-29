@@ -178,6 +178,7 @@ export class Profile {
 		logout(){
 
 this. store.set('user_id', "");
+localStorage.setItem('expo',null);
 this.fb.logout();
 const root = this.app.getRootNav().setRoot(LoginPage);
 //root.popToRoot();
