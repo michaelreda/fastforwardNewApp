@@ -22,6 +22,8 @@ export class TutorialPage {
   ios: boolean = false;
 
   constructor(public navCtrl: NavController,public plt: Platform) {
+    console.log("y",localStorage.getItem('expo'));
+    
     if (plt.is('ios')) {
       this.ios = true;
     }
