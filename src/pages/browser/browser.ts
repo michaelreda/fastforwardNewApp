@@ -1,28 +1,34 @@
 import { Component } from '@angular/core';
-import { App,IonicPage, NavController, NavParams,ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import {Http} from '@angular/http';
 
 /**
- * Generated class for the PaymentMethodPage page.
+ * Generated class for the BrowserPage page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
 @IonicPage()
 @Component({
-  selector: 'page-payment-method',
-  templateUrl: 'payment-method.html',
+  selector: 'page-browser',
+  templateUrl: 'browser.html',
 })
-export class PaymentMethodPage {
+export class BrowserPage {
 link;
-  constructor(private http:Http,private iab: InAppBrowser,public app:App,public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController) {
-  
+  constructor(public http:Http,public navCtrl: NavController, public navParams: NavParams,private iab: InAppBrowser) {
+    
+
   }
 
-  
-
-  creditpayment(){
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad BrowserPage');
+  }
+  browser(){
+   
+   
+    console.log('link',this.link);
+    
     const browser = this.iab.create(this.link);
   }
   ngOnInit() {

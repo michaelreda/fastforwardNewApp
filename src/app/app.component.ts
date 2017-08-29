@@ -13,6 +13,7 @@ import {Registerform} from '../pages/registerform/registerform';
 import { DataService } from '../providers/data-service';
 import { Network } from '@ionic-native/network';
 import { PaymentMethodPage } from '../pages/payment-method/payment-method';
+import {BrowserPage}from '../pages/browser/browser';
 @Component({
   templateUrl: 'app.html',
   
@@ -39,8 +40,8 @@ nextpage;
 
     });
   
- //this.rootPage=TabsPage;}
-
+ this.rootPage=TabsPage;}
+/*
     store.get('user_id').then((val) => {
       console.log('store', val);
       this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-version?version=1");
@@ -86,6 +87,6 @@ nextpage;
       this.store.set('version',"");
     }
     else this.store.set('version',null);
-  }
+  }*/
 }
 

@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpModule} from '@angular/http';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -23,6 +25,7 @@ import { User } from '../providers/user';
 import { AcceptapplicantsPage } from "../pages/acceptapplicants/acceptapplicants";
 import { PaymentMethodPage } from '../pages/payment-method/payment-method';
 import {ExpotimerPage} from '../pages/expotimer/expotimer';
+import { BrowserPage } from "../pages/browser/browser";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -73,7 +76,10 @@ import firebase from "firebase";
     RatingPipe,
     TutorialPage,
     PaymentMethodPage,
-    ExpotimerPage
+    ExpotimerPage,
+    BrowserPage,
+   
+   
   ],
   imports: [
     BrowserModule,
@@ -105,7 +111,8 @@ import firebase from "firebase";
     AcceptapplicantsPage,
     TutorialPage,
     PaymentMethodPage,
-    ExpotimerPage
+    ExpotimerPage,
+    BrowserPage
   ],
   providers: [
     StatusBar,
@@ -115,6 +122,7 @@ import firebase from "firebase";
     AndroidPermissions,
     DataService,
     User,
+    InAppBrowser,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Network
   ]
