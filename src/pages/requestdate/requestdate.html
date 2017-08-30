@@ -34,9 +34,11 @@
 				<span color="primary" style="font-size:2rem;font-weight:bold;text-align:center;">{{nowDate | date:"dd MM yyyy HH:mm "}} <ion-icon name="clipboard" item-right color="primary" ></ion-icon> </span>
 		</span><i class="fa fa-users" style="color:#32db64;font-size: 2rem;"></i>
 </ion-toolbar> -->
-
+<!--
 	<button ion-button block ion-datepicker (ionChanged)="setDate($event);" [value]="localDate" [min]="localDate" style="height: 50px;font-size: 17px;"
 	 color="ffPrimary" (click)="presentActionSheet()"><strong>REQUEST NEW TIME</strong></button>
-	<!-- <button (click)="dater()">date</button> -->
-	<!-- <p *ngFor="let x of dump1" >{{x.date | date:"yyyy-MM-dd HH:mm:ss" }}</p> -->
+-->
+<div style="text-align:center">
+<ion-datetime displayFormat="DD-MM-YYYY HH:mm" [(ngModel)]="localDate" min={{minyear}} max={{maxyear}} (ionChange)="setDate()"placeholder="Dont like the timing?" style="color:red;font-weight:bold;text-align:center;"></ion-datetime>
+</div>
 </ion-content>

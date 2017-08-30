@@ -19,15 +19,22 @@ import { AlertController } from 'ionic-angular';
 export class Requestdate {
   date:any=[];
   simulation_id ; 
-  localDate=new Date();
+  localDate:string=new Date().toDateString();
    nowDate=new Date();
    color="color:#32db64";
    dump:any;
     dump1:any;
     formGroup;
+    today;
+    maxyear;
+    minyear;
   constructor(platform:Platform,public http: Http,public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams,private DS:DataService,private store:Storage) {
     this.simulation_id = navParams.get("SimID"); 
+   
+  this.minyear=this.nowDate.getFullYear();
+  console.log('year',this.minyear);
   
+this.maxyear=this.minyear+1;
     platform.ready().then(()=>{
       
               platform.registerBackButtonAction(() =>{
@@ -41,12 +48,16 @@ export class Requestdate {
             });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Requestdate');
-  }
-setDate(event){
-this.nowDate=event;
-this.nowDate.setHours(this.nowDate.getHours()+2);
+    
+ 
+setDate(){
+  console.log('local',this.localDate);
+  
+  
+  this.nowDate=new Date(Date.parse(this.localDate));
+  console.log("still out ya naaas " , this.nowDate); 
+
+this.nowDate.setHours(this.nowDate.getUTCHours()+2);
 var theDate = this.nowDate.toISOString() ; 
 
  this.store.get('user_id').then((val) => {
@@ -55,7 +66,7 @@ var theDate = this.nowDate.toISOString() ;
   simulation_id: this.simulation_id , 
   user_id :val 
     }   ; 
-    console.log("still out ya naaas " , sendObj); 
+   
 // this.http.post("https://ffserver.eu-gb.mybluemix.net/request-new-time",sendObj).subscribe(data => {
 // 						var res = JSON.parse(data['_body']);
 // 						// this.user_simulations=res;
@@ -70,9 +81,10 @@ var theDate = this.nowDate.toISOString() ;
 // 						// this.loading=false;
 // 					});
   //  console.log("https://ffserver.eu-gb.mybluemix.net/request-new-time?simulation_id="+this.simulation_id+"&date="+theDate+"&user_id="+val); 
-    this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/request-new-time?simulation_id="+this.simulation_id+"&date="+theDate+"&user_id="+val);
+   
+  this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/request-new-time?simulation_id="+this.simulation_id+"&date="+theDate+"&user_id="+val);
     this.DS.load().subscribe(
-            data => { //this.date= data ;
+            data => { 
                         var theDate2 = new Date(theDate);  
                         theDate =  this.TransfromDate(theDate2); 
                         console.log(theDate2) ; 
@@ -86,11 +98,11 @@ var theDate = this.nowDate.toISOString() ;
                       console.log (data); 
                   }
             
-        );
+    );
  });
  
+console.log('date',theDate);
 
-  
 }
 
 vote (simulation_date_id , index){

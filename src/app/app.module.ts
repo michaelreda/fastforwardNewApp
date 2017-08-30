@@ -25,7 +25,6 @@ import { User } from '../providers/user';
 import { AcceptapplicantsPage } from "../pages/acceptapplicants/acceptapplicants";
 import { PaymentMethodPage } from '../pages/payment-method/payment-method';
 import {ExpotimerPage} from '../pages/expotimer/expotimer';
-import { DatePage } from "../pages/date/date";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -77,7 +76,7 @@ import firebase from "firebase";
     TutorialPage,
     PaymentMethodPage,
     ExpotimerPage,
-   DatePage
+   
    
    
   ],
@@ -112,7 +111,7 @@ import firebase from "firebase";
     TutorialPage,
     PaymentMethodPage,
     ExpotimerPage,
-    DatePage
+  
   ],
   providers: [
     StatusBar,

@@ -1,15 +1,8 @@
 <ion-header >
     
-  <ion-toolbar align-title="center" color="ffPrimary" style="padding-right:5rem;">
-		<div>
-			<button style="width:19%;float: left;" color="light" ion-button icon-left clear small (click)="back_button()">
-			       <ion-icon  color="light" name="md-arrow-round-back" item-start></ion-icon>
-			</button>
-			<div style="width:75%;float: left;margin:0;text-align:center;padding-top:0.8rem;">
-	             	<h5 style="color:white;margin:0;">Payment</h5>
-			</div>
-		</div>
-	</ion-toolbar>
+  <ion-navbar align-title="center" color="ffPrimary" style="padding-right:5rem;">
+		<ion-title>Payment</ion-title>
+	</ion-navbar>
     </ion-header>
     
 
@@ -24,7 +17,7 @@
     <ion-list>
       <a href={{link}}> <button ion-item>
         <ion-icon name="card" item-start></ion-icon>
-        <h3><strong> Card</strong></h3>
+        <h3 style="color:black;"><strong> Card</strong></h3>
       </button> </a>
   
       <button ion-item>

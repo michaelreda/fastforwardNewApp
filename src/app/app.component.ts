@@ -12,7 +12,6 @@ import { Storage } from '@ionic/storage';
 import {Registerform} from '../pages/registerform/registerform';
 import { DataService } from '../providers/data-service';
 import { Network } from '@ionic-native/network';
-import { DatePage } from "../pages/date/date";
 import { PaymentMethodPage } from '../pages/payment-method/payment-method';
 @Component({
   templateUrl: 'app.html',
@@ -43,7 +42,7 @@ nextpage;
 
     });
   
- //this.rootPage=DatePage;
+ //this.rootPage=TabsPage;
 
 
     store.get('user_id').then((val) => {
