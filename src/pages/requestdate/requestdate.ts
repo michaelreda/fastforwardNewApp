@@ -61,11 +61,11 @@ this.nowDate.setHours(this.nowDate.getUTCHours()+2);
 var theDate = this.nowDate.toISOString() ; 
 
  this.store.get('user_id').then((val) => {
-    var sendObj = {
-  date: theDate ,
-  simulation_id: this.simulation_id , 
-  user_id :val 
-    }   ; 
+  //   var sendObj = {
+  // date: theDate ,
+  // simulation_id: this.simulation_id , 
+  // user_id :val 
+  //   }   ; 
    
 // this.http.post("https://ffserver.eu-gb.mybluemix.net/request-new-time",sendObj).subscribe(data => {
 // 						var res = JSON.parse(data['_body']);
