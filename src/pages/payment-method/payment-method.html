@@ -7,28 +7,26 @@
     </ion-header>
     
 
-<ion-content class=" cards-bg">
-    <ion-card class="cards-list-demo">
-    <ion-card-header>
-      <div class="question" style="text-align:center" > 
-      <strong>How would you like to Pay ??</strong>
-      </div>
-    </ion-card-header>
+  <ion-content class=" cards-bg">
+      <ion-card class="cards-list-demo">
+      <ion-card-header>
+        <div class="question" style="text-align:center" > 
+        <strong>How would you like to Pay ??</strong>
+        </div>
+      </ion-card-header>
   
     <ion-list>
       <button ion-item (click)="creditpayment()">
         <ion-icon name="card" item-start></ion-icon>
-        <h3><strong> Card</strong></h3>
+        <a href={{link}}> <h3><strong> Card</strong></h3></a>
       </button>
   
       <button ion-item>
-        <ion-icon name="cash" item-start></ion-icon>
-      <h3> <strong>Cash</strong></h3>
+        <ion-icon name="cash" color="grey" item-start></ion-icon>
+       <h3 style="color:grey;"> <strong>Cash</strong></h3>
       </button>
     </ion-list>
 
     </ion-card>
 
-
-    
 </ion-content>
