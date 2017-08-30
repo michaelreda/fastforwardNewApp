@@ -3,14 +3,13 @@ import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular'
-import {  Requestdate } from "../requestdate/requestdate";
 import {Http} from '@angular/http';
 import {LoginPage} from'../login/login';
 import {DataService} from '../../providers/data-service';
 import { Facebook} from '@ionic-native/facebook';
 import { Storage } from '@ionic/storage';
 import { App } from 'ionic-angular';
-import {FileChooser , FilePath , File} from 'ionic-native'; 
+import {FileChooser } from 'ionic-native'; 
 import firebase from 'firebase' ; 
 import { AngularFireAuth } from 'angularfire2/auth';
 @Component({
@@ -26,7 +25,7 @@ export class Profile {
 	nativePath: any; 
 	firestore = firebase.storage() ; 
 	
-	constructor(private app:App,public navCtrl: NavController, navParams: NavParams,public http: Http, public alertCtrl:AlertController,public loadingCtrl: LoadingController,public actionSheetCtrl: ActionSheetController,private fb: Facebook,private store: Storage,private DS:DataService, public afa :AngularFireAuth) {
+	constructor(private app:App,public navCtrl: NavController, navParams: NavParams,public http: Http, public alertCtrl:AlertController,public loadingCtrl: LoadingController,public actionSheetCtrl: ActionSheetController,private fb: Facebook,private store: Storage, public afa :AngularFireAuth) {
 	
 
 		this.store.get('user_id').then((val) => {
@@ -180,7 +179,7 @@ export class Profile {
 this. store.set('user_id', "");
 localStorage.setItem('expo',null);
 this.fb.logout();
-const root = this.app.getRootNav().setRoot(LoginPage);
+this.app.getRootNav().setRoot(LoginPage);
 //root.popToRoot();
 
 		}

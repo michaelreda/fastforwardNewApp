@@ -32,7 +32,7 @@ export class Registerform {
 loader;
   age=new Date();
   expo;
-  constructor(platform:Platform,public navCtrl: NavController,  public http: Http,public navParams: NavParams,public alertCtrl: AlertController,private DS:DataService,private fb: Facebook,public plt: Platform,private network: Network, private loadingCtrl: LoadingController, private store: Storage) {
+  constructor(platform:Platform,public navCtrl: NavController,  public http: Http,public navParams: NavParams,public alertCtrl: AlertController,public plt: Platform,private network: Network, private loadingCtrl: LoadingController, private store: Storage) {
 
 
     this.network.onDisconnect().subscribe(() => {

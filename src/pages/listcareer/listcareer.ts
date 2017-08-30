@@ -82,13 +82,13 @@ if(this.size!=null && this.size.length>0){
   //type
   this .items=[ {name:"Web Development co.",city:"1 January 2018",price:55000,date:"JANUARY",class:"cloud",size:"small"}];
   this.items.pop();
-  for (var _i = 0; _i < this.size.length; _i++) {
+  for (var _ii = 0; _ii < this.size.length; _ii++) {
     this.original=this.refrence;
    this.original = this.original.filter(
      (item) => {
 
        
-        return (item.size===this.size[_i]);
+        return (item.size===this.size[_ii]);
       });
         this.original.forEach(element => {
          this.items.push(element);
@@ -106,12 +106,12 @@ this.refrence=this.original=this.items;
 if(this.class!=null && this.class.length>0){
   this .items=[ {name:"Web Development co.",city:"1 January 2018",price:55000,date:"JANUARY",class:"cloud",size:"small"}];
   this.items.pop();
-  for (var _i = 0; _i < this.class.length; _i++) {
+  for (var _ii = 0; _ii < this.class.length; _ii++) {
    this.original = this.original.filter(
      (item) => {
 
        
-        return (item.class===this.class[_i]);
+        return (item.class===this.class[_ii]);
       });
 
         this.original.forEach(element => {

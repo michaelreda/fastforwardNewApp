@@ -165,7 +165,7 @@ simulation_date_id:this.sim_id
  }
 
  this.http.post("https://ffserver.eu-gb.mybluemix.net/accept-applicant",applicant).subscribe(data => {
-  var res = JSON.parse(data['_body']);
+  // var res = JSON.parse(data['_body']);
  
 
  },(ERROR)=>{

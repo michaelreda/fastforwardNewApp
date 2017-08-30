@@ -135,8 +135,8 @@ actionSheet;
 						}
 					}
 				]
-			}).present();
-			//alert.present();
+			});
+			alert.present();
 		}
 
 		showNotValidAlert() {

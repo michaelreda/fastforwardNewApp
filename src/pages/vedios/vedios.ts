@@ -4,7 +4,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { SocialSharing } from '@ionic-native/social-sharing';
 import {DataService} from '../../providers/data-service';
-import{ ItemDetailPage} from'../item-detail/item-detail';
 /**
  * Generated class for the Vedios page.
  *

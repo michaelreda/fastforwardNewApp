@@ -41,7 +41,7 @@ import { Network } from '@ionic-native/network';
 import {VersionCheckPage} from '../pages/version-check/version-check';
 import { RatingPipe } from '../pipes/rating/rating';
 import {AngularFireModule} from "angularfire2" ; 
-import firebase from "firebase";
+
  
 
  var config = {

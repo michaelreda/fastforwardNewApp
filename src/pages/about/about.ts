@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage,NavController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import {DataService} from '../../providers/data-service';
-import {VersionCheckPage} from '../version-check/version-check';
 import {Listcareer} from '../listcareer/listcareer';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
@@ -24,7 +23,7 @@ export class AboutPage {
 	check ; 
 	 visibleState = 'visible';
 public fields:any[];
-	constructor(public navCtrl: NavController,private DS: DataService) {
+	constructor(public navCtrl: NavController) {
 
 this.fields=[
 	{name:"MARKETING",img:"assets/mktgx.png",id:1},

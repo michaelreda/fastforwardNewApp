@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Facebook} from '@ionic-native/facebook';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { AndroidPermissions } from '@ionic-native/android-permissions';
+
 import{Applicants} from'../applicants/applicants';
 import {Requestdate} from '../requestdate/requestdate';
 import{Registerform} from '../registerform/registerform';
 import {TabsPage} from '../tabs/tabs';
 import {DataService} from '../../providers/data-service';
-import { AlertController } from 'ionic-angular';
+
 
 @Component({
   selector: 'page-home',
@@ -19,7 +19,7 @@ export class HomePage {
   check=true;
   splash = true; // new 
 
-  constructor(public navCtrl: NavController,private fb: Facebook,private sharefb:SocialSharing,private DS:DataService) {
+  constructor(public navCtrl: NavController,private fb: Facebook,private sharefb:SocialSharing) {
 
 
   }
