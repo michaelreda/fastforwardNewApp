@@ -13,6 +13,7 @@ import {Registerform} from '../pages/registerform/registerform';
 import { DataService } from '../providers/data-service';
 import { Network } from '@ionic-native/network';
 import { DatePage } from "../pages/date/date";
+import { PaymentMethodPage } from '../pages/payment-method/payment-method';
 @Component({
   templateUrl: 'app.html',
   
@@ -49,20 +50,9 @@ nextpage;
       console.log('store', val);
       this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-version?version=1");
       this.DS.load().subscribe(
-        data => (this.handelResponse(data))
+        data => (this.handelResponse(data ,val))
       );
-      if (val == null || val == "") {
-
-        // this.rootPage = LoginPage;
-        this.rootPage= LoginPage;
-      }
-      else {
-        if (val==324) this.rootPage=TabsPage;
-       else 
-        // this.rootPage = TimerPage;
-        this.rootPage= TabsPage;
-      }
-
+      
     });
 
   }
@@ -81,15 +71,49 @@ nextpage;
     });
   }
 
-  handelResponse(data) {
+  handelResponse(data , user_id) {
     this.check = data.result;
     console.log(this.check);
     if (!this.check) {
       // this.rootPage = VersionCheckPage;
-      this.rootPage= TutorialPage;
-      this.store.set('version',"");
+      this.rootPage= VersionCheckPage;
     }
-    else this.store.set('version',null);
+    if (user_id == null || user_id == "") {
+        this.rootPage= LoginPage;
+      }
+      else {
+        if (user_id==324) 
+            this.rootPage=TabsPage;
+       else {
+              this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-date-test"); // check if the timer is working
+              this.DS.load().subscribe(
+                  data =>{
+                        if(data.result)
+                            this.rootPage= TimerPage;
+                        else 
+                            this.rootPage= LoginPage;
+
+                    });
+            
+       }
+      }
+
   }
+
+
+  // checkTimer (callback : (TimerWorking : boolean) => void){
+
+  //   this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-date-test");
+  //       this.DS.load().subscribe(
+  //           data =>{
+  //             console.log("hello" , data.result); 
+  //             callback (data.result) ; 
+  //             });
+        
+       
+ 
+ 
+
+  // }
 }
 
