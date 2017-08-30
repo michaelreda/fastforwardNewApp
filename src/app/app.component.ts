@@ -40,8 +40,9 @@ nextpage;
 
     });
   
- this.rootPage=TabsPage;}
-/*
+ //this.rootPage=TimerPage;
+
+
     store.get('user_id').then((val) => {
       console.log('store', val);
       this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-version?version=1");
@@ -51,13 +52,13 @@ nextpage;
       if (val == null || val == "") {
 
         // this.rootPage = LoginPage;
-        this.rootPage= TutorialPage;
+        this.rootPage= LoginPage;
       }
       else {
         if (val==324) this.rootPage=TabsPage;
        else 
         // this.rootPage = TimerPage;
-        this.rootPage= TutorialPage;
+        this.rootPage= TabsPage;
       }
 
     });
@@ -87,6 +88,6 @@ nextpage;
       this.store.set('version',"");
     }
     else this.store.set('version',null);
-  }*/
+  }
 }
 

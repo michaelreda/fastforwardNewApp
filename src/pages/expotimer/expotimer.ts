@@ -44,7 +44,7 @@ export class ExpotimerPage {
     ngOnInit() {
      
     
-      this.http.get("https://ffserver.eu-gb.mybluemix.net/expo_date").subscribe(data => {
+      this.http.get("https://ffserver.eu-gb.mybluemix.net/check-expo-date").subscribe(data => {
         this.check = JSON.parse(data['_body']);
         this.StartDate=new Date(this.check.dead_line);
         console.log('date',this.StartDate);

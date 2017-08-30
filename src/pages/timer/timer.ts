@@ -24,6 +24,12 @@ export class TimerPage {
   user_id;
   price: any;
 timer;
+StartDateExpo;
+  diffDaysExpo;
+  diffhoursExpo;
+  diffminsExpo;
+  diffsecsExpo;
+  timerExpo;
   constructor(public navCtrl: NavController, public navParams: NavParams,private DS:DataService, private store: Storage) {
   
  
@@ -76,39 +82,80 @@ this.DS.load().subscribe(
  
   });
 
+   this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-expo-date?");
+        this.DS.load().subscribe(
+            data =>{ this.check=data;
+            this.StartDateExpo=new Date(this.check.dead_line);
+          console.log('date',this.StartDate);
+          this.StartDateExpo.setMilliseconds(0);
+         
+          this.timerExpo=  Observable.interval(1000 ).subscribe(x => {
+            this.timercalExpo();
+          });
+        
+       
+ 
+  });
+
 
 
 }
-  timercal(){
-let dump =new Date();
-dump.getTimezoneOffset();
-let diff=this.StartDate.getTime() - dump.getTime();
-var timeDiff = Math.abs(diff);
-   this. diffDays = Math.floor(timeDiff / (1000 * 3600 * 24));  
-   this. diffhours = Math.floor((timeDiff-this.diffDays*1000*3600*24)/(1000*3600)) ; 
-   this.diffmins= Math.floor(((timeDiff-this.diffDays*1000*3600*24)-this.diffhours*1000*3600) /(1000 * 60) ) ;
-   this. diffsecs= Math.floor((((timeDiff-this.diffDays*1000*3600*24)-this.diffhours*1000*3600)- this.diffmins*1000 * 60) /(1000));
+timercal(){
+    let dump =new Date();
+    dump.getTimezoneOffset();
+    let diff=this.StartDate.getTime() - dump.getTime();
+    var timeDiff = Math.abs(diff);
+    this. diffDays = Math.floor(timeDiff / (1000 * 3600 * 24));  
+    this. diffhours = Math.floor((timeDiff-this.diffDays*1000*3600*24)/(1000*3600)) ; 
+    this.diffmins= Math.floor(((timeDiff-this.diffDays*1000*3600*24)-this.diffhours*1000*3600) /(1000 * 60) ) ;
+    this. diffsecs= Math.floor((((timeDiff-this.diffDays*1000*3600*24)-this.diffhours*1000*3600)- this.diffmins*1000 * 60) /(1000));
 
-  let m=  Math.floor((diff/1000));
+    let m=  Math.floor((diff/1000));
   //console.log('m',m);
   
-if(m <=0){
-  console.log('tabs');
-  this.timer.unsubscribe();
-//this.navCtrl.popToRoot();
+    if(m <=0){
+        console.log('tabs');
+        this.timer.unsubscribe();
+      //this.navCtrl.popToRoot();
 
-this.store.get('version').then((val)=>{
-if(val=="")this.navCtrl.setRoot(VersionCheckPage);
-else this.navCtrl.setRoot(TabsPage);
-});
+        this.store.get('version').then((val)=>{
+        if(val=="")this.navCtrl.setRoot(VersionCheckPage);
+        else this.navCtrl.setRoot(TabsPage);
+        });
 
-}
+      }
 
 
 }
 
  
+timercalExpo(){
+    let dump =new Date();
+    dump.getTimezoneOffset();
+    let diff=this.StartDateExpo.getTime() - dump.getTime();
+    var timeDiff = Math.abs(diff);
+    this. diffDaysExpo = Math.floor(timeDiff / (1000 * 3600 * 24));  
+    this. diffhoursExpo = Math.floor((timeDiff-this.diffDaysExpo*1000*3600*24)/(1000*3600)) ; 
+    this.diffminsExpo= Math.floor(((timeDiff-this.diffDaysExpo*1000*3600*24)-this.diffhoursExpo*1000*3600) /(1000 * 60) ) ;
+    this. diffsecsExpo= Math.floor((((timeDiff-this.diffDaysExpo*1000*3600*24)-this.diffhoursExpo*1000*3600)- this.diffminsExpo*1000 * 60) /(1000));
 
+    let m=  Math.floor((diff/1000));
+  //console.log('m',m);
+  
+    if(m <=0){
+        console.log('tabs');
+        this.timerExpo.unsubscribe();
+      //this.navCtrl.popToRoot();
+
+        this.store.get('version').then((val)=>{
+        if(val=="")this.navCtrl.setRoot(VersionCheckPage);
+        else this.navCtrl.setRoot(TabsPage);
+        });
+
+      }
+
+
+}
 
 
 
