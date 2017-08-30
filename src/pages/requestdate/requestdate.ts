@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,Platform } from 'ionic-angular';
 import {DataService} from '../../providers/data-service';
 import {Http} from '@angular/http';
 import { Storage } from '@ionic/storage';
@@ -25,9 +25,20 @@ export class Requestdate {
    dump:any;
     dump1:any;
     formGroup;
-  constructor(public http: Http,public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams,private DS:DataService,private store:Storage) {
+  constructor(platform:Platform,public http: Http,public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams,private DS:DataService,private store:Storage) {
     this.simulation_id = navParams.get("SimID"); 
   
+    platform.ready().then(()=>{
+      
+              platform.registerBackButtonAction(() =>{
+      
+                if(this.navCtrl.canGoBack()){
+                  this.navCtrl.pop();
+                }
+              });
+      
+      
+            });
   }
 
   ionViewDidLoad() {

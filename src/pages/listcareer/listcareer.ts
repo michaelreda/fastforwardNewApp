@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,Platform } from 'ionic-angular';
 import { ItemDetailPage } from '../item-detail/item-detail';
 import { Storage } from '@ionic/storage';
 import {DataService} from '../../providers/data-service';
@@ -27,11 +27,22 @@ date:any=[];
 size:any[];
 setdage:any={lower:0,upper:1000};
 userid;
-  constructor(public navCtrl: NavController, public navParams: NavParams,private DS:DataService,private store:Storage) {
+  constructor(platform:Platform,public navCtrl: NavController, public navParams: NavParams,private DS:DataService,private store:Storage) {
 this.img=navParams.get("img");
 this.id=navParams.get("id");
  this.colleage="menu";
   
+      platform.ready().then(()=>{
+
+        platform.registerBackButtonAction(() =>{
+
+          if(this.navCtrl.canGoBack()){
+            this.navCtrl.pop();
+          }
+        });
+
+
+      });
     
   }
  
@@ -176,6 +187,11 @@ sim_details(x){
 this .navCtrl.push(ItemDetailPage,{co_id:x.company_id});
 
   
+}
+back_button(){
+
+this.navCtrl.pop();
+
 }
 
 }

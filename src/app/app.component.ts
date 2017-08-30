@@ -12,8 +12,7 @@ import { Storage } from '@ionic/storage';
 import {Registerform} from '../pages/registerform/registerform';
 import { DataService } from '../providers/data-service';
 import { Network } from '@ionic-native/network';
-import { PaymentMethodPage } from '../pages/payment-method/payment-method';
-import {BrowserPage}from '../pages/browser/browser';
+import { DatePage } from "../pages/date/date";
 @Component({
   templateUrl: 'app.html',
   
@@ -36,11 +35,14 @@ nextpage;
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+      
+
+              
     
 
     });
   
- //this.rootPage=TimerPage;
+ //this.rootPage=DatePage;
 
 
     store.get('user_id').then((val) => {

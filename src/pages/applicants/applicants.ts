@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,Platform} from 'ionic-angular';
 import { Http } from '@angular/http';
 
 @IonicPage()
@@ -24,10 +24,22 @@ export class Applicants {
  sim_price;
  app_bool=false;
  acc_bool=false;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
+  constructor(platform:Platform,public navCtrl: NavController, public navParams: NavParams, public http: Http) {
    this.list="applied";
    this.app_bool=true;
   this. pretab=false;
+  
+  platform.ready().then(()=>{
+    
+            platform.registerBackButtonAction(() =>{
+    
+              if(this.navCtrl.canGoBack()){
+                this.navCtrl.pop();
+              }
+            });
+    
+    
+          });
   }
 
  
@@ -151,11 +163,14 @@ price:this.sim_price,
 simulation_date_id:this.sim_id
 
  }
-     
- this.http.post("https://ffserver.eu-gb.mybluemix.net/accept-applicants",applicant).subscribe(data => {
-  var res = JSON.parse(data['_body']);
-console.log("res",res);
 
+ this.http.post("https://ffserver.eu-gb.mybluemix.net/accept-applicant",applicant).subscribe(data => {
+  var res = JSON.parse(data['_body']);
+ 
+
+ },(ERROR)=>{
+   console.log('ERROR',ERROR);
+   
  });
     }
 
@@ -177,7 +192,7 @@ reject(i,x){
     
      } 
          
-     this.http.post("https://ffserver.eu-gb.mybluemix.net/reject-applicants",applicant).subscribe(data => {
+     this.http.post("https://ffserver.eu-gb.mybluemix.net/reject-applicant",applicant).subscribe(data => {
       var res = JSON.parse(data['_body']);
       console.log("res",res);
       

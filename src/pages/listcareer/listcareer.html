@@ -1,19 +1,25 @@
 <ion-header>
 
-	<ion-navbar align-title="center" color="ffPrimary" style="padding-right:5rem;">
-		<ion-title style="width:100%">{{img}}</ion-title>
-	</ion-navbar>
+	<ion-toolbar align-title="center" color="ffPrimary" style="padding-right:5rem;">
+		<div>
+			<button style="width:19%;float: left;" color="light" ion-button icon-left clear small (click)="back_button()">
+			       <ion-icon  color="light" name="md-arrow-round-back" item-start></ion-icon>
+			</button>
+			<div style="width:75%;float: left;margin:0;text-align:center;padding-top:0.8rem;">
+	             	<h5 style="color:white;margin:0;">{{img}}</h5>
+			</div>
+		</div>
+	</ion-toolbar>
 
 </ion-header>
+
 <ion-content class="separatingBG">
-
-
 
 	<!--
 	<ion-fab right bottom (click)="switch()">
 	 <button ion-fab color="primary">    <i class="glyphicon glyphicon-sort" style=" font-size: 2rem;color:#ffffff"></i></button>
 	</ion-fab>
--->
+     -->
 
 
 	<div [ngSwitch]="colleage">

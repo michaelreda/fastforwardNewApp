@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams,Platform } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular'
@@ -24,11 +24,35 @@ export class ItemDetailPage {
 	follow="Follow";
   companyid=3;
 userid;
-	constructor( private store:Storage,public navCtrl: NavController, navParams: NavParams, private http: Http, public alertCtrl:AlertController,public loadingCtrl: LoadingController,public actionSheetCtrl: ActionSheetController) {
-	//this.loading=true;
-	this.companyid=navParams.get("co_id");
-	//	this.presentLoading();
+actionSheet;
+	constructor(platform:Platform, private store:Storage,public navCtrl: NavController, navParams: NavParams, private http: Http, public alertCtrl:AlertController,public loadingCtrl: LoadingController,public actionSheetCtrl: ActionSheetController) {
 	
+	this.companyid=navParams.get("co_id");
+	
+	platform.ready().then(()=>{
+		
+				platform.registerBackButtonAction(() =>{
+				
+				if(this.navCtrl.canGoBack()){
+					if(this.actionSheet!=null){
+						
+					this.actionSheet.dismiss();
+					}
+								
+				
+					this.navCtrl.pop();
+				  }
+				  
+				});
+		
+		
+			  });
+
+	
+	}
+
+	back_button(){
+		this.navCtrl.pop();
 	}
 
 
@@ -131,7 +155,7 @@ userid;
 		}
 
 		presentActionSheet(x,event) {
-			let actionSheet = this.actionSheetCtrl.create({
+			this.actionSheet = this.actionSheetCtrl.create({
 				// title: '',
 				buttons: [
 				
@@ -145,15 +169,15 @@ userid;
 					}
 				]
 			});
-			
+		
 			x.dates.forEach(element => {
-				actionSheet.addButton({text:element.date,
+				this.actionSheet.addButton({text:element.date,
 				handler:()=>{
 				this.showalert(element.date_id,x,event);
 				}})
 			});
 
-				actionSheet.addButton(
+				this.actionSheet.addButton(
 				{
 						text: 'Request New Date!',
 						handler: () => {
@@ -162,7 +186,7 @@ userid;
 						}
 				} 
 			); 
-			actionSheet.addButton(
+			this.actionSheet.addButton(
 
 			
 				{
@@ -174,7 +198,8 @@ userid;
 						}
 				} 
 			); 
-			actionSheet.present();
+		this.actionSheet.present();
+		
 		}
 
 
