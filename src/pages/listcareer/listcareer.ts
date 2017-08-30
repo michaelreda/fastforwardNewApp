@@ -106,12 +106,12 @@ this.refrence=this.original=this.items;
 if(this.class!=null && this.class.length>0){
   this .items=[ {name:"Web Development co.",city:"1 January 2018",price:55000,date:"JANUARY",class:"cloud",size:"small"}];
   this.items.pop();
-  for (var _ii = 0; _ii < this.class.length; _ii++) {
+  for (var _iii = 0; _iii < this.class.length; _iii++) {
    this.original = this.original.filter(
      (item) => {
 
        
-        return (item.class===this.class[_ii]);
+        return (item.class===this.class[_iii]);
       });
 
         this.original.forEach(element => {

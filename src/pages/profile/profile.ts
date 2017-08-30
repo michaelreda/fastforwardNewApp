@@ -5,7 +5,6 @@ import { LoadingController } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular'
 import {Http} from '@angular/http';
 import {LoginPage} from'../login/login';
-import {DataService} from '../../providers/data-service';
 import { Facebook} from '@ionic-native/facebook';
 import { Storage } from '@ionic/storage';
 import { App } from 'ionic-angular';

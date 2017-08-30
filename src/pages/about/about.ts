@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import {DataService} from '../../providers/data-service';
 import {Listcareer} from '../listcareer/listcareer';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 

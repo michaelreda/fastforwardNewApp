@@ -1,9 +1,7 @@
 import { Network } from '@ionic-native/network';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform, LoadingController } from 'ionic-angular';
-import { DataService } from '../../providers/data-service';
 import { AlertController } from 'ionic-angular';
-import { Facebook} from '@ionic-native/facebook';
 import {TabsPage} from '../tabs/tabs';
 import {TimerPage} from '../timer/timer';
 import { Storage } from '@ionic/storage';
