@@ -1,9 +1,7 @@
 import { Network } from '@ionic-native/network';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform, LoadingController } from 'ionic-angular';
-import { DataService } from '../../providers/data-service';
 import { AlertController } from 'ionic-angular';
-import { Facebook} from '@ionic-native/facebook';
 import {TabsPage} from '../tabs/tabs';
 import {TimerPage} from '../timer/timer';
 import { Storage } from '@ionic/storage';
@@ -33,7 +31,7 @@ export class Registerform {
 loader;
   age=new Date();
   expo;
-  constructor(public navCtrl: NavController,  public http: Http,public navParams: NavParams,public alertCtrl: AlertController,private DS:DataService,private fb: Facebook,public plt: Platform,private network: Network, private loadingCtrl: LoadingController, private store: Storage) {
+  constructor(platform:Platform,public navCtrl: NavController,  public http: Http,public navParams: NavParams,public alertCtrl: AlertController,public plt: Platform,private network: Network, private loadingCtrl: LoadingController, private store: Storage) {
 
 
     this.network.onDisconnect().subscribe(() => {
@@ -46,6 +44,19 @@ loader;
     this.network.onConnect().subscribe(() => {
       this.connection_error_popup.dismiss();
     });
+
+    
+    platform.ready().then(()=>{
+      
+              platform.registerBackButtonAction(() =>{
+      
+                if(this.navCtrl.canGoBack()){
+                  this.navCtrl.pop();
+                }
+              });
+      
+      
+            });
   
     this.name = navParams.get("name");
   // this.getage = navParams.get("age");

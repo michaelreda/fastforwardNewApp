@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,Platform } from 'ionic-angular';
 import { ItemDetailPage } from '../item-detail/item-detail';
 import { Storage } from '@ionic/storage';
 import {DataService} from '../../providers/data-service';
@@ -27,11 +27,22 @@ date:any=[];
 size:any[];
 setdage:any={lower:0,upper:1000};
 userid;
-  constructor(public navCtrl: NavController, public navParams: NavParams,private DS:DataService,private store:Storage) {
+  constructor(platform:Platform,public navCtrl: NavController, public navParams: NavParams,private DS:DataService,private store:Storage) {
 this.img=navParams.get("img");
 this.id=navParams.get("id");
  this.colleage="menu";
   
+      platform.ready().then(()=>{
+
+        platform.registerBackButtonAction(() =>{
+
+          if(this.navCtrl.canGoBack()){
+            this.navCtrl.pop();
+          }
+        });
+
+
+      });
     
   }
  
@@ -71,13 +82,13 @@ if(this.size!=null && this.size.length>0){
   //type
   this .items=[ {name:"Web Development co.",city:"1 January 2018",price:55000,date:"JANUARY",class:"cloud",size:"small"}];
   this.items.pop();
-  for (var _i = 0; _i < this.size.length; _i++) {
+  for (var _ii = 0; _ii < this.size.length; _ii++) {
     this.original=this.refrence;
    this.original = this.original.filter(
      (item) => {
 
        
-        return (item.size===this.size[_i]);
+        return (item.size===this.size[_ii]);
       });
         this.original.forEach(element => {
          this.items.push(element);
@@ -95,12 +106,12 @@ this.refrence=this.original=this.items;
 if(this.class!=null && this.class.length>0){
   this .items=[ {name:"Web Development co.",city:"1 January 2018",price:55000,date:"JANUARY",class:"cloud",size:"small"}];
   this.items.pop();
-  for (var _i = 0; _i < this.class.length; _i++) {
+  for (var _iii = 0; _iii < this.class.length; _iii++) {
    this.original = this.original.filter(
      (item) => {
 
        
-        return (item.class===this.class[_i]);
+        return (item.class===this.class[_iii]);
       });
 
         this.original.forEach(element => {
@@ -176,6 +187,11 @@ sim_details(x){
 this .navCtrl.push(ItemDetailPage,{co_id:x.company_id});
 
   
+}
+back_button(){
+
+this.navCtrl.pop();
+
 }
 
 }
