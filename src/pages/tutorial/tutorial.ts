@@ -1,7 +1,7 @@
 import { TabsPage } from './../tabs/tabs';
 import { Component } from '@angular/core';
 import {  NavController, Platform } from 'ionic-angular';
-
+import { Storage } from '@ionic/storage';
 
 
 
@@ -21,7 +21,7 @@ export class TutorialPage {
   showSkip = true;
   ios: boolean = false;
 
-  constructor(public navCtrl: NavController,public plt: Platform) {
+  constructor(public navCtrl: NavController,public plt: Platform,private store: Storage) {
     console.log("y",localStorage.getItem('expo'));
     
     if (plt.is('ios')) {
@@ -47,6 +47,7 @@ export class TutorialPage {
   }
 
   startApp() {
+    this.store.set('tutorial', "Yes");
     this.navCtrl.setRoot(TabsPage, {}, {
       animate: true,
       direction: 'forward'

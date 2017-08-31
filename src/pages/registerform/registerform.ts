@@ -8,6 +8,7 @@ import {TabsPage} from '../tabs/tabs';
 import {TimerPage} from '../timer/timer';
 import { Storage } from '@ionic/storage';
 import { Http } from '@angular/http';
+import {TutorialPage} from '../tutorial/tutorial' ; 
 
 
 @IonicPage()
@@ -126,22 +127,24 @@ this.http.post("https://ffserver.eu-gb.mybluemix.net/register3", user).subscribe
     if (this.check.result == false) {
       this.showAlert(this.check.msg);
 
-}
-else if(this.check.result==true){
-this.store.set('user_id', this.check.user_id);
+    }
+    else if(this.check.result==true){
+      this.store.set('user_id', this.check.user_id);
 
- let m;
-          this.store.get('timer').then((val)=>{m=val;
-           if(m==""){
-        this.navCtrl.setRoot(TabsPage);}
-        else  this.navCtrl.setRoot(TimerPage);
-     // alert(m);
-      })
-         
+      this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-date"); // check if the timer is working
+                this.DS.load().subscribe(
+                    data =>{
+                        if (data.result)
+                        this.navCtrl.setRoot(TimerPage);
+                        else 
+                          this.navCtrl.setRoot(TutorialPage);
+                    }) ; 
+          }
+          
+          
 
       
 
-}
   }
 
 

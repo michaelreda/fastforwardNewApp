@@ -13,6 +13,7 @@ import {Registerform} from '../pages/registerform/registerform';
 import { DataService } from '../providers/data-service';
 import { Network } from '@ionic-native/network';
 import { PaymentMethodPage } from '../pages/payment-method/payment-method';
+
 @Component({
   templateUrl: 'app.html',
   
@@ -81,13 +82,21 @@ nextpage;
         if (user_id==324) 
             this.rootPage=TabsPage;
        else {
-              this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-date-test"); // check if the timer is working
+              this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-date"); // check if the timer is working
               this.DS.load().subscribe(
                   data =>{
                         if(data.result)
                             this.rootPage= TimerPage;
                         else 
-                            this.rootPage= LoginPage;
+                        {
+                            this.store.get('tutorial').then((val) => {
+                                  if(val ==null)
+                                    this.rootPage= TutorialPage;
+                                  else 
+                                    this.rootPage= TabsPage;
+                            });
+                            
+                        }
 
                     });
             
@@ -96,20 +105,5 @@ nextpage;
 
   }
 
-
-  // checkTimer (callback : (TimerWorking : boolean) => void){
-
-  //   this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-date-test");
-  //       this.DS.load().subscribe(
-  //           data =>{
-  //             console.log("hello" , data.result); 
-  //             callback (data.result) ; 
-  //             });
-        
-       
- 
- 
-
-  // }
 }
 

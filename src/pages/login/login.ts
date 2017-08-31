@@ -9,7 +9,7 @@ import { Registerform } from '../registerform/registerform';
 import { TimerPage } from '../timer/timer';
 import { Facebook } from '@ionic-native/facebook';
 import { Storage } from '@ionic/storage';
-
+import {TutorialPage} from '../tutorial/tutorial' ; 
 
 @IonicPage()
 @Component({
@@ -69,19 +69,12 @@ export class LoginPage {
           this.check = data;
       if(this.check.expo)localStorage.setItem('expo','1');
       if (this.check.result) {
-        this.store.set('user_id', this.check.user_id);
+
+         this.store.set('user_id', this.check.user_id);
         localStorage.setItem('company_or_not', this.check.company_or_not);
         
-        if ( this.check.user_id ==324){this.navCtrl.setRoot(TabsPage);}
-        else{
-        let m;
-          this.store.get('timer').then((val)=>{m=val;})
-          if(m== ""){
-            this.navCtrl.setRoot(TabsPage);
-       }
-        else  this.navCtrl.setRoot(TimerPage);
-
-      }}
+        this.DoTheNav(this.check) ; 
+    }
       else {
 
         this.store.set('user_id', "");
@@ -236,6 +229,24 @@ alert('Enter your mail please ');
     }
 
 
+  }
+
+
+  DoTheNav(responseData) {
+
+     
+        if ( responseData.user_id ==324)
+             this.navCtrl.setRoot(TabsPage);
+        else{
+        this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-date"); // check if the timer is working
+              this.DS.load().subscribe(
+                  data =>{
+                        if (data.result)
+                          this.navCtrl.setRoot(TimerPage);
+                        else 
+                          this.navCtrl.setRoot(TutorialPage);
+                  }) ; 
+       }
   }
 
 }
