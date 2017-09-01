@@ -1,3 +1,4 @@
+import { DataService } from './../../providers/data-service';
 import { Network } from '@ionic-native/network';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform, LoadingController } from 'ionic-angular';
@@ -31,7 +32,7 @@ export class Registerform {
 loader;
   age=new Date();
   expo;
-  constructor(platform:Platform,public navCtrl: NavController,  public http: Http,public navParams: NavParams,public alertCtrl: AlertController,public plt: Platform,private network: Network, private loadingCtrl: LoadingController, private store: Storage) {
+  constructor(platform:Platform,public navCtrl: NavController,  public http: Http,public navParams: NavParams,public alertCtrl: AlertController,public plt: Platform,private network: Network, private loadingCtrl: LoadingController, private store: Storage,public DS:DataService) {
 
 
     this.network.onDisconnect().subscribe(() => {
