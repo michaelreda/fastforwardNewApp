@@ -7,6 +7,7 @@ import {TimerPage} from '../timer/timer';
 import { Storage } from '@ionic/storage';
 import { Http } from '@angular/http';
 import {TutorialPage} from '../tutorial/tutorial' ; 
+import { DataService } from '../../providers/data-service';
 
 
 @IonicPage()
@@ -31,7 +32,7 @@ export class Registerform {
 loader;
   age=new Date();
   expo;
-  constructor(platform:Platform,public navCtrl: NavController,  public http: Http,public navParams: NavParams,public alertCtrl: AlertController,public plt: Platform,private network: Network, private loadingCtrl: LoadingController, private store: Storage) {
+  constructor(platform:Platform,public navCtrl: NavController,public DS: DataService,  public http: Http,public navParams: NavParams,public alertCtrl: AlertController,public plt: Platform,private network: Network, private loadingCtrl: LoadingController, private store: Storage) {
 
 
     this.network.onDisconnect().subscribe(() => {
