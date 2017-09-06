@@ -19,7 +19,6 @@ import {Listcareer} from '../pages/listcareer/listcareer';
 import { ItemDetailPage} from '../pages/item-detail/item-detail'
 import { Profile } from "../pages/profile/profile";
 import {LoginPage  } from "../pages/login/login";
-import { TimerPage } from '../pages/timer/timer';
 import{DataService} from '../providers/data-service';
 import { User } from '../providers/user';
 import { AcceptapplicantsPage } from "../pages/acceptapplicants/acceptapplicants";
@@ -68,7 +67,6 @@ import {AngularFireModule} from "angularfire2" ;
     Profile,
     SafepipePipe,
     LoginPage,
-    TimerPage,
     CountdownPipe,
     VersionCheckPage,
     AcceptapplicantsPage,
@@ -105,7 +103,6 @@ import {AngularFireModule} from "angularfire2" ;
     ItemDetailPage,
     Profile,
     LoginPage,
-    TimerPage,
     VersionCheckPage,
     AcceptapplicantsPage,
     TutorialPage,
