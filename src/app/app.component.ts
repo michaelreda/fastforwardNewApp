@@ -6,7 +6,6 @@ import { Platform, LoadingController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
-import { TimerPage } from '../pages/timer/timer';
 import { Storage } from '@ionic/storage';
 import { DataService } from '../providers/data-service';
 import { Network } from '@ionic-native/network';
@@ -80,24 +79,14 @@ export class MyApp {
         if (user_id==324) 
             this.rootPage=TabsPage;
        else {
-              this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-date"); // check if the timer is working
-              this.DS.load().subscribe(
-                  data =>{
-                        if(data.result)
-                            this.rootPage= TimerPage;
-                        else 
-                        {
-                            this.store.get('tutorial').then((val) => {
-                                  if(val ==null)
-                                    this.rootPage= TutorialPage;
-                                  else 
-                                    this.rootPage= TabsPage;
-                            });
-                            
-                        }
-
-                    });
-            
+              
+            this.store.get('tutorial').then((val) => {
+                  if(val ==null)
+                    this.rootPage= TutorialPage;
+                  else 
+                    this.rootPage= TabsPage;
+            });
+                          
        }
       }
     }

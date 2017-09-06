@@ -1,13 +1,12 @@
+import { DataService } from './../../providers/data-service';
 import { Network } from '@ionic-native/network';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform, LoadingController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import {TabsPage} from '../tabs/tabs';
-import {TimerPage} from '../timer/timer';
 import { Storage } from '@ionic/storage';
 import { Http } from '@angular/http';
 import {TutorialPage} from '../tutorial/tutorial' ; 
-import { DataService } from '../../providers/data-service';
 
 
 @IonicPage()
@@ -143,14 +142,9 @@ this.http.post("https://ffserver.eu-gb.mybluemix.net/register3", user).subscribe
     else if(this.check.result==true){
       this.store.set('user_id', this.check.user_id);
 
-      this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-date"); // check if the timer is working
-                this.DS.load().subscribe(
-                    data =>{
-                        if (data.result)
-                        this.navCtrl.setRoot(TimerPage);
-                        else 
-                          this.navCtrl.setRoot(TutorialPage);
-                    }) ; 
+     
+      this.navCtrl.setRoot(TutorialPage);
+                  
           }
           
           
