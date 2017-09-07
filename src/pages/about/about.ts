@@ -29,7 +29,7 @@ this.fields=[
 	{name:"SOFTWARE ENGINEERING",img:"assets/finalsoft.png",id:2},
 	{name:"ARCHITECTURE",img:"assets/archx.png",id:3},
 	{name:"BANKING",img:"assets/bankx.png",id:4},
-	{name:"TV PRODUCTION",img:"assets/tvx.png",id:5},
+	{name:"Medicine",img:"assets/midpic.jpeg",id:9},
 	{name:"FASHION DESIGN",img:"assets/fashx.png",id:6},
 	{name:"JOURNALISM",img:"assets/journx.png",id:7},
 	{name:"INDUSTRIAL",img:"assets/indx.png",id:8},

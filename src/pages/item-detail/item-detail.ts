@@ -7,7 +7,7 @@ import {  Requestdate } from "../requestdate/requestdate";
 import { PaymentMethodPage } from '../payment-method/payment-method';
 import {Http} from '@angular/http';
 import { Storage } from '@ionic/storage';
-
+import { Profile } from "../profile/profile"
 
 @Component({
 	selector: 'page-item-detail',
@@ -173,7 +173,7 @@ actionSheet;
 			x.dates.forEach(element => {
 				this.actionSheet.addButton({text:element.date,
 				handler:()=>{
-				this.showalert(element.date_id,x,event);
+				this.Apply(element.date_id,x,event);
 				}})
 			});
 
@@ -203,56 +203,60 @@ actionSheet;
 		}
 
 
-showalert(id,x,event){
-	if(x.price ==0){
-		this.http.get("https://ffserver.eu-gb.mybluemix.net/apply?user_id="+this.userid+"&simulation_date_id="+id).subscribe(
-			data => {
-				var res = JSON.parse(data['_body']);
-				  x.status=res.result;
-	
-		});
+	Apply(id,x,event){
+	//	if(x.price ==0){
+			this.http.get("https://ffserver.eu-gb.mybluemix.net/apply?user_id="+this.userid+"&simulation_date_id="+id).subscribe(
+				data => {
+					var res = JSON.parse(data['_body']);
+					x.status=res.result;
+		
+			});
+		//}
+		//else{
+		//	this.navCtrl.push(PaymentMethodPage);
+		
+
+	//	}
+
+		
 	}
-	else{
-		this.navCtrl.push(PaymentMethodPage);
-	
+		
 
+	goToProfile() {
+
+
+		this.navCtrl.push(Profile) ; 
+	}
+	ngOnInit() {
+		//console.log('timer page');
+		
+		this.store.get('user_id').then((val) => {
+		this.setid(val);
+		this.http.get("https://ffserver.eu-gb.mybluemix.net/company_details?company_id="+this.companyid).subscribe(data => {
+		var res = JSON.parse(data['_body']);
+		this.company_details=res;
+		console.log(this.company_details);
+		//this.loader.dismiss();
+		// this.loading=false;
+	});
+	this.http.get("https://ffserver.eu-gb.mybluemix.net/get_company_simulations2?company_id="+this.companyid+"&user_id="+this.userid).subscribe(data => {
+		var res = JSON.parse(data['_body']);
+		this.company_simulations =res;
+		for (let entry of this.read_more) {
+			entry=false;
+		}
+		console.log(this.company_simulations);
+		// this.loading=false;
+	});
+		
+		
+		});
+					
 	}
 
-	
-}
-	
+	setid(val){
 
+	this.userid=val;
 
-		ngOnInit() {
-			//console.log('timer page');
-			
-		  this.store.get('user_id').then((val) => {
-		  this.setid(val);
-		  this.http.get("https://ffserver.eu-gb.mybluemix.net/company_details?company_id="+this.companyid).subscribe(data => {
-			var res = JSON.parse(data['_body']);
-			this.company_details=res;
-			console.log(this.company_details);
-			//this.loader.dismiss();
-			// this.loading=false;
-		});
-		this.http.get("https://ffserver.eu-gb.mybluemix.net/get_company_simulations2?company_id="+this.companyid+"&user_id="+this.userid).subscribe(data => {
-			var res = JSON.parse(data['_body']);
-			this.company_simulations =res;
-			for (let entry of this.read_more) {
-				entry=false;
-			}
-			console.log(this.company_simulations);
-			// this.loading=false;
-		});
-		  
-		  
-		  });
-					  
-		}
-
-		setid(val){
-
-        this.userid=val;
-
-		}
+	}
 }
