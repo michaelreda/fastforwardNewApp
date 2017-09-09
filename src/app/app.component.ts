@@ -39,7 +39,7 @@ export class MyApp {
 
     store.get('user_id').then((val) => {
       console.log('store', val);
-      this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-version?version=1");
+      this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/check-version?version=2");
       this.DS.load().subscribe(
         data => (this.handelResponse(data, val))
       );
