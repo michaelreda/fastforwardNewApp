@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { AboutPage } from '../about/about';
+import { FieldsPage } from '../fields/fields';
 import { Vedios } from '../vedios/vedios';
 import { Profile } from "../profile/profile";
 import { ActionSheetController, Platform, LoadingController } from 'ionic-angular';
@@ -18,7 +18,7 @@ import {ExpotimerPage} from '../expotimer/expotimer';
 export class TabsPage {
 	company_or_not: any;
 	expo:any;
-	tab1Root = AboutPage;
+	tab1Root = FieldsPage;
 	tab2Root = Vedios;
 	tab3Root = Profile;
 	tab5Root = ExpotimerPage;

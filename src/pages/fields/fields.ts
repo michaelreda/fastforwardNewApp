@@ -4,8 +4,8 @@ import {Listcareer} from '../listcareer/listcareer';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
-	selector: 'page-about',
-	templateUrl: 'about.html',
+	selector: 'page-fields',
+	templateUrl: 'fields.html',
 	 animations: [
 		trigger('myvisibility', [
 			state('visible', style({
@@ -18,7 +18,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 		])
 	]
 })
-export class AboutPage {
+export class FieldsPage {
 	check ; 
 	 visibleState = 'visible';
 public fields:any[];

@@ -7,7 +7,7 @@ import { HttpModule} from '@angular/http';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 
-import { AboutPage } from '../pages/about/about';
+import { FieldsPage } from '../pages/fields/fields';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -56,7 +56,7 @@ import {AngularFireModule} from "angularfire2" ;
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
+    FieldsPage,
     ContactPage,
     HomePage,
     TabsPage,
@@ -93,7 +93,7 @@ import {AngularFireModule} from "angularfire2" ;
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
+    FieldsPage,
     ContactPage,
     HomePage,
     TabsPage,
