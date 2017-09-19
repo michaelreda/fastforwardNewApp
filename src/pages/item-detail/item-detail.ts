@@ -204,19 +204,17 @@ actionSheet;
 
 
 	Apply(id,x,event){
-	//	if(x.price ==0){
+		if(x.price ==0){
 			this.http.get("https://ffserver.eu-gb.mybluemix.net/apply?user_id="+this.userid+"&simulation_date_id="+id).subscribe(
 				data => {
 					var res = JSON.parse(data['_body']);
 					x.status=res.result;
 		
 			});
-		//}
-		//else{
-		//	this.navCtrl.push(PaymentMethodPage);
-		
-
-	//	}
+		}
+		else{
+			this.navCtrl.push(PaymentMethodPage);
+		}
 
 		
 	}

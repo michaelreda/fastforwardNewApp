@@ -24,6 +24,8 @@ import { User } from '../providers/user';
 import { AcceptapplicantsPage } from "../pages/acceptapplicants/acceptapplicants";
 import { PaymentMethodPage } from '../pages/payment-method/payment-method';
 import {ExpotimerPage} from '../pages/expotimer/expotimer';
+import {CardPaymentPage} from'../pages/card-payment/card-payment'
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -74,7 +76,7 @@ import {AngularFireModule} from "angularfire2" ;
     TutorialPage,
     PaymentMethodPage,
     ExpotimerPage,
-   
+    CardPaymentPage,
    
    
   ],
@@ -108,6 +110,7 @@ import {AngularFireModule} from "angularfire2" ;
     TutorialPage,
     PaymentMethodPage,
     ExpotimerPage,
+     CardPaymentPage,   
   
   ],
   providers: [

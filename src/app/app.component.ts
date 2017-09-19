@@ -9,7 +9,7 @@ import { LoginPage } from '../pages/login/login';
 import { Storage } from '@ionic/storage';
 import { DataService } from '../providers/data-service';
 import { Network } from '@ionic-native/network';
-import { PaymentMethodPage } from '../pages/payment-method/payment-method';
+import { CardPaymentPage } from '../pages/card-payment/card-payment';
 import {  TutorialPage } from '../pages/tutorial/tutorial';
 @Component({
   templateUrl: 'app.html',
@@ -35,7 +35,7 @@ export class MyApp {
       splashScreen.hide();
     });
 
-    //this.rootPage=TabsPage;
+    //this.rootPage=TabsPage;this.handelResponse(data, val)
 
     store.get('user_id').then((val) => {
       console.log('store', val);
