@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,Platform } from 'ionic-angular';
 import {Http} from '@angular/http';
-
+import {CardPaymentPage} from '../card-payment/card-payment'
 
 @IonicPage()
 @Component({
@@ -29,6 +29,10 @@ link;
     this.navCtrl.pop();
   }
 
+  CardPayment() { 
+
+    this.navCtrl.push(CardPaymentPage) ;
+  }
 
   ngOnInit() {
 
