@@ -183,8 +183,8 @@ else{
 
 
 
-sim_details(x){
-this .navCtrl.push(CompanyPage,{co_id:x.company_id});
+sim_details(company){
+this .navCtrl.push(CompanyPage,{co_id:company.company_id});
 
   
 }

@@ -48,24 +48,24 @@ this.DS.load().subscribe(
 
 }
 
-like(x){
-if(x.liked) {
-	x.liked=false;
+like(video){
+if(video.liked) {
+	video.liked=false;
 	//like link
-	this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/dislike-video?user_id=1&video_id="+x.video_id);
+	this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/dislike-video?user_id=1&video_id="+video.video_id);
 this.DS.load().subscribe(
 						data =>{ this.dump
-						x.likes--;}
+						video.likes--;}
 				);
 }
 else{
-x.liked=true;
+video.liked=true;
 //unlike link
 
-	this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/like-video?user_id=1&video_id="+x.video_id);
+	this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/like-video?user_id=1&video_id="+video.video_id);
 this.DS.load().subscribe(
 						data =>{ this.dump;
-						x.likes++;}
+						video.likes++;}
 );
 }
 
@@ -73,18 +73,18 @@ this.DS.load().subscribe(
 
 
 }
-follow(x){
-	 console.log("ya mr7ba",x.company_id);
-	if(x.followed) {
-	x.followed=false;
+follow(company){
+	 console.log("ya mr7ba",company.company_id);
+	if(company.followed) {
+	company.followed=false;
 	//like link
-	this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/unfollow-company?user_id=1&company_id="+x.company_id);
+	this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/unfollow-company?user_id=1&company_id="+company.company_id);
 this.DS.load().subscribe(
 						data => this.dump
 
 				);
 					this.videos1.forEach(element => {
-						if(element.company_id==x.company_id)element.followed=false;
+						if(element.company_id==company.company_id)element.followed=false;
 					});
 
 
@@ -93,16 +93,16 @@ this.DS.load().subscribe(
 else{
 
 
-x.followed=true;
+company.followed=true;
 //unlike link
 
-	this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/follow-company?user_id=1&company_id="+x.company_id);
+	this.DS.seturl("https://ffserver.eu-gb.mybluemix.net/follow-company?user_id=1&company_id="+company.company_id);
 this.DS.load().subscribe(
 						data => this.dump
 
 );
 					this.videos1.forEach(element => {
-						if(element.company_id==x.company_id)element.followed=true;
+						if(element.company_id==company.company_id)element.followed=true;
 					});
 
 }
