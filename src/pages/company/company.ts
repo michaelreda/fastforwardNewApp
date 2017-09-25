@@ -10,10 +10,10 @@ import { Storage } from '@ionic/storage';
 import { Profile } from "../profile/profile"
 
 @Component({
-	selector: 'page-item-detail',
-	templateUrl: 'item-detail.html'
+	selector: 'page-company',
+	templateUrl: 'company.html'
 })
-export class ItemDetailPage {
+export class CompanyPage {
 	item: any;
 	loading: boolean;
 	company_details: any ={};

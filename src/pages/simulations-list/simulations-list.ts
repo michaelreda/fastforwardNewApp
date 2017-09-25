@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,Platform } from 'ionic-angular';
-import { ItemDetailPage } from '../item-detail/item-detail';
+import { CompanyPage } from '../company/company';
 import { Storage } from '@ionic/storage';
 import {DataService} from '../../providers/data-service';
 /**
@@ -11,10 +11,10 @@ import {DataService} from '../../providers/data-service';
  */
 @IonicPage()
 @Component({
-  selector: 'page-listcareer',
-  templateUrl: 'listcareer.html',
+  selector: 'page-simulations-list',
+  templateUrl: 'simulations-list.html',
 })
-export class Listcareer {
+export class SimulationsListPage {
 public items :any[];
 private img;
 private id;
@@ -184,7 +184,7 @@ else{
 
 
 sim_details(x){
-this .navCtrl.push(ItemDetailPage,{co_id:x.company_id});
+this .navCtrl.push(CompanyPage,{co_id:x.company_id});
 
   
 }

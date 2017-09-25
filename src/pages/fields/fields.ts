@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import {Listcareer} from '../listcareer/listcareer';
+import {SimulationsListPage} from '../simulations-list/simulations-list';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
@@ -45,7 +45,7 @@ ngOnInit() {
 
 nav(img,id){
 
-this.navCtrl.push(Listcareer,{img:img,id:id});
+this.navCtrl.push(SimulationsListPage,{img:img,id:id});
 
 }
 toggleVisible() {

@@ -5,22 +5,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import {DataService} from '../../providers/data-service';
 /**
- * Generated class for the Vedios page.
+ * Generated class for the Videos page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
 @IonicPage()
 @Component({
-	selector: 'page-vedios',
-	templateUrl: 'vedios.html',
+	selector: 'page-videos',
+	templateUrl: 'videos.html',
 })
-export class Vedios {
-vedios1:any=[];
+export class Videos  {
+videos1:any=[];
 check=false;
 dump:any;
 	constructor(public navCtrl: NavController, public navParams: NavParams,private DS:DataService,private sharefb:SocialSharing) {
-	/*this.vedios=[
+	/*this.videos=[
 			{title:"first vedio",link:"https://player.vimeo.com/external/85569724.sd.mp4?s=43df5df0d733011263687d20a47557e4",brief:"brief description of the vedio",company_name:"IBM",vedioid:1,companyid:1,liked:false,followed:false,pp:""},
 			{title:"second vedio",link:"https://player.vimeo.com/external/85569724.sd.mp4?s=43df5df0d733011263687d20a47557e4",brief:"brief description of the vedio",company_name:"IBM",vedioid:2,companyid:2,liked:false,followed:true,pp:""},
 			{title:"third vedio",link:"https://player.vimeo.com/external/85569724.sd.mp4?s=43df5df0d733011263687d20a47557e4",brief:"brief description of the vedio",company_name:"IBM",vedioid:3,companyid:3,liked:true,followed:false,pp:""},
@@ -43,7 +43,7 @@ this.DS.load().subscribe(
 
 	}
 			setresponse(value){
-				this.vedios1=value;
+				this.videos1=value;
 
 
 }
@@ -83,7 +83,7 @@ this.DS.load().subscribe(
 						data => this.dump
 
 				);
-					this.vedios1.forEach(element => {
+					this.videos1.forEach(element => {
 						if(element.company_id==x.company_id)element.followed=false;
 					});
 
@@ -101,7 +101,7 @@ this.DS.load().subscribe(
 						data => this.dump
 
 );
-					this.vedios1.forEach(element => {
+					this.videos1.forEach(element => {
 						if(element.company_id==x.company_id)element.followed=true;
 					});
 

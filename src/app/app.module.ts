@@ -14,16 +14,16 @@ import { TabsPage } from '../pages/tabs/tabs';
 import {Applicants} from '../pages/applicants/applicants';
 import {Requestdate} from '../pages/requestdate/requestdate';
 import {Registerform} from '../pages/registerform/registerform';
-import {Vedios} from '../pages/vedios/vedios';
-import {Listcareer} from '../pages/listcareer/listcareer';
-import { ItemDetailPage} from '../pages/item-detail/item-detail'
+import {Videos} from '../pages/videos/videos';
+import {SimulationsListPage} from '../pages/simulations-list/simulations-list';
+import { CompanyPage} from '../pages/company/company'
 import { Profile } from "../pages/profile/profile";
 import {LoginPage  } from "../pages/login/login";
 import{DataService} from '../providers/data-service';
 import { User } from '../providers/user';
 import { AcceptapplicantsPage } from "../pages/acceptapplicants/acceptapplicants";
 import { PaymentMethodPage } from '../pages/payment-method/payment-method';
-import {ExpotimerPage} from '../pages/expotimer/expotimer';
+//import {ExpotimerPage} from '../pages/expotimer/expotimer';
 import {CardPaymentPage} from'../pages/card-payment/card-payment'
 
 
@@ -62,10 +62,10 @@ import {AngularFireModule} from "angularfire2" ;
     TabsPage,
     Applicants,
     Requestdate,
-    Vedios,
+    Videos,
     Registerform,
-    Listcareer,
-    ItemDetailPage,
+    SimulationsListPage,
+    CompanyPage,
     Profile,
     SafepipePipe,
     LoginPage,
@@ -75,7 +75,6 @@ import {AngularFireModule} from "angularfire2" ;
     RatingPipe,
     TutorialPage,
     PaymentMethodPage,
-    ExpotimerPage,
     CardPaymentPage,
    
    
@@ -99,17 +98,16 @@ import {AngularFireModule} from "angularfire2" ;
     TabsPage,
     Applicants,
     Requestdate,
-     Vedios,
+     Videos,
     Registerform,
-    Listcareer,
-    ItemDetailPage,
+    SimulationsListPage,
+    CompanyPage,
     Profile,
     LoginPage,
     VersionCheckPage,
     AcceptapplicantsPage,
     TutorialPage,
     PaymentMethodPage,
-    ExpotimerPage,
      CardPaymentPage,   
   
   ],

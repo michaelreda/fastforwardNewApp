@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { FieldsPage } from '../fields/fields';
-import { Vedios } from '../vedios/vedios';
+import { Videos } from '../videos/videos';
 import { Profile } from "../profile/profile";
 import { ActionSheetController, Platform, LoadingController } from 'ionic-angular';
 import { NavController, NavParams } from 'ionic-angular';
@@ -9,7 +9,7 @@ import { AlertController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { Network } from '@ionic-native/network';
 import { AcceptapplicantsPage } from "../acceptapplicants/acceptapplicants";
-import {ExpotimerPage} from '../expotimer/expotimer';
+//import {ExpotimerPage} from '../expotimer/expotimer';
 
 
 @Component({
@@ -19,9 +19,9 @@ export class TabsPage {
 	company_or_not: any;
 	expo:any;
 	tab1Root = FieldsPage;
-	tab2Root = Vedios;
+	tab2Root = Videos;
 	tab3Root = Profile;
-	tab5Root = ExpotimerPage;
+	//tab5Root = ExpotimerPage;
 	ios: boolean = false;
 	root;
 	connection_error_popup:any;
@@ -42,7 +42,7 @@ export class TabsPage {
 		if (plt.is('ios')) {
 			this.ios = true;
 		}
-		this.expo= localStorage.getItem('expo');
+		//this.expo= localStorage.getItem('expo');
 	
 	}
 	switch1() {
@@ -57,9 +57,7 @@ export class TabsPage {
 	switch4() {
 		this.presentAdminActionSheet();
 	}
-	switch5() {
-		this.root=this.tab5Root;
-	}
+	
 
 	presentAdminActionSheet() {
 		let actionSheet = this.actionSheetCtrl.create({
