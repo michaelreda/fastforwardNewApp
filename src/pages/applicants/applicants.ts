@@ -142,7 +142,7 @@ this.applied = this.original.filter(
 }
 
 
-accept(i,x){
+accept(i,User){
   console.log("accept",i);
   this.accepted.push(this.applied[i]);
  this.applied.splice(i,1);
@@ -151,14 +151,14 @@ accept(i,x){
   (item) => {
 
     
-     return (item.user_id!= x.user_id);
+     return (item.user_id!= User.user_id);
    });
 
 this.original=this.refrence;
 
 
  let applicant={
-user_id:x.user_id,
+user_id:User.user_id,
 price:this.sim_price,
 simulation_date_id:this.sim_id
 
@@ -174,19 +174,19 @@ simulation_date_id:this.sim_id
  });
     }
 
-reject(i,x){
+reject(i,User){
 
   this.applied.splice(i,1);
   this.refrence= this.refrence.filter(
     (item) => {
-       return (item.user_id!= x.user_id);
+       return (item.user_id!= User.user_id);
      });
   
   this.original=this.refrence;
  
   
   let applicant={
-    user_id:x.user_id,
+    user_id:User.user_id,
     price:this.sim_price,
     simulation_date_id:this.sim_id
     

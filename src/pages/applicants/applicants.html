@@ -22,15 +22,15 @@
    <div [ngSwitch]="list">
 
       <ion-list *ngSwitchCase="'applied'">
-        <ion-card   *ngFor="let x of  applied; let i=index">
+        <ion-card   *ngFor="let User of  applied; let i=index">
             <ion-item>
-         <span item-left col-7 style="font-weight:bold;"> <ion-icon name="person" color ="blue" item-start></ion-icon> {{x.user_name| slice:0:19}}</span>
-         <span item-right col-5 style="color:#B0B03F;"><ion-icon name="star"  [color]="(x.rating=='-1')?'grey':'yellow'"  item-start></ion-icon>{{x.rating | rating}}</span>
+         <span item-left col-7 style="font-weight:bold;"> <ion-icon name="person" color ="blue" item-start></ion-icon> {{User.user_name| slice:0:19}}</span>
+         <span item-right col-5 style="color:#B0B03F;"><ion-icon name="star"  [color]="(User.rating=='-1')?'grey':'yellow'"  item-start></ion-icon>{{User.rating | rating}}</span>
             </ion-item>
            
          <div padding>
-             <div style="padding-bottom:0.5rem;"> <span  style="width:100%">  <ion-icon name="briefcase" item-start></ion-icon>    {{x.major}}</span></div>
-             <div> <span  style="width:100%"><i class="fa fa-institution" style="font-size:1.3rem"></i>   {{x.degree}}</span>
+             <div style="padding-bottom:0.5rem;"> <span  style="width:100%">  <ion-icon name="briefcase" item-start></ion-icon>    {{User.major}}</span></div>
+             <div> <span  style="width:100%"><i class="fa fa-institution" style="font-size:1.3rem"></i>   {{User.degree}}</span>
            </div>
          </div>
 
@@ -56,15 +56,15 @@
   
       <ion-list  *ngSwitchCase="'accepted'">
 
-          <ion-card   *ngFor="let x of  accepted">
+          <ion-card   *ngFor="let User of  accepted">
               <ion-item>
-           <span item-left col-7 style="font-weight:bold;"> <ion-icon name="person" color ="blue" item-start></ion-icon> {{x.user_name| slice:0:19}}</span>
-           <span item-right col-5 style="color:#B0B03F;"><ion-icon name="star"  [color]="(x.rating=='-1')?'grey':'yellow'"  item-start></ion-icon>{{x.rating | rating}}</span>
+           <span item-left col-7 style="font-weight:bold;"> <ion-icon name="person" color ="blue" item-start></ion-icon> {{User.user_name| slice:0:19}}</span>
+           <span item-right col-5 style="color:#B0B03F;"><ion-icon name="star"  [color]="(User.rating=='-1')?'grey':'yellow'"  item-start></ion-icon>{{User.rating | rating}}</span>
               </ion-item>
              
            <div padding>
-               <div style="padding-bottom:0.5rem;"> <span  style="width:100%">  <ion-icon name="briefcase" item-start></ion-icon>    {{x.major}}</span></div>
-               <div> <span  style="width:100%"><i class="fa fa-institution" style="font-size:1.3rem"></i>   {{x.degree}}</span>
+               <div style="padding-bottom:0.5rem;"> <span  style="width:100%">  <ion-icon name="briefcase" item-start></ion-icon>    {{User.major}}</span></div>
+               <div> <span  style="width:100%"><i class="fa fa-institution" style="font-size:1.3rem"></i>   {{User.degree}}</span>
              </div>
            </div>
           </ion-card>
